@@ -9,7 +9,7 @@
             --primary: #0F2027; 
             --mid-blue: #203A43;
             --light-blue: #2C5364;
-            --accent: #D4AF37;  /* ពណ៌មាសលំដាប់អភិជន */
+            --accent: #D4AF37;
             --gold-light: #F3E5AB;
             --text-dark: #0F172A;
             --text-light: #F8FAFC;
@@ -18,13 +18,11 @@
         
         body { font-family: 'Khmer OS System', Arial, sans-serif; background-color: #F1F5F9; margin: 0; padding: 0; color: var(--text-dark); scroll-behavior: smooth; }
         
-        /* Premium Glowing Header */
         .header { background: linear-gradient(135deg, var(--primary) 0%, var(--mid-blue) 50%, var(--light-blue) 100%); color: white; padding: 60px 8%; text-align: center; border-bottom: 5px solid var(--accent); position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
         .header h1 { font-family: 'Khmer OS Muol Light', sans-serif; font-size: 34px; color: var(--accent); margin: 0; text-shadow: 0 3px 6px rgba(0,0,0,0.4); }
         .header p { font-size: 15px; color: var(--text-light); margin-top: 15px; max-width: 950px; margin-left: auto; margin-right: auto; line-height: 1.8; opacity: 0.9; }
         .badge-global { background: linear-gradient(90deg, #9A7432, var(--accent)); color: white; padding: 6px 20px; font-weight: bold; border-radius: 30px; font-size: 11px; display: inline-block; margin-bottom: 15px; letter-spacing: 1px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
 
-        /* Navigation Bar */
         .nav-bar { background: var(--primary); padding: 12px 5%; display: flex; justify-content: center; gap: 25px; position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--accent); box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
         .nav-bar a { color: white; text-decoration: none; font-weight: bold; font-size: 13px; transition: 0.3s; padding: 6px 12px; border-radius: 4px; }
         .nav-bar a:hover { color: var(--accent); background: rgba(255,255,255,0.08); }
@@ -33,7 +31,6 @@
         .section-title { font-family: 'Khmer OS Muol Light', sans-serif; color: var(--mid-blue); text-align: center; margin: 50px 0 30px 0; font-size: 22px; }
         .section-title::after { content: ''; display: block; width: 100px; height: 4px; background: var(--accent); margin: 12px auto 0 auto; border-radius: 2px; }
 
-        /* LIVE FINANCIAL PUBLIC LEDGER STATS */
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 40px; }
         .stat-card { background: white; border-radius: 16px; padding: 20px; text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,0.04); border-top: 4px solid var(--accent); position: relative; overflow: hidden; }
         .stat-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(212,175,55,0.03) 0%, transparent 100%); pointer-events: none; }
@@ -41,14 +38,12 @@
         .stat-value { font-size: 22px; font-weight: bold; color: var(--primary); }
         .stat-trend { font-size: 11px; color: var(--success); font-weight: bold; margin-top: 5px; display: flex; align-items: center; justify-content: center; gap: 3px; }
 
-        /* STRATEGIC VISION & TRANSFORMATIONS */
         .vision-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 40px; }
         .vision-card { background: white; border-radius: 16px; padding: 30px; box-shadow: 0 8px 20px rgba(0,0,0,0.03); border-left: 5px solid var(--mid-blue); }
         .vision-card.gold-border { border-left-color: var(--accent); }
         .vision-card h3 { font-family: 'Khmer OS Muol Light', sans-serif; font-size: 15px; color: var(--mid-blue); margin-top: 0; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
         .vision-card p, .vision-card li { font-size: 13.5px; line-height: 1.8; color: #334155; }
 
-        /* HIGH COMMAND BOARD */
         .command-wrapper { display: flex; justify-content: center; margin-bottom: 30px; }
         .leader-boss { background: white; border: 3px solid var(--accent); border-radius: 20px; padding: 35px; text-align: center; width: 500px; box-shadow: 0 20px 40px rgba(15,32,39,0.15); }
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 40px; }
@@ -57,7 +52,6 @@
         .profile-card .m-role { color: #64748B; font-size: 12px; font-weight: bold; margin-bottom: 12px; }
         .profile-card .m-desc { font-size: 12.5px; color: #475569; line-height: 1.7; border-top: 1px dashed #E2E8F0; padding-top: 12px; }
 
-        /* APP PORTAL WITH INTEGRATED AUTOMATED WITHDRAWAL */
         .app-portal { display: grid; grid-template-columns: 400px 1fr; gap: 40px; background: #E2E8F0; padding: 40px; border-radius: 30px; box-shadow: inset 0 3px 10px rgba(0,0,0,0.05); }
         .phone-frame { background: #000; border: 12px solid #334155; border-radius: 45px; height: 750px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.25); display: flex; flex-direction: column; }
         .phone-screen { background: #F8FAFC; flex: 1; display: flex; flex-direction: column; overflow-y: auto; }
@@ -71,12 +65,9 @@
         .app-input-group label { display: block; font-weight: bold; font-size: 11px; margin-bottom: 4px; color: var(--primary); }
         .app-field { width: 100%; padding: 10px; border: 1px solid #CBD5E1; border-radius: 6px; font-family: 'Khmer OS System'; font-size: 12px; box-sizing: border-box; }
         .app-btn { background: var(--primary); color: white; border: none; padding: 12px; width: 100%; border-radius: 6px; font-weight: bold; cursor: pointer; font-family: 'Khmer OS System'; margin-top: 5px; box-shadow: 0 4px 6px rgba(0,0,0,0.15); }
-        .app-btn:hover { background: #000; color: var(--accent); }
 
-        /* Withdrawal Output Box */
         .withdrawal-receipt { background: var(--gold-light); border: 2px dashed var(--accent); padding: 15px; border-radius: 8px; margin-top: 15px; display: none; color: var(--primary); }
 
-        /* MASTER DATABASE TABLE */
         .db-container { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.02); overflow-x: auto; }
         .msn-table { width: 100%; border-collapse: collapse; font-size: 12px; }
         .msn-table th { background: #F1F5F9; color: var(--primary); padding: 14px 10px; font-weight: bold; border-bottom: 2px solid #CBD5E1; text-align: left; }
@@ -84,7 +75,6 @@
         .msn-table tr:hover { background: #F8FAFC; }
         .badge-id { background: var(--primary); color: white; padding: 2px 7px; border-radius: 4px; font-weight: bold; font-size: 11px; }
 
-        /* PILLARS CARD */
         .pillar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 25px; margin-top: 30px; }
         .pillar-card { background: white; border-radius: 16px; padding: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.02); border-left: 6px solid var(--accent); }
         .pillar-card h4 { font-family: 'Khmer OS Muol Light', sans-serif; font-size: 14px; color: var(--primary); margin-top: 0; margin-bottom: 12px; }
@@ -97,7 +87,7 @@
 <body>
 
     <div class="header">
-        <div class="badge-global">🌐 MSN EMPIRE GLOBAL ENTERPRISE SYSTEM v3.1</div>
+        <div class="badge-global">🌐 MSN EMPIRE GLOBAL ENTERPRISE SYSTEM v3.2</div>
         <h1>ក្រុមហ៊ុន មហាសិរី ណេតវើក ឯ.ក (MSN)</h1>
         <p>មហារចនាសម្ព័ន្ធអភិបាលកិច្ចសច្ចៈភាព លក្ខណៈវិទ្យាសាស្ត្រ ដើម្បីដឹកនាំយន្តការបំប្លែងយុទ្ធសាស្ត្រទាំង ៣ និងកសាងកម្លាំងសហគ្រិន ២ លាននាក់ ស្របតាមគោលនយោបាយជាតិឆ្នាំ ២០៥០ នៃរាជរដ្ឋាភិបាលកម្ពុជា រួមជាមួយកម្មវិធីមូលនិធិវិនិយោគទុនអន្ដរជាតិ (IIFP)</p>
     </div>
@@ -141,35 +131,218 @@
             <div class="vision-grid">
                 <div class="vision-card gold-border">
                     <h3>👁️ ទស្សនៈ និង ចក្ខុវិស័យ (Vision)</h3>
-                    <p>កសាងបណ្តាញសេដ្ឋកិច្ចពាណិជ្ជកម្មឌីជីថលលំដាប់អន្តរជាតិ ដើម្បីបណ្តុះបណ្តាល និងបង្កើតសហគ្រិនគំរូឱ្យបាន <b>២ លាននាក់</b> ត្រឹមឆ្នាំ <b>២០៥០</b> ចូលរួមចំណែកយ៉ាងខ្លាំងក្លាជាមួយយុទ្ធសាស្ត្ររាជរដ្ឋាភិបាល ក្នុងការប្រែក្លាយកម្ពុជាជាប្រទេសមានចំណូលខ្ពស់。</p>
+                    <p>កសាងបណ្តាញសេដ្ឋកិច្ចពាណិជ្ជកម្មឌីជីថលលំដាប់អន្តរជាតិ ដើម្បីបណ្តុះបណ្តាល និងបង្កើតសហគ្រិនគំរូឱ្យបាន <b>២ លាននាក់</b> ត្រឹមឆ្នាំ <b>២០៥០</b> ចូលរួមចំណែកយ៉ាងខ្លាំងក្លាជាមួយយុទ្ធសាស្ត្ររាជរដ្ឋាភិបាល។</p>
                 </div>
                 <div class="vision-card">
                     <h3>🚀 យន្តការបំប្លែងទាំង ៣ (The 3 Transformations)</h3>
                     <ul>
-                        <li><b>១. បំប្លែងទំនុកចិត្តជាដើមទុនជំនួសសាច់ប្រាក់៖</b> បង្កើតតម្លៃមូលធនចេញពីភាពស្មោះត្រង់ និងកិច្ចសហការវិនិយោគទុនអន្តរជាតិ។</li>
-                        <li><b>២. បំប្លែងកម្លាំងសាមគ្គីភាពជាអានុភាព៖</b> ចងក្រងបណ្តាញមនុស្សទូទាំងប្រទេសឱ្យក្លាយជាធ្លុងមួយ មិនអាចបំបែកបាន។</li>
-                        <li><b>៣. បំប្លែងធនធានទំនេរជាសង្វាក់តម្លៃ៖</b> យកដី ឃ្លាំង រថយន្ត និងកម្លាំងពលកម្មដែលទំនេរមកដំណើរការបង្កើតផលចំណេញជាក់ស្តែង។</li>
+                        <li><b>១. បំប្លែងទំនុកចិត្តជាដើមទុនជំនួសសាច់ប្រាក់</b></li>
+                        <li><b>២. បំប្លែងកម្លាំងសាមគ្គីភាពជាអានុភាព</b></li>
+                        <li><b>៣. បំប្លែងធនធានទំនេរជាសង្វាក់តម្លៃ</b></li>
                     </ul>
                 </div>
                 <div class="vision-card gold-border">
                     <h3>🤝 ដៃគូយុទ្ធសាស្ត្រទាំង ៤ ភាគី (4-Party Alliance)</h3>
-                    <p>មហាអាណាចក្រ MSN ឈរជើងយ៉ាងរឹងមាំលើសម្ព័ន្ធភាពយុទ្ធសាស្ត្រ ៤ ភាគីរួមមាន៖<br>
-                    <b>១. វិស័យសាធារណៈ (រដ្ឋបាលរដ្ឋ)</b> | <b>២. មូលនិធិវិនិយោគទុនអន្តរជាតិ (IIFP)</b> | <b>៣. បណ្តាញសហគ្រាសផលិតកម្មក្នុងស្រុក</b> | <b>៤. សហគមន៍ប្រជាពលរដ្ឋ និងតំណាងចែកចាយផ្ទាល់ដី</b>。</p>
+                    <p><b>១. វិស័យសាធារណៈ</b> | <b>២. មូលនិធិវិនិយោគទុនអន្តរជាតិ (IIFP)</b> | <b>៣. បណ្តាញសហគ្រាសផលិតកម្ម</b> | <b>៤. សហគមន៍ប្រជាពលរដ្ឋ</b>。</p>
                 </div>
             </div>
         </div>
 
         <div id="high-command">
-            <h2 class="section-title">រចនាសម្ព័ន្ធក្រុមប្រឹក្សាភិបាលអាណាចក្រ MSN (MSN Empire Board)</h2>
+            <h2 class="section-title">រចនាសម្ព័ន្ធក្រុមប្រឹក្សាភិបាលអាណាចក្រ MSN</h2>
             <div class="command-wrapper">
                 <div class="leader-boss">
                     <div class="badge-global" style="background:#901A1E;">ម្ចាស់អាជ្ញាសឹក និងអ្នកសម្រេចចិត្តចុងក្រោយ</div>
                     <div class="name" style="font-family:'Khmer OS Muol Light'; font-size:20px; color:var(--primary); margin-top:5px;">លោក មេណ្ឌ មុនី</div>
                     <div class="role" style="font-weight:bold; color:var(--accent); margin-top:5px;">អគ្គស្ថាបនិក និងជាប្រធានក្រុមប្រឹក្សាភិបាល</div>
-                    <p style="font-size:12.5px; color:#475569; margin: 10px 0 0 0; line-height:1.7;">ជាអាណាព្យាបាលនៃមហាក្បួន ធានានូវការអនុវត្ត "បំប្លែងទាំង ៣" ឱ្យមានប្រសិទ្ធភាពបំផុត និងជាអ្នកចុះហត្ថលេខាសម្រេចចុងក្រោយកម្រិតជាតិ-អន្តរជាតិ。</p>
                 </div>
             </div>
 
             <div class="grid-3">
                 <div class="profile-card">
-                    <div class="m-title">លោកស្រី ឌ
+                    <div class="m-title">លោកស្រី ឌុង សូនី</div>
+                    <div class="m-role">អនុប្រធានទី ១ & ជានាយកប្រតិបត្តិ (CEO)</div>
+                </div>
+                <div class="profile-card">
+                    <div class="m-title">លោក ឆេង ស៊ីប៉ិច</div>
+                    <div class="m-role">អនុប្រធានទី ២ & ជានាយករង</div>
+                </div>
+                <div class="profile-card">
+                    <div class="m-title">លោក ឃោន វិចិត្រ</div>
+                    <div class="m-role">អនុប្រធានទី ៣, ជានាយករង & ជំនួយការ</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="pillars">
+            <h2 class="section-title">នាយកដ្ឋានស្នូល និងការចាត់តាំងសរស្តម្ភទាំង ៥</h2>
+            <div class="pillar-grid">
+                <div class="pillar-card"><h4>🏢 ១. នាយកដ្ឋានកម្លាំងចល័ត និងបណ្តាញចែកចាយ</h4></div>
+                <div class="pillar-card"><h4>🎓 ២. នាយកដ្ឋានវិទ្យាស្ថានបញ្ញា និងអភិវឌ្ឍន៍ជំនាញ</h4></div>
+                <div class="pillar-card"><h4>📦 ៣. នាយកដ្ឋានគ្រប់គ្រងមហាសម្បត្តិ និងជំរឿន</h4></div>
+                <div class="pillar-card"><h4>📢 ៤. នាយកដ្ឋានបណ្តាញព័ត៌មាន និងទីផ្សារ</h4></div>
+                <div class="pillar-card" style="grid-column: span 2;"><h4>🏭 ៥. នាយកដ្ឋានឧស្សាហកម្មកែច្នៃ & ហិរញ្ញវត្ថុភាគហ៊ុន</h4></div>
+            </div>
+        </div>
+
+        <div id="app-portal" style="margin-top: 50px;">
+            <h2 class="section-title">ប្រព័ន្ធគ្រប់គ្រងទិន្នន័យរួម និងប្រអប់ដកប្រាក់ចំណេញស្វ័យប្រវត្ត</h2>
+            <div class="app-portal">
+                
+                <div class="phone-frame">
+                    <div class="phone-topbar">MSN DISPATCH APP</div>
+                    <div class="phone-screen">
+                        <div style="display: flex; background: #E2E8F0; padding: 5px;">
+                            <button id="tab1" class="app-tab-btn active" style="flex:1; margin:0;" onclick="switchTab('reg')">📝 ចុះឈ្មោះ</button>
+                            <button id="tab2" class="app-tab-btn" style="flex:1; margin:0;" onclick="switchTab('withdraw')">💰 ដកប្រាក់អូតូ</button>
+                        </div>
+                        
+                        <div class="phone-body">
+                            <div id="screenRegistration">
+                                <h4 style="margin:0 0 10px 0;">ចុះឈ្មោះសមាជិកថ្មី</h4>
+                                <form id="regForm" onsubmit="handleReg(event)">
+                                    <div class="app-input-group"><label>នាមត្រកូល និងនាមខ្លួន *</label><input type="text" id="newName" class="app-field" required></div>
+                                    <div class="app-input-group"><label>តួនាទី</label><input type="text" id="newRole" class="app-field" value="គណៈកម្មាធិការប្រតិបត្តិ"></div>
+                                    <div class="app-input-group"><label>ភាគហ៊ុន</label><input type="number" id="newShares" class="app-field" value="150" required></div>
+                                    <button type="submit" class="app-btn">🚀 ចុះឈ្មោះ</button>
+                                </form>
+                            </div>
+
+                            <div id="screenWithdrawal" style="display:none;">
+                                <h4 style="margin:0 0 10px 0;">ប្រអប់ដកប្រាក់ចំណេញសមាជិក</h4>
+                                <div class="app-input-group"><label>វាយលេខកូដសម្គាល់សមាជិក *</label><input type="text" id="withdrawID" class="app-field" placeholder="MSN-001" oninput="checkMemberProfit()"></div>
+                                <div id="memberStatusBox" style="background:#F1F5F9; padding:10px; border-radius:6px; margin-bottom:12px; display:none;">
+                                    <p style="margin:2px 0;"><b>ឈ្មោះ៖</b> <span id="smName">-</span></p>
+                                    <p style="margin:2px 0;"><b>ភាគហ៊ុន៖</b> <span id="smShares">0</span></p>
+                                    <p style="margin:2px 0; color:var(--success);"><b>អាចដកបាន៖</b> <span id="smProfit">$0.00</span></p>
+                                </div>
+                                <button type="button" class="app-btn" style="background:var(--success);" onclick="processWithdrawal()">💸 បញ្ជាដកប្រាក់</button>
+                                <div id="receiptBox" class="withdrawal-receipt">
+                                    <p id="rcID"></p><p id="rcName"></p><p id="rcAmount"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="db-container">
+                    <h3 style="margin-top:0; font-family:'Khmer OS Muol Light'; font-size:16px;">📋 ប្រព័ន្ធទិន្នន័យរួម និងគណនាផលចំណេញសាធារណៈ (Live Ledger)</h3>
+                    <table class="msn-table">
+                        <thead>
+                            <tr>
+                                <th>ល.រ</th><th>លេខកូដ</th><th>នាមត្រកូល និងនាមខ្លួន</th><th>តួនាទី និងភារកិច្ចទទួលខុសត្រូវ</th><th>ភាគហ៊ុន</th><th style="text-align:right;">ប្រាក់ចំណេញ</th>
+                            </tr>
+                        </thead>
+                        <tbody id="masterTableBody"></tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <p style="font-family:'Khmer OS Muol Light'; font-size:15px; color:var(--accent);">ក្រុមហ៊ុន មហាសិរី ណេតវើក ឯ.ក (MSN)</p>
+        <p>គ្រប់គ្រងដាច់ខាតដោយផ្ទាល់ដៃ លោកអគ្គនាយកស្ថាបនិក មេណ្ឌ មុនី</p>
+    </div>
+
+    <script>
+        let msnDatabase = [
+            { name: "លោកស្រី ឌុង សូនី", role: "អនុប្រធានគណៈកម្មាធិការ និងជានាយកប្រតិបត្តិ (CEO)", shares: 150 },
+            { name: "លោក ឆេង ស៊ីប៉ិច", role: "អនុប្រធានគណៈកម្មាធិការ និងជានាយករង ទទួលបន្ទុកសម្របសម្រួលសមាជិក និងភ្នាក់ងារទីផ្សារបណ្ដាញ", shares: 150 },
+            { name: "លោក ឃោន វិចិត្រ", role: "អនុប្រធានគណៈកម្មាធិការ ជានាយករង ទទួលបន្ទុកផ្នែកបណ្ដុះបណ្ដាល និងអប់រំ និងជាជំនួយការអគ្គនាយក", shares: 150 },
+            { name: "លោក ឈាង ឆោម", role: "ប្រធានទីប្រឹក្សាផ្នែកទីផ្សារ បណ្ដុះបណ្ដាល និងសម្របសម្រួល", shares: 150 },
+            { name: "លោក សន សុកហេង", role: "ទីប្រឹក្សាផ្នែកបច្ចេកទេសគ្រប់គ្រងដឹកនាំ និងទំនាក់ទំនងវិស័យរដ្ឋបាលសាធារណៈ", shares: 150 },
+            { name: "អ្នកស្រី ទី សុធីតា", role: "សមាជិក ទទួលបន្ទុកអគ្គនាយកដ្ឋានរដ្ឋបាល ពិធីការ និងសវនកម្មហិរញ្ញវត្ថុ", shares: 150 },
+            { name: "លោក ជុំ សាខុន", role: "សមាជិក ទទួលបន្ទុកប្រធានផ្នែកទំនាក់ទំនងអាជីវកម្ម", shares: 150 },
+            { name: "លោក ភាព ភារ៉ា", role: "សមាជិកទទួលបន្ទុកនាយកដ្ឋានទំនាក់ទំនងវិស័យឯកជន", shares: 150 },
+            { name: "លោក ថេ សូនី", role: "សមាជិក ទទួលបន្ទុកនាយកដ្ឋានទំនាក់ទំនង (ផ្នែកទំនាក់ទំនង សន្តិសុខ និងអន្ដរាគមន៍)", shares: 150 },
+            { name: "លោក ជីម ប៊ុណ្ណា", role: "សមាជិក ទទួលបន្ទុកផ្នែកអន្ដរាគមន៍ សាខា ខណ្ឌ ព្រែកព្នៅ", shares: 150 },
+            { name: "លោក ណាត់ សុវណ្ណឌី", role: "សមាជិក ទទួលបន្ទុកផ្នែកតំណាងសហគមន៍ សាខា ខណ្ឌ ព្រែកព្នៅ", shares: 150 },
+            { name: "លោកស្រី ឆូន ដាវីចន្ទ័ឌី", role: "សមាជិកទទួលបន្ទុកទំនាក់ទំនងវិស័យសហគ្រាស និងអាជីវកម្ម", shares: 150 },
+            { name: "លោក ឆាយ សុវណ្ណ", role: "សមាជិក និងជាព្រឹទ្ធាចារ្យ ទទួលបន្ទុកផ្នែកអប់រំសីលធម៌ និងប្រឹក្សាយោបល់", shares: 150 },
+            { name: "លោក ទុន បូរាណ", role: "សមាជិក និងជាព្រឹទ្ធាចារ្យ ទទួលបន្ទុកផ្នែកអប់រំសីលធម៌ និងប្រឹក្សាយោបល់", shares: 150 },
+            { name: "អ្នកស្រី ហេ សុភក្រ្ដ", role: "សមាជិកទទួលបន្ទុកជាប្រធានសហគមន៍អ្នកប្រើប្រាស់ និងចែកចាយផ្សារខណ្ឌ ៧ មករា", shares: 150 },
+            { name: "លោក ឌុង សុខគី", role: "សមាជិក ទទួលបន្ទុកផ្នែកចែកចាយ និងដឹកជញ្ជូន ខណ្ឌ មានជ័យ", shares: 150 },
+            { name: "លោក ភឹម វន្នី", role: "សមាជិក ទទួលបន្ទុកប្រធានសាខា ព្រែកព្នៅ", shares: 150 },
+            { name: "អ្នកស្រី ស៊ាម សុខលីន", role: "សមាជិក ទទួលបន្ទុកបណ្ដុះបណ្ដាល", shares: 150 },
+            { name: "លោក ហួង តារា", role: "សមាជិក ទទួលបន្ទុកផ្នែកតំណាងសហគ្រាស", shares: 150 },
+            { name: "លោក ថន ថេត", role: "សមាជិក ទទួលបន្ទុកប្រធានផ្នែកលក់", shares: 150 },
+            { name: "លោកស្រី ម៉ក់ តូន", role: "សមាជិក ទទួលបន្ទុកអនុប្រធានផ្នែកលក់", shares: 150 },
+            { name: "លោក ណយ សំបូរ", role: "សមាជិក ទទួលបន្ទុកតំណាងសមាគមកសិកម្ម", shares: 150 },
+            { name: "លោក ព្រំ កែវ", role: "សមាជិក ទទួលបន្ទុកផ្នែកកសិកម្ម និងសិប្បកម្ម", shares: 150 },
+            { name: "អ្នកស្រី អុល ស្រីនី", role: "សមាជិកគណៈកម្មាធិការប្រតិបត្តិ", shares: 150 },
+            { name: "កញ្ញា ស្រ៊ាង វិស៊ាន", role: "សមាជិកគណៈកម្មាធិការប្រតិបត្តិ", shares: 150 }
+        ];
+
+        const PROFIT_PER_SHARE = 2.5;
+
+        function renderDatabase() {
+            const tbody = document.getElementById("masterTableBody");
+            tbody.innerHTML = "";
+            msnDatabase.forEach((m, idx) => {
+                let sNo = idx + 1;
+                let code = "MSN-" + String(sNo).padStart(3, '0');
+                let totalProfit = m.shares * PROFIT_PER_SHARE;
+                tbody.innerHTML += `<tr>
+                    <td><b>${sNo}</b></td>
+                    <td><span class="badge-id">${code}</span></td>
+                    <td><b>${m.name}</b></td>
+                    <td><small>${m.role}</small></td>
+                    <td><b>${m.shares}</b></td>
+                    <td style="text-align:right; font-weight:bold; color:var(--success);">$${totalProfit.toFixed(2)}</td>
+                </tr>`;
+            });
+        }
+
+        function switchTab(type) {
+            document.getElementById('screenRegistration').style.display = type === 'reg' ? 'block' : 'none';
+            document.getElementById('screenWithdrawal').style.display = type === 'reg' ? 'none' : 'block';
+            document.getElementById('tab1').className = type === 'reg' ? 'app-tab-btn active' : 'app-tab-btn';
+            document.getElementById('tab2').className = type === 'reg' ? 'app-tab-btn' : 'app-tab-btn active';
+        }
+
+        function handleReg(e) {
+            e.preventDefault();
+            msnDatabase.push({ name: document.getElementById("newName").value, role: document.getElementById("newRole").value, shares: parseInt(document.getElementById("newShares").value) });
+            renderDatabase();
+            document.getElementById("regForm").reset();
+        }
+
+        function checkMemberProfit() {
+            let match = document.getElementById("withdrawID").value.trim().toUpperCase().match(/^MSN-(\d+)$/);
+            if(match) {
+                let index = parseInt(match[1]) - 1;
+                if(index >= 0 && index < msnDatabase.length) {
+                    let m = msnDatabase[index];
+                    document.getElementById("smName").innerText = m.name;
+                    document.getElementById("smShares").innerText = m.shares;
+                    document.getElementById("smProfit").innerText = "$" + (m.shares * PROFIT_PER_SHARE).toFixed(2);
+                    document.getElementById("memberStatusBox").style.display = "block";
+                    return;
+                }
+            }
+            document.getElementById("memberStatusBox").style.display = "none";
+        }
+
+        function processWithdrawal() {
+            let match = document.getElementById("withdrawID").value.trim().toUpperCase().match(/^MSN-(\d+)$/);
+            if(match) {
+                let index = parseInt(match[1]) - 1;
+                if(index >= 0 && index < msnDatabase.length) {
+                    let m = msnDatabase[index];
+                    document.getElementById("rcID").innerText = "លេខកូដ៖ MSN-" + String(index+1).padStart(3,'0');
+                    document.getElementById("rcName").innerText = "សមាជិក៖ " + m.name;
+                    document.getElementById("rcAmount").innerText = "បានដក៖ $" + (m.shares * PROFIT_PER_SHARE).toFixed(2);
+                    document.getElementById("receiptBox").style.display = "block";
+                    alert("💸 បញ្ជាដកប្រាក់ជោគជ័យជូន " + m.name);
+                    return;
+                }
+            }
+            alert("❌ រកមិនឃើញលេខកូដសមាជិក!");
+        }
+        renderDatabase();
+    </script>
+</body>
+</html>
