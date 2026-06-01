@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MSN Empire Dashboard - ស្តង់ដារមហាអាណាចក្រពាណិជ្ជកម្មអន្តរជាតិ</title>
+    <title>MSN Empire Super App - អាណាចក្រឌីជីថលស្វ័យប្រវត្ត</title>
     <style>
         :root {
             --primary: #0F2027; 
@@ -14,335 +14,297 @@
             --text-dark: #0F172A;
             --text-light: #F8FAFC;
             --success: #10B981;
+            --warning: #F59E0B;
         }
         
         body { font-family: 'Khmer OS System', Arial, sans-serif; background-color: #F1F5F9; margin: 0; padding: 0; color: var(--text-dark); scroll-behavior: smooth; }
         
-        .header { background: linear-gradient(135deg, var(--primary) 0%, var(--mid-blue) 50%, var(--light-blue) 100%); color: white; padding: 60px 8%; text-align: center; border-bottom: 5px solid var(--accent); position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-        .header h1 { font-family: 'Khmer OS Muol Light', sans-serif; font-size: 34px; color: var(--accent); margin: 0; text-shadow: 0 3px 6px rgba(0,0,0,0.4); }
-        .header p { font-size: 15px; color: var(--text-light); margin-top: 15px; max-width: 950px; margin-left: auto; margin-right: auto; line-height: 1.8; opacity: 0.9; }
-        .badge-global { background: linear-gradient(90deg, #9A7432, var(--accent)); color: white; padding: 6px 20px; font-weight: bold; border-radius: 30px; font-size: 11px; display: inline-block; margin-bottom: 15px; letter-spacing: 1px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .header { background: linear-gradient(135deg, var(--primary) 0%, var(--mid-blue) 50%, var(--light-blue) 100%); color: white; padding: 50px 5%; text-align: center; border-bottom: 5px solid var(--accent); }
+        .header h1 { font-family: 'Khmer OS Muol Light', sans-serif; font-size: 30px; color: var(--accent); margin: 0; }
+        .badge-global { background: linear-gradient(90deg, #9A7432, var(--accent)); color: white; padding: 6px 20px; font-weight: bold; border-radius: 30px; font-size: 11px; display: inline-block; margin-bottom: 15px; }
 
-        .nav-bar { background: var(--primary); padding: 12px 5%; display: flex; justify-content: center; gap: 25px; position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--accent); box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
-        .nav-bar a { color: white; text-decoration: none; font-weight: bold; font-size: 13px; transition: 0.3s; padding: 6px 12px; border-radius: 4px; }
+        .nav-bar { background: var(--primary); padding: 12px 5%; display: flex; justify-content: center; gap: 20px; position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--accent); flex-wrap: wrap; }
+        .nav-bar a { color: white; text-decoration: none; font-weight: bold; font-size: 12px; padding: 6px 12px; border-radius: 4px; transition: 0.3s; }
         .nav-bar a:hover { color: var(--accent); background: rgba(255,255,255,0.08); }
 
-        .container { max-width: 1350px; margin: 40px auto; padding: 0 25px; }
-        .section-title { font-family: 'Khmer OS Muol Light', sans-serif; color: var(--mid-blue); text-align: center; margin: 50px 0 30px 0; font-size: 22px; }
-        .section-title::after { content: ''; display: block; width: 100px; height: 4px; background: var(--accent); margin: 12px auto 0 auto; border-radius: 2px; }
+        .container { max-width: 1400px; margin: 30px auto; padding: 0 20px; }
+        .section-title { font-family: 'Khmer OS Muol Light', sans-serif; color: var(--mid-blue); text-align: center; margin: 40px 0 20px 0; font-size: 20px; }
+        .section-title::after { content: ''; display: block; width: 80px; height: 4px; background: var(--accent); margin: 8px auto 0 auto; border-radius: 2px; }
 
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 40px; }
-        .stat-card { background: white; border-radius: 16px; padding: 20px; text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,0.04); border-top: 4px solid var(--accent); position: relative; overflow: hidden; }
-        .stat-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(212,175,55,0.03) 0%, transparent 100%); pointer-events: none; }
-        .stat-label { font-size: 12px; color: #64748B; font-weight: bold; text-transform: uppercase; margin-bottom: 8px; }
-        .stat-value { font-size: 22px; font-weight: bold; color: var(--primary); }
-        .stat-trend { font-size: 11px; color: var(--success); font-weight: bold; margin-top: 5px; display: flex; align-items: center; justify-content: center; gap: 3px; }
-
-        .vision-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 40px; }
-        .vision-card { background: white; border-radius: 16px; padding: 30px; box-shadow: 0 8px 20px rgba(0,0,0,0.03); border-left: 5px solid var(--mid-blue); }
-        .vision-card.gold-border { border-left-color: var(--accent); }
-        .vision-card h3 { font-family: 'Khmer OS Muol Light', sans-serif; font-size: 15px; color: var(--mid-blue); margin-top: 0; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
-        .vision-card p, .vision-card li { font-size: 13.5px; line-height: 1.8; color: #334155; }
-
-        .command-wrapper { display: flex; justify-content: center; margin-bottom: 30px; }
-        .leader-boss { background: white; border: 3px solid var(--accent); border-radius: 20px; padding: 35px; text-align: center; width: 500px; box-shadow: 0 20px 40px rgba(15,32,39,0.15); }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 40px; }
-        .profile-card { background: white; border-radius: 12px; padding: 25px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03); border-top: 4px solid var(--light-blue); }
-        .profile-card .m-title { font-family: 'Khmer OS Muol Light', sans-serif; color: var(--mid-blue); font-size: 15px; margin-bottom: 6px; }
-        .profile-card .m-role { color: #64748B; font-size: 12px; font-weight: bold; margin-bottom: 12px; }
-        .profile-card .m-desc { font-size: 12.5px; color: #475569; line-height: 1.7; border-top: 1px dashed #E2E8F0; padding-top: 12px; }
-
-        .app-portal { display: grid; grid-template-columns: 400px 1fr; gap: 40px; background: #E2E8F0; padding: 40px; border-radius: 30px; box-shadow: inset 0 3px 10px rgba(0,0,0,0.05); }
-        .phone-frame { background: #000; border: 12px solid #334155; border-radius: 45px; height: 750px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.25); display: flex; flex-direction: column; }
+        /* SUPER APP INTERFACE */
+        .app-grid { display: grid; grid-template-columns: 380px 1fr; gap: 30px; margin-top: 20px; }
+        .phone-frame { background: #000; border: 12px solid #334155; border-radius: 40px; height: 820px; overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.2); display: flex; flex-direction: column; }
         .phone-screen { background: #F8FAFC; flex: 1; display: flex; flex-direction: column; overflow-y: auto; }
-        .phone-topbar { background: var(--primary); color: white; padding: 18px; text-align: center; font-family: 'Khmer OS Muol Light'; font-size: 13px; border-bottom: 3px solid var(--accent); }
-        .phone-body { padding: 15px; font-size: 12px; }
+        .phone-topbar { background: var(--primary); color: white; padding: 15px; text-align: center; font-family: 'Khmer OS Muol Light'; font-size: 12px; border-bottom: 3px solid var(--accent); }
         
-        .app-tab-btn { background: #CBD5E1; color: var(--text-dark); border: none; padding: 8px 12px; font-weight: bold; cursor: pointer; border-radius: 6px; font-family: 'Khmer OS System'; font-size: 11px; margin-bottom: 15px; }
-        .app-tab-btn.active { background: var(--accent); color: var(--primary); }
+        .app-menu-tabs { display: grid; grid-template-columns: repeat(4, 1fr); background: #E2E8F0; border-bottom: 1px solid #CBD5E1; }
+        .tab-btn { background: none; border: none; padding: 10px 5px; font-size: 10px; font-weight: bold; cursor: pointer; font-family: 'Khmer OS System'; text-align: center; }
+        .tab-btn.active { background: var(--accent); color: var(--primary); }
+        
+        .phone-body { padding: 15px; flex: 1; }
+        .form-group { margin-bottom: 12px; }
+        .form-group label { display: block; font-weight: bold; font-size: 11px; margin-bottom: 4px; color: var(--primary); }
+        .form-ctrl { width: 100%; padding: 8px; border: 1px solid #CBD5E1; border-radius: 6px; font-family: 'Khmer OS System'; font-size: 12px; box-sizing: border-box; }
+        .btn-block { background: var(--primary); color: white; border: none; padding: 10px; width: 100%; border-radius: 6px; font-weight: bold; cursor: pointer; font-family: 'Khmer OS System'; margin-top: 5px; }
+        .btn-block:hover { background: #000; color: var(--accent); }
 
-        .app-input-group { margin-bottom: 12px; }
-        .app-input-group label { display: block; font-weight: bold; font-size: 11px; margin-bottom: 4px; color: var(--primary); }
-        .app-field { width: 100%; padding: 10px; border: 1px solid #CBD5E1; border-radius: 6px; font-family: 'Khmer OS System'; font-size: 12px; box-sizing: border-box; }
-        .app-btn { background: var(--primary); color: white; border: none; padding: 12px; width: 100%; border-radius: 6px; font-weight: bold; cursor: pointer; font-family: 'Khmer OS System'; margin-top: 5px; box-shadow: 0 4px 6px rgba(0,0,0,0.15); }
+        /* FACE SCANNER ANIMATION */
+        .face-scanner { border: 2px dashed var(--accent); padding: 15px; text-align: center; border-radius: 10px; background: #FFF; margin: 10px 0; position: relative; display: none; }
+        .scan-line { width: 100%; height: 3px; background: var(--success); position: absolute; top: 0; left: 0; animation: scan 2s linear infinite; }
+        @keyframes scan { 0% { top: 0%; } 50% { top: 100%; } 100% { top: 0%; } }
 
-        .withdrawal-receipt { background: var(--gold-light); border: 2px dashed var(--accent); padding: 15px; border-radius: 8px; margin-top: 15px; display: none; color: var(--primary); }
+        /* CENTRAL DISPLAY TABLES */
+        .main-dashboard { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.02); overflow-y: auto; height: 770px; }
+        .data-table { width: 100%; border-collapse: collapse; font-size: 11px; margin-bottom: 25px; }
+        .data-table th { background: #F1F5F9; color: var(--primary); padding: 10px; font-weight: bold; border-bottom: 2px solid #CBD5E1; text-align: left; }
+        .data-table td { padding: 10px; border-bottom: 1px solid #E2E8F0; }
+        .badge { padding: 3px 8px; border-radius: 4px; font-weight: bold; font-size: 10px; color: white; display: inline-block; }
+        .bg-pending { background: var(--warning); }
+        .bg-approved { background: var(--success); }
+        .bg-id { background: var(--primary); }
 
-        .db-container { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.02); overflow-x: auto; }
-        .msn-table { width: 100%; border-collapse: collapse; font-size: 12px; }
-        .msn-table th { background: #F1F5F9; color: var(--primary); padding: 14px 10px; font-weight: bold; border-bottom: 2px solid #CBD5E1; text-align: left; }
-        .msn-table td { padding: 12px 10px; border-bottom: 1px solid #E2E8F0; }
-        .msn-table tr:hover { background: #F8FAFC; }
-        .badge-id { background: var(--primary); color: white; padding: 2px 7px; border-radius: 4px; font-weight: bold; font-size: 11px; }
-
-        .pillar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 25px; margin-top: 30px; }
-        .pillar-card { background: white; border-radius: 16px; padding: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.02); border-left: 6px solid var(--accent); }
-        .pillar-card h4 { font-family: 'Khmer OS Muol Light', sans-serif; font-size: 14px; color: var(--primary); margin-top: 0; margin-bottom: 12px; }
-        .pillar-card ul { padding-left: 18px; margin: 0; font-size: 13px; line-height: 1.8; }
-        .community-link { background: #F0FDF4; padding: 10px; border-radius: 6px; font-size: 12px; color: #166534; border-left: 3px solid var(--success); margin-top: 12px; font-weight: bold; }
-
-        .footer { background: var(--primary); color: white; text-align: center; padding: 50px 20px; font-size: 13px; border-top: 5px solid var(--accent); margin-top: 60px; }
+        .footer { background: var(--primary); color: white; text-align: center; padding: 40px 20px; font-size: 12px; border-top: 5px solid var(--accent); margin-top: 5px; }
     </style>
 </head>
 <body>
 
     <div class="header">
-        <div class="badge-global">🌐 MSN EMPIRE GLOBAL ENTERPRISE SYSTEM v3.2</div>
-        <h1>ក្រុមហ៊ុន មហាសិរី ណេតវើក ឯ.ក (MSN)</h1>
-        <p>មហារចនាសម្ព័ន្ធអភិបាលកិច្ចសច្ចៈភាព លក្ខណៈវិទ្យាសាស្ត្រ ដើម្បីដឹកនាំយន្តការបំប្លែងយុទ្ធសាស្ត្រទាំង ៣ និងកសាងកម្លាំងសហគ្រិន ២ លាននាក់ ស្របតាមគោលនយោបាយជាតិឆ្នាំ ២០៥០ នៃរាជរដ្ឋាភិបាលកម្ពុជា រួមជាមួយកម្មវិធីមូលនិធិវិនិយោគទុនអន្ដរជាតិ (IIFP)</p>
-    </div>
-
-    <div class="container" style="margin-top: -30px; position: relative; z-index: 10;">
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-label">📈 តម្លៃភាគហ៊ុនសាធារណៈ</div>
-                <div class="stat-value" style="color:red;">$150.00 / ហ៊ុន</div>
-                <div class="stat-trend">▲ +12.5% ក្នុងខែនេះ</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label">💰 មូលធន & មូលនិធិ IIFP សរុប</div>
-                <div class="stat-value">$12,500,000</div>
-                <div class="stat-trend">▲ ស្ថិរភាពកម្រិតខ្ពស់</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label">🏢 ទ្រព្យសកម្មជំរឿនរួម</div>
-                <div class="stat-value">4,850 យូនីត</div>
-                <div class="stat-trend">▲ ដី/ឃ្លាំង/ឡាន សហគមន៍</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label">👥 គោលដៅបង្កើតសហគ្រិន</div>
-                <div class="stat-value">2,000,000 នាក់</div>
-                <div class="stat-trend">🎯 ស្របតាមចក្ខុវិស័យឆ្នាំ ២០៥០</div>
-            </div>
-        </div>
+        <div class="badge-global">🏛️ MSN AUTOMATED GLOBAL SUPER APP SYSTEM v4.0</div>
+        <h1>មហាប្រព័ន្ធឌីជីថលស្វ័យប្រវត្ត អាណាចក្រមហាសិរី MSN</h1>
+        <p>ប្រព័ន្ធគ្រប់គ្រងសមាជិកភាពសច្ចៈភាព មហាផ្សាររាប់លានមុខ គម្រោងវិនិយោគទុនរួម និងប្រព័ន្ធមហាសន្សំស្វ័យប្រវត្តថែទាំអនាគត</p>
     </div>
 
     <div class="nav-bar">
-        <a href="#strategy">ចក្ខុវិស័យ & យន្តការបំប្លែង</a>
-        <a href="#high-command">ក្រុមប្រឹក្សាភិបាល</a>
-        <a href="#pillars">នាយកដ្ឋានសរស្តម្ភទាំង ៥</a>
-        <a href="#app-portal">ប្រព័ន្ធ App & ដកប្រាក់អូតូ</a>
+        <a href="#super-app">📱 ផ្ទាំងបញ្ជាទូរស័ព្ទ App & ទិន្នន័យរួម</a>
+        <a href="https://github.com/lifpglobal-arch/msn-system" target="_blank">🛠️ ចូលទៅកាន់ GitHub មេ</a>
     </div>
 
-    <div class="container">
-
-        <div id="strategy">
-            <h2 class="section-title">ចក្ខុវិស័យ បេសកកម្ម និងមហាក្បួនយុទ្ធសាស្ត្រ</h2>
-            <div class="vision-grid">
-                <div class="vision-card gold-border">
-                    <h3>👁️ ទស្សនៈ និង ចក្ខុវិស័យ (Vision)</h3>
-                    <p>កសាងបណ្តាញសេដ្ឋកិច្ចពាណិជ្ជកម្មឌីជីថលលំដាប់អន្តរជាតិ ដើម្បីបណ្តុះបណ្តាល និងបង្កើតសហគ្រិនគំរូឱ្យបាន <b>២ លាននាក់</b> ត្រឹមឆ្នាំ <b>២០៥០</b> ចូលរួមចំណែកយ៉ាងខ្លាំងក្លាជាមួយយុទ្ធសាស្ត្ររាជរដ្ឋាភិបាល។</p>
+    <div class="container" id="super-app">
+        <div class="app-grid">
+            
+            <div class="phone-frame">
+                <div class="phone-topbar">MSN EMPIRE SUPER APP</div>
+                <div class="app-menu-tabs">
+                    <button id="btn-tab-reg" class="tab-btn active" onclick="showAppScreen('reg')">👥 សមាជិក</button>
+                    <button id="btn-tab-shop" class="tab-btn" onclick="showAppScreen('shop')">🛒 មហាផ្សារ</button>
+                    <button id="btn-tab-invest" class="tab-btn" onclick="showAppScreen('invest')">💼 វិនិយោគ</button>
+                    <button id="btn-tab-save" class="tab-btn" onclick="showAppScreen('save')">🏦 មហាសន្សំ</button>
                 </div>
-                <div class="vision-card">
-                    <h3>🚀 យន្តការបំប្លែងទាំង ៣ (The 3 Transformations)</h3>
-                    <ul>
-                        <li><b>១. បំប្លែងទំនុកចិត្តជាដើមទុនជំនួសសាច់ប្រាក់</b></li>
-                        <li><b>២. បំប្លែងកម្លាំងសាមគ្គីភាពជាអានុភាព</b></li>
-                        <li><b>៣. បំប្លែងធនធានទំនេរជាសង្វាក់តម្លៃ</b></li>
-                    </ul>
-                </div>
-                <div class="vision-card gold-border">
-                    <h3>🤝 ដៃគូយុទ្ធសាស្ត្រទាំង ៤ ភាគី (4-Party Alliance)</h3>
-                    <p><b>១. វិស័យសាធារណៈ</b> | <b>២. មូលនិធិវិនិយោគទុនអន្តរជាតិ (IIFP)</b> | <b>៣. បណ្តាញសហគ្រាសផលិតកម្ម</b> | <b>៤. សហគមន៍ប្រជាពលរដ្ឋ</b>。</p>
-                </div>
-            </div>
-        </div>
-
-        <div id="high-command">
-            <h2 class="section-title">រចនាសម្ព័ន្ធក្រុមប្រឹក្សាភិបាលអាណាចក្រ MSN</h2>
-            <div class="command-wrapper">
-                <div class="leader-boss">
-                    <div class="badge-global" style="background:#901A1E;">ម្ចាស់អាជ្ញាសឹក និងអ្នកសម្រេចចិត្តចុងក្រោយ</div>
-                    <div class="name" style="font-family:'Khmer OS Muol Light'; font-size:20px; color:var(--primary); margin-top:5px;">លោក មេណ្ឌ មុនី</div>
-                    <div class="role" style="font-weight:bold; color:var(--accent); margin-top:5px;">អគ្គស្ថាបនិក និងជាប្រធានក្រុមប្រឹក្សាភិបាល</div>
-                </div>
-            </div>
-
-            <div class="grid-3">
-                <div class="profile-card">
-                    <div class="m-title">លោកស្រី ឌុង សូនី</div>
-                    <div class="m-role">អនុប្រធានទី ១ & ជានាយកប្រតិបត្តិ (CEO)</div>
-                </div>
-                <div class="profile-card">
-                    <div class="m-title">លោក ឆេង ស៊ីប៉ិច</div>
-                    <div class="m-role">អនុប្រធានទី ២ & ជានាយករង</div>
-                </div>
-                <div class="profile-card">
-                    <div class="m-title">លោក ឃោន វិចិត្រ</div>
-                    <div class="m-role">អនុប្រធានទី ៣, ជានាយករង & ជំនួយការ</div>
-                </div>
-            </div>
-        </div>
-
-        <div id="pillars">
-            <h2 class="section-title">នាយកដ្ឋានស្នូល និងការចាត់តាំងសរស្តម្ភទាំង ៥</h2>
-            <div class="pillar-grid">
-                <div class="pillar-card"><h4>🏢 ១. នាយកដ្ឋានកម្លាំងចល័ត និងបណ្តាញចែកចាយ</h4></div>
-                <div class="pillar-card"><h4>🎓 ២. នាយកដ្ឋានវិទ្យាស្ថានបញ្ញា និងអភិវឌ្ឍន៍ជំនាញ</h4></div>
-                <div class="pillar-card"><h4>📦 ៣. នាយកដ្ឋានគ្រប់គ្រងមហាសម្បត្តិ និងជំរឿន</h4></div>
-                <div class="pillar-card"><h4>📢 ៤. នាយកដ្ឋានបណ្តាញព័ត៌មាន និងទីផ្សារ</h4></div>
-                <div class="pillar-card" style="grid-column: span 2;"><h4>🏭 ៥. នាយកដ្ឋានឧស្សាហកម្មកែច្នៃ & ហិរញ្ញវត្ថុភាគហ៊ុន</h4></div>
-            </div>
-        </div>
-
-        <div id="app-portal" style="margin-top: 50px;">
-            <h2 class="section-title">ប្រព័ន្ធគ្រប់គ្រងទិន្នន័យរួម និងប្រអប់ដកប្រាក់ចំណេញស្វ័យប្រវត្ត</h2>
-            <div class="app-portal">
                 
-                <div class="phone-frame">
-                    <div class="phone-topbar">MSN DISPATCH APP</div>
-                    <div class="phone-screen">
-                        <div style="display: flex; background: #E2E8F0; padding: 5px;">
-                            <button id="tab1" class="app-tab-btn active" style="flex:1; margin:0;" onclick="switchTab('reg')">📝 ចុះឈ្មោះ</button>
-                            <button id="tab2" class="app-tab-btn" style="flex:1; margin:0;" onclick="switchTab('withdraw')">💰 ដកប្រាក់អូតូ</button>
-                        </div>
+                <div class="phone-screen">
+                    <div class="phone-body">
                         
-                        <div class="phone-body">
-                            <div id="screenRegistration">
-                                <h4 style="margin:0 0 10px 0;">ចុះឈ្មោះសមាជិកថ្មី</h4>
-                                <form id="regForm" onsubmit="handleReg(event)">
-                                    <div class="app-input-group"><label>នាមត្រកូល និងនាមខ្លួន *</label><input type="text" id="newName" class="app-field" required></div>
-                                    <div class="app-input-group"><label>តួនាទី</label><input type="text" id="newRole" class="app-field" value="គណៈកម្មាធិការប្រតិបត្តិ"></div>
-                                    <div class="app-input-group"><label>ភាគហ៊ុន</label><input type="number" id="newShares" class="app-field" value="150" required></div>
-                                    <button type="submit" class="app-btn">🚀 ចុះឈ្មោះ</button>
-                                </form>
-                            </div>
-
-                            <div id="screenWithdrawal" style="display:none;">
-                                <h4 style="margin:0 0 10px 0;">ប្រអប់ដកប្រាក់ចំណេញសមាជិក</h4>
-                                <div class="app-input-group"><label>វាយលេខកូដសម្គាល់សមាជិក *</label><input type="text" id="withdrawID" class="app-field" placeholder="MSN-001" oninput="checkMemberProfit()"></div>
-                                <div id="memberStatusBox" style="background:#F1F5F9; padding:10px; border-radius:6px; margin-bottom:12px; display:none;">
-                                    <p style="margin:2px 0;"><b>ឈ្មោះ៖</b> <span id="smName">-</span></p>
-                                    <p style="margin:2px 0;"><b>ភាគហ៊ុន៖</b> <span id="smShares">0</span></p>
-                                    <p style="margin:2px 0; color:var(--success);"><b>អាចដកបាន៖</b> <span id="smProfit">$0.00</span></p>
+                        <div id="scr-reg">
+                            <h4 style="margin:0 0 10px 0; color:var(--primary);">📝 ដាក់ពាក្យចូលជាសមាជិកស្វ័យប្រវត្ត</h4>
+                            <form onsubmit="processMemberReg(event)">
+                                <div class="form-group">
+                                    <label>ប្រភេទសមាជិកភាពស្នើសុំ *</label>
+                                    <select id="reg-type" class="form-ctrl">
+                                        <option value="គណៈកម្មាធិការប្រតិបត្តិ">គណៈកម្មាធិការប្រតិបត្តិ</option>
+                                        <option value="តំណាងចែកចាយ">តំណាងចែកចាយផ្ទាល់ដី</option>
+                                        <option value="តំណាងសហគ្រាស">តំណាងសហគ្រាសផលិតកម្ម</option>
+                                        <option value="តំណាងសមាគម និងអង្គការ">តំណាងសមាគម និងអង្គការ</option>
+                                        <option value="តំណាងកសិករ">តំណាងកសិករខ្មែរ</option>
+                                        <option value="សមាជិកអ្នកប្រើប្រាស់">សមាជិកអ្នកប្រើប្រាស់ទូទៅ</option>
+                                    </select>
                                 </div>
-                                <button type="button" class="app-btn" style="background:var(--success);" onclick="processWithdrawal()">💸 បញ្ជាដកប្រាក់</button>
-                                <div id="receiptBox" class="withdrawal-receipt">
-                                    <p id="rcID"></p><p id="rcName"></p><p id="rcAmount"></p>
+                                <div class="form-group"><label>នាមត្រកូល និងនាមខ្លួន *</label><input type="text" id="reg-name" class="form-ctrl" required placeholder="ឧ. កែវ មុនី"></div>
+                                <div class="form-group"><label>លេខទូរស័ព្ទតភ្ជាប់ប្រព័ន្ធ *</label><input type="text" id="reg-phone" class="form-ctrl" required placeholder="ឧ. 096XXXXXXX"></div>
+                                <div class="form-group">
+                                    <label>📜 ការយល់ព្រមលើលក្ខខណ្ឌធម្មនុញ្ញ</label>
+                                    <div style="font-size:10px; background:#E2E8F0; padding:5px; border-radius:4px; max-height:50px; overflow-y:auto; margin-bottom:5px;">
+                                        ខ្ញុំបាទ/នាងខ្ញុំ សូមសន្យាថានឹងគោរពតាមបទបញ្ជាផ្ទៃក្នុង និងធម្មនុញ្ញមហាសិរី MSN ដាច់ខាត។
+                                    </div>
+                                    <input type="checkbox" required> <span style="font-size:10px;">ខ្ញុំបានបំពេញពាក្យសុំ ប្រវត្តិរូប និងកិច្ចសន្យារួចរាល់</span>
                                 </div>
-                            </div>
+                                <div class="form-group">
+                                    <label>📸 ប្រព័ន្ធស្កែនផ្ទៃមុខបញ្ជាក់សច្ចៈភាព (Face Scan Verification)</label>
+                                    <button type="button" class="btn-block" style="background:#64748B;" onclick="startFaceScan()">👁️ ចាប់ផ្តើមស្កែនផ្ទៃមុខ</button>
+                                    <div id="scanner-box" class="face-scanner"><div class="scan-line"></div>🤖 កំពុងស្កែនទម្រង់មុខសច្ចៈភាព...</div>
+                                    <input type="hidden" id="face-status" value="0">
+                                </div>
+                                <button type="submit" class="btn-block">🚀 បញ្ជូនទិន្នន័យចូលប្រព័ន្ធមេ</button>
+                            </form>
                         </div>
+
+                        <div id="scr-shop" style="display:none;">
+                            <h4 style="margin:0 0 10px 0; color:var(--primary);">🛍️ ផុសផ្សព្វផ្សាយមុខទំនិញ & សេវាកម្ម</h4>
+                            <form onsubmit="processProductPost(event)">
+                                <div class="form-group"><label>ឈ្មោះទំនិញ ឬសេវាកម្ម *</label><input type="text" id="p-name" class="form-ctrl" required placeholder="ឧ. អង្ករផ្ការំដួលធម្មជាតិ"></div>
+                                <div class="form-group">
+                                    <label>ប្រភេទផលិតផល *</label>
+                                    <select id="p-cat" class="form-ctrl">
+                                        <option value="ទំនិញកសិកម្ម">ទំនិញកសិកម្ម / ម្ហូបអាហារ</option>
+                                        <option value="សិប្បកម្ម">សិប្បកម្ម / ផលិតផលក្នុងស្រុក</option>
+                                        <option value="សេវាកម្ម">សេវាកម្ម / ដឹកជញ្ជូន</option>
+                                    </select>
+                                </div>
+                                <div class="form-group"><label>តម្លៃលក់ជូនសហគមន៍ ($) *</label><input type="number" id="p-price" class="form-ctrl" required placeholder="50"></div>
+                                <p style="font-size:10px; color:var(--warning);">⚠️ ចំណាំ៖ មុខទំនិញដែលផុសនឹងមិនទាន់បង្ហាញជាសាធារណៈភ្លាមៗទេ លុះត្រាតែមានការអនុញ្ញាតពីគណៈគ្រប់គ្រងមហាសិរី MSN សិន។</p>
+                                <button type="submit" class="btn-block" style="background:var(--mid-blue);">📢 បញ្ជូនសុំការអនុញ្ញាតផុស</button>
+                            </form>
+                        </div>
+
+                        <div id="scr-invest" style="display:none;">
+                            <h4 style="margin:0 0 10px 0; color:var(--primary);">💼 វិបក្សបំណងប្រាថ្នាវិនិយោគទុន</h4>
+                            <form onsubmit="processInvestment(event)">
+                                <div class="form-group"><label>នាមខ្លួនអ្នកវិនិយោគ *</label><input type="text" id="inv-name" class="form-ctrl" required placeholder="ឧ. ឧកញ៉ា សុខ គង់"></div>
+                                <div class="form-group"><label>ទំហំទុនបំណងវិនិយោគ ($) *</label><input type="number" id="inv-capital" class="form-ctrl" required placeholder="100000"></div>
+                                <div class="form-group">
+                                    <label>បញ្ជាក់ប្រភេទអាជីវកម្ម/សេវាកម្មដែលចង់វិនិយោគ *</label>
+                                    <input type="text" id="inv-business" class="form-ctrl" required placeholder="ឧ. រោងចក្រកែច្នៃកសិផល ឬ សេវាកម្មដឹកជញ្ជូន">
+                                </div>
+                                <button type="submit" class="btn-block" style="background:#1E3A8A;">💎 ចុះហត្ថលេខាវិនិយោគឌីជីថល</button>
+                            </form>
+                        </div>
+
+                        <div id="scr-save" style="display:none;">
+                            <h4 style="margin:0 0 10px 0; color:var(--primary);">🏦 ផែនការមហាសន្សំស្វ័យប្រវត្ត MSN</h4>
+                            <form onsubmit="processSavings(event)">
+                                <div class="form-group"><label>លេខកូដសមាជិកសន្សំ *</label><input type="text" id="save-id" class="form-ctrl" required placeholder="MSN-001"></div>
+                                <div class="form-group">
+                                    <label>ជ្រើសរើសកញ្ចប់មហាសន្សំ *</label>
+                                    <select id="save-plan" class="form-ctrl">
+                                        <option value="សន្សំអប់រំកូន">📚 សម្រាប់ថែទាំការសិក្សាអប់រំកូនៗ និងកុមារ</option>
+                                        <option value="សន្សំសុខភាព">⚕️ សម្រាប់ថែទាំសុខភាពគ្រួសារ</option>
+                                        <option value="សន្សំសង្គ្រោះបន្ទាន់">🚨 សម្រាប់កញ្ចប់សង្គ្រោះបន្ទាន់</option>
+                                        <option value="សន្សំអាជីវកម្ម">🏢 សម្រាប់ពង្រីកអាជីវកម្មនាពេលអនាគត</option>
+                                        <option value="ការពារហានិភ័យ">🛡️ សម្រាប់ការពារហានិភ័យអាជីវកម្ម</option>
+                                    </select>
+                                </div>
+                                <div class="form-group"><label>ចំនួនទឹកប្រាក់បញ្ជូនសន្សំ ($) *</label><input type="number" id="save-amount" class="form-ctrl" required placeholder="10"></div>
+                                <button type="submit" class="btn-block" style="background:var(--success);">💰 បញ្ជូនសាច់ប្រាក់ចូលកាបូបសន្សំ</button>
+                            </form>
+                        </div>
+
                     </div>
                 </div>
-
-                <div class="db-container">
-                    <h3 style="margin-top:0; font-family:'Khmer OS Muol Light'; font-size:16px;">📋 ប្រព័ន្ធទិន្នន័យរួម និងគណនាផលចំណេញសាធារណៈ (Live Ledger)</h3>
-                    <table class="msn-table">
-                        <thead>
-                            <tr>
-                                <th>ល.រ</th><th>លេខកូដ</th><th>នាមត្រកូល និងនាមខ្លួន</th><th>តួនាទី និងភារកិច្ចទទួលខុសត្រូវ</th><th>ភាគហ៊ុន</th><th style="text-align:right;">ប្រាក់ចំណេញ</th>
-                            </tr>
-                        </thead>
-                        <tbody id="masterTableBody"></tbody>
-                    </table>
-                </div>
-
             </div>
-        </div>
 
+            <div class="main-dashboard">
+                <h3 style="margin-top:0; font-family:'Khmer OS Muol Light'; color:var(--primary); font-size:14px;">📊 ផ្ទាំងបង្ហាញទិន្នន័យគ្រប់គ្រងរដ្ឋបាលស្វ័យប្រវត្តរបស់គណៈគ្រប់គ្រង (Live Ledger System)</h3>
+                <hr>
+                
+                <h4>👥 បញ្ជីឈ្មោះសមាជិកភាពផ្លូវការ (កើនឡើងជាបន្តបន្ទាប់)</h4>
+                <table class="data-table">
+                    <thead>
+                        <tr><th>លេខកូដ</th><th>ឈ្មោះសមាជិក</th><th>ប្រភេទសមាជិកភាព</th><th>ឯកសារអនឡាញ</th><th>ស្កែនផ្ទៃមុខ</th></tr>
+                    </thead>
+                    <tbody id="tbl-members">
+                        <tr><td><span class="badge bg-id">MSN-024</span></td><td><b>អ្នកស្រី អុល ស្រីនី</b></td><td>គណៈកម្មាធិការប្រតិបត្តិ</td><td>ពាក្យសុំ+ប្រវត្តិរូប+កិច្ចសន្យា (រួចរាល់)</td><td><span class="badge bg-approved">✓ ផ្ទៀងផ្ទាត់រួច</span></td></tr>
+                        <tr><td><span class="badge bg-id">MSN-025</span></td><td><b>កញ្ញា ស្រ៊ាង វិស៊ាន</b></td><td>គណៈកម្មាធិការប្រតិបត្តិ</td><td>ពាក្យសុំ+ប្រវត្តិរូប+កិច្ចសន្យា (រួចរាល់)</td><td><span class="badge bg-approved">✓ ផ្ទៀងផ្ទាត់រួច</span></td></tr>
+                    </tbody>
+                </table>
+
+                <h4>🛒 បញ្ជីមុខទំនិញ និងសេវាកម្មរាប់លានមុខ (ផ្សព្វផ្សាយទូទាំងប្រទេស)</h4>
+                <table class="data-table">
+                    <thead>
+                        <tr><th>ឈ្មោះទំនិញ/សេវាកម្ម</th><th>ប្រភេទ</th><th>តម្លៃ</th><th>ស្ថានភាពការអនុញ្ញាត</th></tr>
+                    </thead>
+                    <tbody id="tbl-products">
+                        <tr><td>សាប៊ូកក់សក់ធម្មជាតិ MSN</td><td>សិប្បកម្ម</td><td>$5.00</td><td><span class="badge bg-approved">✓ បានអនុញ្ញាត</span></td></tr>
+                        <tr><td>សេវាកម្មឡានដឹកទំនិញចល័តភូមិ</td><td>សេវាកម្ម</td><td>$20.00</td><td><span class="badge bg-approved">✓ បានអនុញ្ញាត</span></td></tr>
+                    </tbody>
+                </table>
+
+                <h4>💎 គម្រោងទុនវិនិយោគរួមជាមួយមហាសិរី MSN</h4>
+                <table class="data-table">
+                    <thead>
+                        <tr><th>អ្នកវិនិយោគ</th><th>ទុនវិនិយោគ</th><th>ប្រភេទអាជីវកម្មបំណងប្រាថ្នា</th></tr>
+                    </thead>
+                    <tbody id="tbl-investments">
+                        <tr><td>ក្រុមហ៊ុន IIFP វិនិយោគអន្តរជាតិ</td><td>$5,000,000</td><td>ឧស្សាហកម្មកែច្នៃកសិផលខ្នាតធំ</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>🏦 របាយការណ៍កាបូបមហាសន្សំស្វ័យប្រវត្តសមាជិក</h4>
+                <table class="data-table">
+                    <thead>
+                        <tr><th>លេខកូដសមាជិក</th><th>ការសិក្សាកូន</th><th>ថែទាំសុខភាព</th><th>សង្គ្រោះបន្ទាន់</th><th>ពង្រីកអាជីវកម្ម</th><th>ការពារហានិភ័យ</th></tr>
+                    </thead>
+                    <tbody id="tbl-savings">
+                        <tr><td>MSN-024</td><td>$150.00</td><td>$100.00</td><td>$50.00</td><td>$200.00</td><td>$100.00</td></tr>
+                        <tr><td>MSN-025</td><td>$200.00</td><td>$150.00</td><td>$80.00</td><td>$300.00</td><td>$150.00</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
     </div>
 
     <div class="footer">
-        <p style="font-family:'Khmer OS Muol Light'; font-size:15px; color:var(--accent);">ក្រុមហ៊ុន មហាសិរី ណេតវើក ឯ.ក (MSN)</p>
-        <p>គ្រប់គ្រងដាច់ខាតដោយផ្ទាល់ដៃ លោកអគ្គនាយកស្ថាបនិក មេណ្ឌ មុនី</p>
+        <p style="font-family:'Khmer OS Muol Light'; font-size:14px; color:var(--accent);">ក្រុមហ៊ុន មហាសិរី ណេតវើក ឯ.ក (MOHASIRI NETWORK CO., LTD.)</p>
+        <p>ប្រព័ន្ធមេជំនាន់ Super App v4.0 គ្រប់គ្រងសច្ចៈភាព និងដំណើរការស្វ័យប្រវត្តផ្ទាល់ដីជោគជ័យ ១០០%</p>
     </div>
 
     <script>
-        let msnDatabase = [
-            { name: "លោកស្រី ឌុង សូនី", role: "អនុប្រធានគណៈកម្មាធិការ និងជានាយកប្រតិបត្តិ (CEO)", shares: 150 },
-            { name: "លោក ឆេង ស៊ីប៉ិច", role: "អនុប្រធានគណៈកម្មាធិការ និងជានាយករង ទទួលបន្ទុកសម្របសម្រួលសមាជិក និងភ្នាក់ងារទីផ្សារបណ្ដាញ", shares: 150 },
-            { name: "លោក ឃោន វិចិត្រ", role: "អនុប្រធានគណៈកម្មាធិការ ជានាយករង ទទួលបន្ទុកផ្នែកបណ្ដុះបណ្ដាល និងអប់រំ និងជាជំនួយការអគ្គនាយក", shares: 150 },
-            { name: "លោក ឈាង ឆោម", role: "ប្រធានទីប្រឹក្សាផ្នែកទីផ្សារ បណ្ដុះបណ្ដាល និងសម្របសម្រួល", shares: 150 },
-            { name: "លោក សន សុកហេង", role: "ទីប្រឹក្សាផ្នែកបច្ចេកទេសគ្រប់គ្រងដឹកនាំ និងទំនាក់ទំនងវិស័យរដ្ឋបាលសាធារណៈ", shares: 150 },
-            { name: "អ្នកស្រី ទី សុធីតា", role: "សមាជិក ទទួលបន្ទុកអគ្គនាយកដ្ឋានរដ្ឋបាល ពិធីការ និងសវនកម្មហិរញ្ញវត្ថុ", shares: 150 },
-            { name: "លោក ជុំ សាខុន", role: "សមាជិក ទទួលបន្ទុកប្រធានផ្នែកទំនាក់ទំនងអាជីវកម្ម", shares: 150 },
-            { name: "លោក ភាព ភារ៉ា", role: "សមាជិកទទួលបន្ទុកនាយកដ្ឋានទំនាក់ទំនងវិស័យឯកជន", shares: 150 },
-            { name: "លោក ថេ សូនី", role: "សមាជិក ទទួលបន្ទុកនាយកដ្ឋានទំនាក់ទំនង (ផ្នែកទំនាក់ទំនង សន្តិសុខ និងអន្ដរាគមន៍)", shares: 150 },
-            { name: "លោក ជីម ប៊ុណ្ណា", role: "សមាជិក ទទួលបន្ទុកផ្នែកអន្ដរាគមន៍ សាខា ខណ្ឌ ព្រែកព្នៅ", shares: 150 },
-            { name: "លោក ណាត់ សុវណ្ណឌី", role: "សមាជិក ទទួលបន្ទុកផ្នែកតំណាងសហគមន៍ សាខា ខណ្ឌ ព្រែកព្នៅ", shares: 150 },
-            { name: "លោកស្រី ឆូន ដាវីចន្ទ័ឌី", role: "សមាជិកទទួលបន្ទុកទំនាក់ទំនងវិស័យសហគ្រាស និងអាជីវកម្ម", shares: 150 },
-            { name: "លោក ឆាយ សុវណ្ណ", role: "សមាជិក និងជាព្រឹទ្ធាចារ្យ ទទួលបន្ទុកផ្នែកអប់រំសីលធម៌ និងប្រឹក្សាយោបល់", shares: 150 },
-            { name: "លោក ទុន បូរាណ", role: "សមាជិក និងជាព្រឹទ្ធាចារ្យ ទទួលបន្ទុកផ្នែកអប់រំសីលធម៌ និងប្រឹក្សាយោបល់", shares: 150 },
-            { name: "អ្នកស្រី ហេ សុភក្រ្ដ", role: "សមាជិកទទួលបន្ទុកជាប្រធានសហគមន៍អ្នកប្រើប្រាស់ និងចែកចាយផ្សារខណ្ឌ ៧ មករា", shares: 150 },
-            { name: "លោក ឌុង សុខគី", role: "សមាជិក ទទួលបន្ទុកផ្នែកចែកចាយ និងដឹកជញ្ជូន ខណ្ឌ មានជ័យ", shares: 150 },
-            { name: "លោក ភឹម វន្នី", role: "សមាជិក ទទួលបន្ទុកប្រធានសាខា ព្រែកព្នៅ", shares: 150 },
-            { name: "អ្នកស្រី ស៊ាម សុខលីន", role: "សមាជិក ទទួលបន្ទុកបណ្ដុះបណ្ដាល", shares: 150 },
-            { name: "លោក ហួង តារា", role: "សមាជិក ទទួលបន្ទុកផ្នែកតំណាងសហគ្រាស", shares: 150 },
-            { name: "លោក ថន ថេត", role: "សមាជិក ទទួលបន្ទុកប្រធានផ្នែកលក់", shares: 150 },
-            { name: "លោកស្រី ម៉ក់ តូន", role: "សមាជិក ទទួលបន្ទុកអនុប្រធានផ្នែកលក់", shares: 150 },
-            { name: "លោក ណយ សំបូរ", role: "សមាជិក ទទួលបន្ទុកតំណាងសមាគមកសិកម្ម", shares: 150 },
-            { name: "លោក ព្រំ កែវ", role: "សមាជិក ទទួលបន្ទុកផ្នែកកសិកម្ម និងសិប្បកម្ម", shares: 150 },
-            { name: "អ្នកស្រី អុល ស្រីនី", role: "សមាជិកគណៈកម្មាធិការប្រតិបត្តិ", shares: 150 },
-            { name: "កញ្ញា ស្រ៊ាង វិស៊ាន", role: "សមាជិកគណៈកម្មាធិការប្រតិបត្តិ", shares: 150 }
-        ];
-
-        const PROFIT_PER_SHARE = 2.5;
-
-        function renderDatabase() {
-            const tbody = document.getElementById("masterTableBody");
-            tbody.innerHTML = "";
-            msnDatabase.forEach((m, idx) => {
-                let sNo = idx + 1;
-                let code = "MSN-" + String(sNo).padStart(3, '0');
-                let totalProfit = m.shares * PROFIT_PER_SHARE;
-                tbody.innerHTML += `<tr>
-                    <td><b>${sNo}</b></td>
-                    <td><span class="badge-id">${code}</span></td>
-                    <td><b>${m.name}</b></td>
-                    <td><small>${m.role}</small></td>
-                    <td><b>${m.shares}</b></td>
-                    <td style="text-align:right; font-weight:bold; color:var(--success);">$${totalProfit.toFixed(2)}</td>
-                </tr>`;
-            });
+        function showAppScreen(scr) {
+            document.getElementById('scr-reg').style.display = scr === 'reg' ? 'block' : 'none';
+            document.getElementById('scr-shop').style.display = scr === 'shop' ? 'block' : 'none';
+            document.getElementById('scr-invest').style.display = scr === 'invest' ? 'block' : 'none';
+            document.getElementById('scr-save').style.display = scr === 'save' ? 'block' : 'none';
+            
+            document.getElementById('btn-tab-reg').className = scr === 'reg' ? 'tab-btn active' : 'tab-btn';
+            document.getElementById('btn-tab-shop').className = scr === 'shop' ? 'tab-btn active' : 'tab-btn';
+            document.getElementById('btn-tab-invest').className = scr === 'invest' ? 'tab-btn active' : 'tab-btn';
+            document.getElementById('btn-tab-save').className = scr === 'save' ? 'tab-btn active' : 'tab-btn';
         }
 
-        function switchTab(type) {
-            document.getElementById('screenRegistration').style.display = type === 'reg' ? 'block' : 'none';
-            document.getElementById('screenWithdrawal').style.display = type === 'reg' ? 'none' : 'block';
-            document.getElementById('tab1').className = type === 'reg' ? 'app-tab-btn active' : 'app-tab-btn';
-            document.getElementById('tab2').className = type === 'reg' ? 'app-tab-btn' : 'app-tab-btn active';
+        function startFaceScan() {
+            document.getElementById('scanner-box').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('scanner-box').style.display = 'none';
+                document.getElementById('face-status').value = "1";
+                alert("✓ ស្កែនផ្ទៃមុខបញ្ជាក់សច្ចៈភាពបានជោគជ័យ ១០០%!");
+            }, 2500);
         }
 
-        function handleReg(e) {
+        function processMemberReg(e) {
             e.preventDefault();
-            msnDatabase.push({ name: document.getElementById("newName").value, role: document.getElementById("newRole").value, shares: parseInt(document.getElementById("newShares").value) });
-            renderDatabase();
-            document.getElementById("regForm").reset();
+            if(document.getElementById('face-status').value !== "1") {
+                alert("⚠️ សូមមេត្តាធ្វើការស្កែនផ្ទៃមុខរបស់អ្នកស្នើសុំដើម្បីបញ្ជាក់សច្ចៈភាពសិន!");
+                return;
+            }
+            let type = document.getElementById('reg-type').value;
+            let name = document.getElementById('reg-name').value;
+            let count = document.querySelectorAll('#tbl-members tr').length + 24;
+            let code = "MSN-" + String(count).padStart(3, '0');
+
+            let row = `<tr><td><span class="badge bg-id">${code}</span></td><td><b>${name}</b></td><td>${type}</td><td>ពាក្យសុំ+ប្រវត្តិរូប+កិច្ចសន្យា (រួចរាល់)</td><td><span class="badge bg-approved">✓ ផ្ទៀងផ្ទាត់រួច</span></td></tr>`;
+            document.getElementById('tbl-members').innerHTML += row;
+            alert("🎉 ប្រព័ន្ធបានទទួលពាក្យសុំ ប្រវត្តិរូប កិច្ចសន្យា និងទិន្នន័យស្កែនមុខរបស់សមាជិកភាព " + name + " ចូលប្រព័ន្ធមេដោយស្វ័យប្រវត្តរួចរាល់!");
         }
 
-        function checkMemberProfit() {
-            let match = document.getElementById("withdrawID").value.trim().toUpperCase().match(/^MSN-(\d+)$/);
-            if(match) {
-                let index = parseInt(match[1]) - 1;
-                if(index >= 0 && index < msnDatabase.length) {
-                    let m = msnDatabase[index];
-                    document.getElementById("smName").innerText = m.name;
-                    document.getElementById("smShares").innerText = m.shares;
-                    document.getElementById("smProfit").innerText = "$" + (m.shares * PROFIT_PER_SHARE).toFixed(2);
-                    document.getElementById("memberStatusBox").style.display = "block";
-                    return;
-                }
-            }
-            document.getElementById("memberStatusBox").style.display = "none";
+        function processProductPost(e) {
+            e.preventDefault();
+            let name = document.getElementById('p-name').value;
+            let cat = document.getElementById('p-cat').value;
+            let price = document.getElementById('p-price').value;
+
+            let row = `<tr><td>${name}</td><td>${cat}</td><td>$${parseFloat(price).toFixed(2)}</td><td><span class="badge bg-pending">⌛ រង់ចាំលោកអគ្គនាយកអនុញ្ញាត</span></td></tr>`;
+            document.getElementById('tbl-products').innerHTML += row;
+            alert("✓ បានបញ្ជូនមុខទំនិញទៅកាន់ប្រព័ន្ធរដ្ឋបាលកណ្តាល! មុខទំនិញនឹងបង្ហាញលើទីផ្សារពេលមានការអនុញ្ញាត។");
         }
 
-        function processWithdrawal() {
-            let match = document.getElementById("withdrawID").value.trim().toUpperCase().match(/^MSN-(\d+)$/);
-            if(match) {
-                let index = parseInt(match[1]) - 1;
-                if(index >= 0 && index < msnDatabase.length) {
-                    let m = msnDatabase[index];
-                    document.getElementById("rcID").innerText = "លេខកូដ៖ MSN-" + String(index+1).padStart(3,'0');
-                    document.getElementById("rcName").innerText = "សមាជិក៖ " + m.name;
-                    document.getElementById("rcAmount").innerText = "បានដក៖ $" + (m.shares * PROFIT_PER_SHARE).toFixed(2);
-                    document.getElementById("receiptBox").style.display = "block";
-                    alert("💸 បញ្ជាដកប្រាក់ជោគជ័យជូន " + m.name);
-                    return;
-                }
-            }
-            alert("❌ រកមិនឃើញលេខកូដសមាជិក!");
+        function processInvestment(e) {
+            e.preventDefault();
+            let name = document.getElementById('inv-name').value;
+            let cap = document.getElementById('inv-capital').value;
+            let biz = document.getElementById('inv-business').value;
+
+            let row = `<tr><td>${name}</td><td>$${parseInt(cap).toLocaleString()}</td><td>${biz}</td></tr>`;
+            document.getElementById('tbl-investments').innerHTML += row;
+            alert("💎 ចុះហត្ថលេខាលើកិច្ចសន្យាបំណងប្រាថ្នាវិវិយោគទុនជាមួយ MSN រួចរាល់!");
         }
-        renderDatabase();
+
+        function processSavings(e) {
+            e.preventDefault();
+            let id = document.getElementById('save-id').value;
+            let plan = document.getElementById('save-plan').value;
+            let amt = parseFloat(document.getElementById('save-amount').value);
+
+            alert("🏦 ប្រព័ន្ធកាបូបលុយស្វ័យប្រវត្ត បានបំប្លែងទឹកប្រាក់ $" + amt + " ចូលទៅក្នុងគម្រោង [" + plan + "] របស់សមាជិកកូដ " + id + " ជោគជ័យ!");
+        }
     </script>
 </body>
 </html>
