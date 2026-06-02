@@ -24,7 +24,7 @@
     }
 // កូដសម្រាប់ជូនដំណឹងទៅលោកអគ្គនាយកពេលមានសមាជិកថ្មីចុច Start
 function notifyAdminOnStart(username, chatId) {
-    let adminChatId = "លេខ_ChatID_របស់លោក_អគ្គនាយក"; // <--- សូមជំនួសលេខ ID របស់លោកត្រង់នេះ
+    let adminChatId = " 8022100683"; // <--- សូមជំនួសលេខ ID របស់លោកត្រង់នេះ
     let msg = `មានសមាជិកថ្មីចុច Start!%0Aឈ្មោះ: ${username}%0AChatID: ${chatId}`;
     let url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${adminChatId}&text=${msg}`;
     
