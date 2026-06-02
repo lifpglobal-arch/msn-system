@@ -7,8 +7,34 @@
 
 <script>
     const TELEGRAM_BOT_TOKEN = "8771623252:AAEJ9n9I0-oIeKDrtoSzlRPfhzG4U7gA-oY";
-    https://script.google.com/macros/s/AKfycbym4qdUczM6ngYEicOPkpvLGv74ewLd_2xcZ0818Ba1aHBDBhp5XUxHRm53dkqzohJIEg/exec "https://script.google.com/macros/s/AKfycbyahId7OaQhZsoHq1Tk8zxd9IEonGW76nfX9UcPSTVMlFdHyvRqVCHHyTFl9fqxS24Big/exec";
+  <script>
+    const TELEGRAM_BOT_TOKEN = "8771623252:AAEJ9n9I0-oIeKDrtoSzlRPfhzG4U7gA-oY";
+    const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbym4qdUczM6ngYEicOPkpvLGv74ewLd_2xcZ0818Ba1aHBDBhp5XUxHRm53dkqzohJIEg/exec";
 
+    function sendTelegramNotification(message) {
+        let user = msnUserDatabase[currentLoggedInUser];
+        let chatId = user.tg;
+        let fullMessage = `🏛️ *MSN Notification:* ${message} \n\n 👉 <a href="https://lifpglobal-arch.github.io/msn-system/MSN_System_V3.html">ចូលទៅកាន់ App មហាសិរី MSN</a>`;
+        let url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(fullMessage)}&parse_mode=HTML`;
+        fetch(url).catch(err => console.error(err));
+    }
+
+    async function registerToSheet(userName, chatId) {
+        const data = { name: userName, chatId: chatId };
+        await fetch(GOOGLE_SHEET_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
+    }
+
+    function handleTelegramConnect() {
+        let user = msnUserDatabase[currentLoggedInUser];
+        registerToSheet(user.name, user.tg);
+        window.open("https://t.me/MohaSiri_MSN_bot", "_blank");
+    }
+</script>
     function sendTelegramNotification(message) {
         let user = msnUserDatabase[currentLoggedInUser];
         let chatId = user.tg;
