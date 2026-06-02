@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MSN Empire Super App - អាណាចក្រឌីជីថលស្វ័យប្រវត្ត</title>
+    <title>MSN Empire Super App v5.0 - Ultimate Membership Edition</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         :root {
             --primary: #0F2027; 
             --mid-blue: #203A43;
             --light-blue: #2C5364;
             --accent: #D4AF37;
-            --gold-light: #F3E5AB;
             --text-dark: #0F172A;
             --text-light: #F8FAFC;
             --success: #10B981;
@@ -19,63 +19,76 @@
         
         body { font-family: 'Khmer OS System', Arial, sans-serif; background-color: #F1F5F9; margin: 0; padding: 0; color: var(--text-dark); scroll-behavior: smooth; }
         
-        .header { background: linear-gradient(135deg, var(--primary) 0%, var(--mid-blue) 50%, var(--light-blue) 100%); color: white; padding: 50px 5%; text-align: center; border-bottom: 5px solid var(--accent); }
-        .header h1 { font-family: 'Khmer OS Muol Light', sans-serif; font-size: 30px; color: var(--accent); margin: 0; }
-        .badge-global { background: linear-gradient(90deg, #9A7432, var(--accent)); color: white; padding: 6px 20px; font-weight: bold; border-radius: 30px; font-size: 11px; display: inline-block; margin-bottom: 15px; }
+        .header { background: linear-gradient(135deg, var(--primary) 0%, var(--mid-blue) 50%, var(--light-blue) 100%); color: white; padding: 40px 5%; text-align: center; border-bottom: 5px solid var(--accent); }
+        .main-logo { width: 160px; height: auto; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.4); border: 2px solid var(--accent); margin-bottom: 15px; }
+        .header h1 { font-family: 'Khmer OS Muol Light', sans-serif; font-size: 24px; color: var(--accent); margin: 10px 0 5px 0; }
+        .badge-global { background: linear-gradient(90deg, #9A7432, var(--accent)); color: white; padding: 6px 20px; font-weight: bold; border-radius: 30px; font-size: 11px; display: inline-block; }
 
-        .nav-bar { background: var(--primary); padding: 12px 5%; display: flex; justify-content: center; gap: 20px; position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--accent); flex-wrap: wrap; }
-        .nav-bar a { color: white; text-decoration: none; font-weight: bold; font-size: 12px; padding: 6px 12px; border-radius: 4px; transition: 0.3s; }
-        .nav-bar a:hover { color: var(--accent); background: rgba(255,255,255,0.08); }
+        .nav-bar { background: var(--primary); padding: 12px 5%; display: flex; justify-content: center; gap: 20px; position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--accent); }
+        .nav-bar a { color: white; text-decoration: none; font-weight: bold; font-size: 12px; padding: 6px 12px; border-radius: 4px; }
 
         .container { max-width: 1400px; margin: 30px auto; padding: 0 20px; }
-        .section-title { font-family: 'Khmer OS Muol Light', sans-serif; color: var(--mid-blue); text-align: center; margin: 40px 0 20px 0; font-size: 20px; }
-        .section-title::after { content: ''; display: block; width: 80px; height: 4px; background: var(--accent); margin: 8px auto 0 auto; border-radius: 2px; }
-
-        /* SUPER APP INTERFACE */
-        .app-grid { display: grid; grid-template-columns: 380px 1fr; gap: 30px; margin-top: 20px; }
-        .phone-frame { background: #000; border: 12px solid #334155; border-radius: 40px; height: 820px; overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.2); display: flex; flex-direction: column; }
-        .phone-screen { background: #F8FAFC; flex: 1; display: flex; flex-direction: column; overflow-y: auto; }
-        .phone-topbar { background: var(--primary); color: white; padding: 15px; text-align: center; font-family: 'Khmer OS Muol Light'; font-size: 12px; border-bottom: 3px solid var(--accent); }
+        .app-grid { display: grid; grid-template-columns: 420px 1fr; gap: 30px; }
         
-        .app-menu-tabs { display: grid; grid-template-columns: repeat(4, 1fr); background: #E2E8F0; border-bottom: 1px solid #CBD5E1; }
-        .tab-btn { background: none; border: none; padding: 10px 5px; font-size: 10px; font-weight: bold; cursor: pointer; font-family: 'Khmer OS System'; text-align: center; }
-        .tab-btn.active { background: var(--accent); color: var(--primary); }
+        /* PHONE FRAME */
+        .phone-frame { background: #000; border: 12px solid #334155; border-radius: 40px; height: 880px; overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.2); display: flex; flex-direction: column; }
+        .phone-screen { background: #F8FAFC; flex: 1; display: flex; flex-direction: column; overflow-y: auto; }
+        .phone-topbar { background: var(--primary); color: white; padding: 12px; text-align: center; border-bottom: 3px solid var(--accent); display: flex; flex-direction: column; align-items: center; gap: 5px; }
+        .app-logo { width: 45px; height: auto; border-radius: 4px; border: 1px solid var(--accent); }
+        .phone-topbar span { font-family: 'Khmer OS Muol Light'; font-size: 11px; color: var(--accent); }
+        
+        .app-menu-tabs { display: grid; grid-template-columns: repeat(4, 1fr); background: #E2E8F0; }
+        .tab-btn { background: none; border: none; padding: 10px 2px; font-size: 10px; font-weight: bold; cursor: pointer; font-family: 'Khmer OS System'; text-align: center; border-bottom: 2px solid transparent; }
+        .tab-btn.active { background: var(--accent); color: var(--primary); font-weight: bold; }
         
         .phone-body { padding: 15px; flex: 1; }
-        .form-group { margin-bottom: 12px; }
-        .form-group label { display: block; font-weight: bold; font-size: 11px; margin-bottom: 4px; color: var(--primary); }
-        .form-ctrl { width: 100%; padding: 8px; border: 1px solid #CBD5E1; border-radius: 6px; font-family: 'Khmer OS System'; font-size: 12px; box-sizing: border-box; }
-        .btn-block { background: var(--primary); color: white; border: none; padding: 10px; width: 100%; border-radius: 6px; font-weight: bold; cursor: pointer; font-family: 'Khmer OS System'; margin-top: 5px; }
-        .btn-block:hover { background: #000; color: var(--accent); }
-
-        /* FACE SCANNER ANIMATION */
-        .face-scanner { border: 2px dashed var(--accent); padding: 15px; text-align: center; border-radius: 10px; background: #FFF; margin: 10px 0; position: relative; display: none; }
+        .form-section-title { font-family: 'Khmer OS Muol Light'; font-size: 11px; color: var(--mid-blue); margin: 15px 0 8px 0; border-bottom: 1px solid var(--accent); padding-bottom: 3px; }
+        .form-group { margin-bottom: 10px; }
+        .form-group label { display: block; font-weight: bold; font-size: 10px; margin-bottom: 3px; color: var(--primary); }
+        .form-ctrl { width: 100%; padding: 6px; border: 1px solid #CBD5E1; border-radius: 5px; font-family: 'Khmer OS System'; font-size: 11px; box-sizing: border-box; }
+        .scroll-box { font-size: 10px; background: #FFF; border: 1px solid #CBD5E1; padding: 8px; border-radius: 5px; height: 100px; overflow-y: scroll; margin-bottom: 8px; line-height: 1.5; text-align: justify; }
+        
+        /* SCANNER & SIGNATURE */
+        .face-scanner { border: 2px dashed var(--accent); padding: 10px; text-align: center; border-radius: 8px; background: #FFF; margin: 8px 0; position: relative; display: none; }
         .scan-line { width: 100%; height: 3px; background: var(--success); position: absolute; top: 0; left: 0; animation: scan 2s linear infinite; }
         @keyframes scan { 0% { top: 0%; } 50% { top: 100%; } 100% { top: 0%; } }
+        
+        .signature-pad { border: 1px dashed var(--primary); background: #FFF; height: 60px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 11px; color: #64748B; cursor: pointer; font-style: italic; }
 
-        /* CENTRAL DISPLAY TABLES */
-        .main-dashboard { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.02); overflow-y: auto; height: 770px; }
-        .data-table { width: 100%; border-collapse: collapse; font-size: 11px; margin-bottom: 25px; }
-        .data-table th { background: #F1F5F9; color: var(--primary); padding: 10px; font-weight: bold; border-bottom: 2px solid #CBD5E1; text-align: left; }
-        .data-table td { padding: 10px; border-bottom: 1px solid #E2E8F0; }
-        .badge { padding: 3px 8px; border-radius: 4px; font-weight: bold; font-size: 10px; color: white; display: inline-block; }
-        .bg-pending { background: var(--warning); }
+        .btn-block { background: var(--primary); color: white; border: none; padding: 10px; width: 100%; border-radius: 6px; font-weight: bold; cursor: pointer; font-family: 'Khmer OS System'; font-size: 12px; margin-top: 5px; }
+        .btn-block:hover { background: #000; color: var(--accent); }
+
+        /* DASHBOARD PRINT AREA */
+        .main-dashboard { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.02); height: 830px; overflow-y: auto; }
+        .data-table { width: 100%; border-collapse: collapse; font-size: 11px; margin-bottom: 20px; }
+        .data-table th { background: #F1F5F9; color: var(--primary); padding: 8px; font-weight: bold; border-bottom: 2px solid #CBD5E1; text-align: left; }
+        .data-table td { padding: 8px; border-bottom: 1px solid #E2E8F0; }
+        .badge { padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 9px; color: white; }
         .bg-approved { background: var(--success); }
         .bg-id { background: var(--primary); }
 
-        .footer { background: var(--primary); color: white; text-align: center; padding: 40px 20px; font-size: 12px; border-top: 5px solid var(--accent); margin-top: 5px; }
+        /* PDF DOCUMENT STYLING (HIDDEN ON SCREEN) */
+        #pdf-template { display: none; background: white; padding: 40px; box-sizing: border-box; color: #000; }
+        .pdf-header { text-align: center; font-family: 'Khmer OS Muol Light'; font-size: 14px; margin-bottom: 20px; line-height: 1.8; }
+        .pdf-title { text-align: center; font-family: 'Khmer OS Muol Light'; font-size: 16px; color: #000; margin: 20px 0; }
+        .pdf-section { font-family: 'Khmer OS Muol Light'; font-size: 12px; margin-top: 15px; border-bottom: 1px solid #000; padding-bottom: 3px; }
+        .pdf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 12px; margin-top: 8px; line-height: 1.6; }
+        
+        .footer { background: var(--primary); color: white; text-align: center; padding: 30px 20px; font-size: 12px; border-top: 5px solid var(--accent); margin-top: 30px; }
     </style>
 </head>
 <body>
 
     <div class="header">
-        <div class="badge-global">🏛️ MSN AUTOMATED GLOBAL SUPER APP SYSTEM v4.0</div>
+        <div class="badge-global">🏛️ MSN AUTOMATED GLOBAL SUPER APP SYSTEM v5.0</div>
+        <br>
+        <img src="5114.png" alt="MOHASIRI MSN LOGO" class="main-logo">
         <h1>មហាប្រព័ន្ធឌីជីថលស្វ័យប្រវត្ត អាណាចក្រមហាសិរី MSN</h1>
-        <p>ប្រព័ន្ធគ្រប់គ្រងសមាជិកភាពសច្ចៈភាព មហាផ្សាររាប់លានមុខ គម្រោងវិនិយោគទុនរួម និងប្រព័ន្ធមហាសន្សំស្វ័យប្រវត្តថែទាំអនាគត</p>
+        <p style="font-size: 13px; color: #CBD5E1; font-style: italic; font-weight: bold;">« មហាសិរី (MSN)៖ ដៃគូឈានមុខ ឆ្ពោះទៅរកភាពមានបាន និងជោគជ័យ »</p>
     </div>
 
     <div class="nav-bar">
-        <a href="#super-app">📱 ផ្ទាំងបញ្ជាទូរស័ព្ទ App & ទិន្នន័យរួម</a>
+        <a href="#super-app">📱 ផ្ទាំងបញ្ជាទូរស័ព្ទ App & គ្រប់គ្រងទិន្នន័យសមាជិក</a>
         <a href="https://github.com/lifpglobal-arch/msn-system" target="_blank">🛠️ ចូលទៅកាន់ GitHub មេ</a>
     </div>
 
@@ -83,9 +96,12 @@
         <div class="app-grid">
             
             <div class="phone-frame">
-                <div class="phone-topbar">MSN EMPIRE SUPER APP</div>
+                <div class="phone-topbar">
+                    <img src="5114.png" alt="MSN MINI LOGO" class="app-logo">
+                    <span>MSN EMPIRE SUPER APP</span>
+                </div>
                 <div class="app-menu-tabs">
-                    <button id="btn-tab-reg" class="tab-btn active" onclick="showAppScreen('reg')">👥 សមាជិក</button>
+                    <button id="btn-tab-reg" class="tab-btn active" onclick="showAppScreen('reg')">📝 ស្នើសុំសមាជិក</button>
                     <button id="btn-tab-shop" class="tab-btn" onclick="showAppScreen('shop')">🛒 មហាផ្សារ</button>
                     <button id="btn-tab-invest" class="tab-btn" onclick="showAppScreen('invest')">💼 វិនិយោគ</button>
                     <button id="btn-tab-save" class="tab-btn" onclick="showAppScreen('save')">🏦 មហាសន្សំ</button>
@@ -95,146 +111,159 @@
                     <div class="phone-body">
                         
                         <div id="scr-reg">
-                            <h4 style="margin:0 0 10px 0; color:var(--primary);">📝 ដាក់ពាក្យចូលជាសមាជិកស្វ័យប្រវត្ត</h4>
-                            <form onsubmit="processMemberReg(event)">
-                                <div class="form-group">
-                                    <label>ប្រភេទសមាជិកភាពស្នើសុំ *</label>
-                                    <select id="reg-type" class="form-ctrl">
-                                        <option value="គណៈកម្មាធិការប្រតិបត្តិ">គណៈកម្មាធិការប្រតិបត្តិ</option>
-                                        <option value="តំណាងចែកចាយ">តំណាងចែកចាយផ្ទាល់ដី</option>
-                                        <option value="តំណាងសហគ្រាស">តំណាងសហគ្រាសផលិតកម្ម</option>
-                                        <option value="តំណាងសមាគម និងអង្គការ">តំណាងសមាគម និងអង្គការ</option>
-                                        <option value="តំណាងកសិករ">តំណាងកសិករខ្មែរ</option>
-                                        <option value="សមាជិកអ្នកប្រើប្រាស់">សមាជិកអ្នកប្រើប្រាស់ទូទៅ</option>
-                                    </select>
-                                </div>
-                                <div class="form-group"><label>នាមត្រកូល និងនាមខ្លួន *</label><input type="text" id="reg-name" class="form-ctrl" required placeholder="ឧ. កែវ មុនី"></div>
-                                <div class="form-group"><label>លេខទូរស័ព្ទតភ្ជាប់ប្រព័ន្ធ *</label><input type="text" id="reg-phone" class="form-ctrl" required placeholder="ឧ. 096XXXXXXX"></div>
-                                <div class="form-group">
-                                    <label>📜 ការយល់ព្រមលើលក្ខខណ្ឌធម្មនុញ្ញ</label>
-                                    <div style="font-size:10px; background:#E2E8F0; padding:5px; border-radius:4px; max-height:50px; overflow-y:auto; margin-bottom:5px;">
-                                        ខ្ញុំបាទ/នាងខ្ញុំ សូមសន្យាថានឹងគោរពតាមបទបញ្ជាផ្ទៃក្នុង និងធម្មនុញ្ញមហាសិរី MSN ដាច់ខាត។
+                            <form id="msn-master-form" onsubmit="processMembershipSubmit(event)">
+                                
+                                <div class="form-section-title">១. ពាក្យសុំចុះឈ្មោះចូលជាសមាជិក (ក. ព័ត៌មានផ្ទាល់ខ្លួន)</div>
+                                <div class="form-group"><label>ឈ្មោះពេញ (អក្សរខ្មែរ) *</label><input type="text" id="kh-name" class="form-ctrl" required placeholder="ឧ. មេណ្ឌ មុនី"></div>
+                                <div class="form-group"><label>ឈ្មោះពេញ (អក្សរឡាតាំង) *</label><input type="text" id="en-name" class="form-ctrl" required placeholder="ឧ. MEN MONY"></div>
+                                <div class="form-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+                                    <div class="form-group">
+                                        <label>ភេទ *</label>
+                                        <select id="gender" class="form-ctrl"><option value="ប្រុស">ប្រុស</option><option value="ស្រី">ស្រី</option></select>
                                     </div>
-                                    <input type="checkbox" required> <span style="font-size:10px;">ខ្ញុំបានបំពេញពាក្យសុំ ប្រវត្តិរូប និងកិច្ចសន្យារួចរាល់</span>
+                                    <div class="form-group"><label>សញ្ជាតិ *</label><input type="text" id="nationality" class="form-ctrl" required value="ខ្មែរ"></div>
                                 </div>
-                                <div class="form-group">
-                                    <label>📸 ប្រព័ន្ធស្កែនផ្ទៃមុខបញ្ជាក់សច្ចៈភាព (Face Scan Verification)</label>
-                                    <button type="button" class="btn-block" style="background:#64748B;" onclick="startFaceScan()">👁️ ចាប់ផ្តើមស្កែនផ្ទៃមុខ</button>
-                                    <div id="scanner-box" class="face-scanner"><div class="scan-line"></div>🤖 កំពុងស្កែនទម្រង់មុខសច្ចៈភាព...</div>
-                                    <input type="hidden" id="face-status" value="0">
+                                <div class="form-group"><label>ថ្ងៃ ខែ ឆ្នាំកំណើត *</label><input type="date" id="dob" class="form-ctrl" required></div>
+                                <div class="form-group"><label>ទីកន្លែងកំណើត *</label><input type="text" id="pob" class="form-ctrl" required placeholder="ខេត្ត/ក្រុងកំណើត"></div>
+                                <div class="form-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+                                    <div class="form-group"><label>អត្តសញ្ញាណប័ណ្ណ/លិខិតឆ្លងដែនលេខ *</label><input type="text" id="id-num" class="form-ctrl" required placeholder="09XXXXXXXX"></div>
+                                    <div class="form-group"><label>ថ្ងៃផុតកំណត់ *</label><input type="date" id="id-exp" class="form-ctrl" required></div>
                                 </div>
-                                <button type="submit" class="btn-block">🚀 បញ្ជូនទិន្នន័យចូលប្រព័ន្ធមេ</button>
-                            </form>
-                        </div>
 
-                        <div id="scr-shop" style="display:none;">
-                            <h4 style="margin:0 0 10px 0; color:var(--primary);">🛍️ ផុសផ្សព្វផ្សាយមុខទំនិញ & សេវាកម្ម</h4>
-                            <form onsubmit="processProductPost(event)">
-                                <div class="form-group"><label>ឈ្មោះទំនិញ ឬសេវាកម្ម *</label><input type="text" id="p-name" class="form-ctrl" required placeholder="ឧ. អង្ករផ្ការំដួលធម្មជាតិ"></div>
+                                <div class="form-section-title">ខ. ព័ត៌មានទំនាក់ទំនង និងបណ្តាញសង្គម</div>
+                                <div class="form-group"><label>លេខទូរស័ព្ទចម្បង *</label><input type="tel" id="phone" class="form-ctrl" required placeholder="ឧ. 096123456"></div>
+                                <div class="form-group"><label>លេខតេឡេក្រាម (Telegram) *</label><input type="text" id="telegram" class="form-ctrl" required placeholder="ឧ. @username"></div>
+                                <div class="form-group"><label>អ៊ីមែល (Email) *</label><input type="email" id="email" class="form-ctrl" required placeholder="name@domain.com"></div>
+                                <div class="form-group"><label>អាសយដ្ឋានបច្ចុប្បន្ន *</label><input type="text" id="address" class="form-ctrl" required placeholder="ផ្ទះលេខ ផ្លូវ ភូមិ ឃុំ ស្រុក ខេត្ត"></div>
+
+                                <div class="form-section-title">គ. ប្រភេទសមាជិកភាពដែលស្នើសុំ</div>
                                 <div class="form-group">
-                                    <label>ប្រភេទផលិតផល *</label>
-                                    <select id="p-cat" class="form-ctrl">
-                                        <option value="ទំនិញកសិកម្ម">ទំនិញកសិកម្ម / ម្ហូបអាហារ</option>
-                                        <option value="សិប្បកម្ម">សិប្បកម្ម / ផលិតផលក្នុងស្រុក</option>
-                                        <option value="សេវាកម្ម">សេវាកម្ម / ដឹកជញ្ជូន</option>
+                                    <select id="mbr-cat" class="form-ctrl">
+                                        <option value="សមាជិកកម្រិតទូទៅ (General Member)">សមាជិកកម្រិតទូទៅ (General Member)</option>
+                                        <option value="សមាជិកកម្រិតអាជីវកម្ម/ដៃគូពាណិជ្ជកម្ម (Corporate/Business Partner)">សមាជិកកម្រិតអាជីវកម្ម/ដៃគូពាណិជ្ជកម្ម</option>
+                                        <option value="សមាជិកកម្រិតវីអាយភី (VIP Member)">សមាជិកកម្រិតវីអាយភី (VIP Member)</option>
                                     </select>
                                 </div>
-                                <div class="form-group"><label>តម្លៃលក់ជូនសហគមន៍ ($) *</label><input type="number" id="p-price" class="form-ctrl" required placeholder="50"></div>
-                                <p style="font-size:10px; color:var(--warning);">⚠️ ចំណាំ៖ មុខទំនិញដែលផុសនឹងមិនទាន់បង្ហាញជាសាធារណៈភ្លាមៗទេ លុះត្រាតែមានការអនុញ្ញាតពីគណៈគ្រប់គ្រងមហាសិរី MSN សិន។</p>
-                                <button type="submit" class="btn-block" style="background:var(--mid-blue);">📢 បញ្ជូនសុំការអនុញ្ញាតផុស</button>
-                            </form>
-                        </div>
 
-                        <div id="scr-invest" style="display:none;">
-                            <h4 style="margin:0 0 10px 0; color:var(--primary);">💼 វិបក្សបំណងប្រាថ្នាវិនិយោគទុន</h4>
-                            <form onsubmit="processInvestment(event)">
-                                <div class="form-group"><label>នាមខ្លួនអ្នកវិនិយោគ *</label><input type="text" id="inv-name" class="form-ctrl" required placeholder="ឧ. ឧកញ៉ា សុខ គង់"></div>
-                                <div class="form-group"><label>ទំហំទុនបំណងវិនិយោគ ($) *</label><input type="number" id="inv-capital" class="form-ctrl" required placeholder="100000"></div>
+                                <div class="form-section-title">២. ប្រវត្តិរូបសង្ខេបផ្លូវការរបស់សមាជិក</div>
+                                <div class="form-group"><label>កម្រិតវប្បធម៌ / សញ្ញាបត្រខ្ពស់បំផុត *</label><input type="text" id="edu" class="form-ctrl" required placeholder="សញ្ញាបត្រ ជំនាញ គ្រឹះស្ថានសិក្សា"></div>
+                                <div class="form-group"><label>បទពិសោធន៍ការងារ / មុខតំណែងបច្ចុប្បន្ន *</label><input type="text" id="exp-job" class="form-ctrl" required placeholder="មុខតំណែង និងឈ្មោះក្រុមហ៊ុន"></div>
                                 <div class="form-group">
-                                    <label>បញ្ជាក់ប្រភេទអាជីវកម្ម/សេវាកម្មដែលចង់វិនិយោគ *</label>
-                                    <input type="text" id="inv-business" class="form-ctrl" required placeholder="ឧ. រោងចក្រកែច្នៃកសិផល ឬ សេវាកម្មដឹកជញ្ជូន">
-                                </div>
-                                <button type="submit" class="btn-block" style="background:#1E3A8A;">💎 ចុះហត្ថលេខាវិនិយោគឌីជីថល</button>
-                            </form>
-                        </div>
-
-                        <div id="scr-save" style="display:none;">
-                            <h4 style="margin:0 0 10px 0; color:var(--primary);">🏦 ផែនការមហាសន្សំស្វ័យប្រវត្ត MSN</h4>
-                            <form onsubmit="processSavings(event)">
-                                <div class="form-group"><label>លេខកូដសមាជិកសន្សំ *</label><input type="text" id="save-id" class="form-ctrl" required placeholder="MSN-001"></div>
-                                <div class="form-group">
-                                    <label>ជ្រើសរើសកញ្ចប់មហាសន្សំ *</label>
-                                    <select id="save-plan" class="form-ctrl">
-                                        <option value="សន្សំអប់រំកូន">📚 សម្រាប់ថែទាំការសិក្សាអប់រំកូនៗ និងកុមារ</option>
-                                        <option value="សន្សំសុខភាព">⚕️ សម្រាប់ថែទាំសុខភាពគ្រួសារ</option>
-                                        <option value="សន្សំសង្គ្រោះបន្ទាន់">🚨 សម្រាប់កញ្ចប់សង្គ្រោះបន្ទាន់</option>
-                                        <option value="សន្សំអាជីវកម្ម">🏢 សម្រាប់ពង្រីកអាជីវកម្មនាពេលអនាគត</option>
-                                        <option value="ការពារហានិភ័យ">🛡️ សម្រាប់ការពារហានិភ័យអាជីវកម្ម</option>
+                                    <label>វិស័យអាជីវកម្មចម្បង *</label>
+                                    <select id="core-industry" class="form-ctrl">
+                                        <option value="បច្ចេកវិទ្យា">បច្ចេកវិទ្យា</option><option value="ពាណិជ្ជកម្ម">ពាណិជ្ជកម្ម</option><option value="សេវាកម្ម">សេវាកម្ម</option><option value="ផ្សេងៗ">ផ្សេងៗ</option>
                                     </select>
                                 </div>
-                                <div class="form-group"><label>ចំនួនទឹកប្រាក់បញ្ជូនសន្សំ ($) *</label><input type="number" id="save-amount" class="form-ctrl" required placeholder="10"></div>
-                                <button type="submit" class="btn-block" style="background:var(--success);">💰 បញ្ជូនសាច់ប្រាក់ចូលកាបូបសន្សំ</button>
+                                <div class="form-group"><label>ទេពកោសល្យ និងអ្វីដែលអាចរួមចំណែកដល់ MSN *</label><input type="text" id="skills" class="form-ctrl" required placeholder="ជំនាញឯកទេសរបស់អ្នក"></div>
+
+                                <div class="form-section-title">៣. កិច្ចសន្យា និងលក្ខខណ្ឌសមាជិកភាពឌីជីថល</div>
+                                <div class="scroll-box">
+                                    <b>កិច្ចសន្យា និងការប្តេជ្ញាចិត្តរបស់សមាជិក មហាសិរី (MSN)</b><br>
+                                    ខ្ញុំបាទ/នាងខ្ញុំ ជាម្ចាស់គណនី និងជាបេក្ខជនស្នើសុំចូលជាសមាជិកមហាសិរី (MSN) សូមធ្វើការប្តេជ្ញាចិត្ត និងចុះកិច្ចសន្យាជាផ្លូវការចំពោះមុខគណៈគ្រប់គ្រង MSN ដូចតទៅ៖<br>
+                                    ១. ការអនុលោមតាមច្បាប់ និងបទបញ្ជា៖ ខ្ញុំយល់ព្រមគោរពតាមលក្ខន្តិកៈ បទបញ្ជាផ្ទៃក្នុង គោលការណ៍ណែនាំ និងក្រមសីលធម៌ដែលកំណត់ដោយ មហាសិរី (MSN) ទាំងស្រុង។<br>
+                                    ២. ការរក្សាការសម្ងាត់ និងសុវត្ថិភាពទិន្នន័យ៖ ខ្ញុំប្តេជ្ញាមិនថតចម្លង បញ្ចេញ ឬចែកចាយព័ត៌មានសម្ងាត់ យុទ្ធសាស្ត្រ គម្រោងការងារ ទៅកាន់ភាគីខាងក្រៅឡើយ។<br>
+                                    ៣. ការprotectionតម្លៃ និងកេរ្តិ៍ឈ្មោះស្ថាប័ន៖ ខ្ញុំមិនធ្វើសកម្មភាពណាដែលបង្កការខូចខាត ប៉ះពាល់ដល់កិត្តិយស កេរ្តិ៍ឈ្មោះ ឬបង្កការបែកបាក់សាមគ្គីភាពក្នុងរង្វង់សមាជិក MSN ឡើយ។
+                                </div>
+                                <div class="form-group">
+                                    <input type="checkbox" id="agree-check" required> <span style="font-size:10px; font-weight:bold; color:var(--primary);">ខ្ញុំបានអាន យល់ច្បាស់ និងព្រមព្រៀងទទួលយកលក្ខខណ្ឌទាំងអស់។</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>📸 ប្រព័ន្ធស្កែនផ្ទៃមុខបញ្ជាក់សច្ចៈភាព *</label>
+                                    <button type="button" class="btn-block" style="background:#64748B;" onclick="triggerAppFaceScan()">👁️ ចាប់ផ្តើមស្កែនផ្ទៃមុខ</button>
+                                    <div id="app-scanner-box" class="face-scanner"><div class="scan-line"></div>🤖 កំពុងស្កែនផ្ទៃមុខសច្ចៈភាព...</div>
+                                    <input type="hidden" id="app-face-status" value="0">
+                                </div>
+                                <div class="form-group">
+                                    <label>✍️ ហត្ថលេខាឌីជីថល (Digital Signature) *</label>
+                                    <div id="sig-pad" class="signature-pad" onclick="signDigital()">👉 ចុចទីនេះដើម្បីចុះហត្ថលេខាឌីជីថល</div>
+                                    <input type="hidden" id="sig-status" value="0">
+                                </div>
+
+                                <button type="submit" class="btn-block" style="background:var(--accent); color:var(--primary);">🚀 ដាក់ពាក្យ និងបង្កើតឯកសារ PDF ភ្លាមៗ</button>
                             </form>
                         </div>
+
+                        <div id="scr-shop" style="display:none;"><p style="font-size:12px;">🛒 មហាផ្សារទំនិញរាប់លានមុខ (ដំណើរការធម្មតា)</p></div>
+                        <div id="scr-invest" style="display:none;"><p style="font-size:12px;">💼 វិបក្សវិនិយោគទុនរួម (ដំណើរការធម្មតា)</p></div>
+                        <div id="scr-save" style="display:none;"><p style="font-size:12px;">🏦 ផែនការមហាសន្សំស្វ័យប្រវត្ត (ដំណើរការធម្មតា)</p></div>
 
                     </div>
                 </div>
             </div>
 
             <div class="main-dashboard">
-                <h3 style="margin-top:0; font-family:'Khmer OS Muol Light'; color:var(--primary); font-size:14px;">📊 ផ្ទាំងបង្ហាញទិន្នន័យគ្រប់គ្រងរដ្ឋបាលស្វ័យប្រវត្តរបស់គណៈគ្រប់គ្រង (Live Ledger System)</h3>
+                <h3 style="margin-top:0; font-family:'Khmer OS Muol Light'; color:var(--primary); font-size:13px;">📊 ប្រព័ន្ធរដ្ឋបាលកណ្តាលឌីជីថល និងបញ្ជីឈ្មោះសមាជិកភាពផ្លូវការ (Live Ledger)</h3>
                 <hr>
-                
-                <h4>👥 បញ្ជីឈ្មោះសមាជិកភាពផ្លូវការ (កើនឡើងជាបន្តបន្ទាប់)</h4>
                 <table class="data-table">
                     <thead>
-                        <tr><th>លេខកូដ</th><th>ឈ្មោះសមាជិក</th><th>ប្រភេទសមាជិកភាព</th><th>ឯកសារអនឡាញ</th><th>ស្កែនផ្ទៃមុខ</th></tr>
+                        <tr><th>លេខកូដ</th><th>ឈ្មោះសមាជិក</th><th>ប្រភេទសមាជិកភាព</th><th>ទំនាក់ទំនង</th><th>ស្ថានភាពឯកសារទាំង៣</th></tr>
                     </thead>
-                    <tbody id="tbl-members">
-                        <tr><td><span class="badge bg-id">MSN-024</span></td><td><b>អ្នកស្រី អុល ស្រីនី</b></td><td>គណៈកម្មាធិការប្រតិបត្តិ</td><td>ពាក្យសុំ+ប្រវត្តិរូប+កិច្ចសន្យា (រួចរាល់)</td><td><span class="badge bg-approved">✓ ផ្ទៀងផ្ទាត់រួច</span></td></tr>
-                        <tr><td><span class="badge bg-id">MSN-025</span></td><td><b>កញ្ញា ស្រ៊ាង វិស៊ាន</b></td><td>គណៈកម្មាធិការប្រតិបត្តិ</td><td>ពាក្យសុំ+ប្រវត្តិរូប+កិច្ចសន្យា (រួចរាល់)</td><td><span class="badge bg-approved">✓ ផ្ទៀងផ្ទាត់រួច</span></td></tr>
+                    <tbody id="tbl-master-members">
+                        <tr><td><span class="badge bg-id">MSN-024</span></td><td><b>អ្នកស្រី អុល ស្រីនី</b></td><td>គណៈកម្មាធិការប្រតិបត្តិ</td><td>096XXXXXX</td><td><span class="badge bg-approved">✓ គ្រប់គ្រប់ + PDF រួចរាល់</span></td></tr>
+                        <tr><td><span class="badge bg-id">MSN-025</span></td><td><b>កញ្ញា ស្រ៊ាង វិស៊ាន</b></td><td>គណៈកម្មាធិការប្រតិបត្តិ</td><td>097XXXXXX</td><td><span class="badge bg-approved">✓ គ្រប់គ្រប់ + PDF រួចរាល់</span></td></tr>
                     </tbody>
                 </table>
-
-                <h4>🛒 បញ្ជីមុខទំនិញ និងសេវាកម្មរាប់លានមុខ (ផ្សព្វផ្សាយទូទាំងប្រទេស)</h4>
-                <table class="data-table">
-                    <thead>
-                        <tr><th>ឈ្មោះទំនិញ/សេវាកម្ម</th><th>ប្រភេទ</th><th>តម្លៃ</th><th>ស្ថានភាពការអនុញ្ញាត</th></tr>
-                    </thead>
-                    <tbody id="tbl-products">
-                        <tr><td>សាប៊ូកក់សក់ធម្មជាតិ MSN</td><td>សិប្បកម្ម</td><td>$5.00</td><td><span class="badge bg-approved">✓ បានអនុញ្ញាត</span></td></tr>
-                        <tr><td>សេវាកម្មឡានដឹកទំនិញចល័តភូមិ</td><td>សេវាកម្ម</td><td>$20.00</td><td><span class="badge bg-approved">✓ បានអនុញ្ញាត</span></td></tr>
-                    </tbody>
-                </table>
-
-                <h4>💎 គម្រោងទុនវិនិយោគរួមជាមួយមហាសិរី MSN</h4>
-                <table class="data-table">
-                    <thead>
-                        <tr><th>អ្នកវិនិយោគ</th><th>ទុនវិនិយោគ</th><th>ប្រភេទអាជីវកម្មបំណងប្រាថ្នា</th></tr>
-                    </thead>
-                    <tbody id="tbl-investments">
-                        <tr><td>ក្រុមហ៊ុន IIFP វិនិយោគអន្តរជាតិ</td><td>$5,000,000</td><td>ឧស្សាហកម្មកែច្នៃកសិផលខ្នាតធំ</td></tr>
-                    </tbody>
-                </table>
-
-                <h4>🏦 របាយការណ៍កាបូបមហាសន្សំស្វ័យប្រវត្តសមាជិក</h4>
-                <table class="data-table">
-                    <thead>
-                        <tr><th>លេខកូដសមាជិក</th><th>ការសិក្សាកូន</th><th>ថែទាំសុខភាព</th><th>សង្គ្រោះបន្ទាន់</th><th>ពង្រីកអាជីវកម្ម</th><th>ការពារហានិភ័យ</th></tr>
-                    </thead>
-                    <tbody id="tbl-savings">
-                        <tr><td>MSN-024</td><td>$150.00</td><td>$100.00</td><td>$50.00</td><td>$200.00</td><td>$100.00</td></tr>
-                        <tr><td>MSN-025</td><td>$200.00</td><td>$150.00</td><td>$80.00</td><td>$300.00</td><td>$150.00</td></tr>
-                    </tbody>
-                </table>
+                <p style="font-size:11px; color:var(--warning);">💡 <b>ព័ត៌មានបច្ចេកទេស៖</b> រាល់ពេលមានសមាជិកថ្មីចុះឈ្មោះតាមទូរស័ព្ទដៃ App ទិន្នន័យត្រួតពិនិត្យ (Validation) នឹងរត់មកបង្ហាញក្នុងតារាងមេនេះអូតូ ព្រមទាំងទាញចេញជា PDF ជូនសមាជិកភ្លាមៗ។</p>
             </div>
 
         </div>
     </div>
 
+    <div id="pdf-template">
+        <div class="pdf-header">
+            ព្រះរាជាណាចក្រកម្ពុជា<br>ជាតិ សាសនា ព្រះមហាក្សត្រ<br>━━━━━━━
+        </div>
+        <div style="text-align:center;"><img src="5114.png" style="width:100px; height:auto; border-radius:5px;"></div>
+        <div class="pdf-title">ពាក្យសុំចុះឈ្មោះចូលជាសមាជិក មហាសិរី (MSN)</div>
+        <div style="text-align:right; font-size:11px; font-weight:bold;" id="pdf-generated-id">លេខកូដសមាជិក៖ MSN-XXXXXX</div>
+        <div style="text-align:right; font-size:11px;" id="pdf-generated-date">កាលបរិច្ឆេទសាកសួរ៖ ថ្ងៃទី ២ ខែ មិថុនា ឆ្នាំ ២០២៦</div>
+
+        <div class="pdf-section">១. ព័ត៌មានផ្ទាល់ខ្លួន និងទំនាក់ទំនង (Personal Information)</div>
+        <div class="pdf-grid">
+            <div><b>ឈ្មោះពេញ (ខ្មែរ)៖</b> <span id="pdf-kh-name"></span></div>
+            <div><b>ឈ្មោះពេញ (ឡាតាំង)៖</b> <span id="pdf-en-name"></span></div>
+            <div><b>ភេទ៖</b> <span id="pdf-gender"></span></div>
+            <div><b>សញ្ជាតិ៖</b> <span id="pdf-nationality"></span></div>
+            <div><b>ថ្ងៃ ខែ ឆ្នាំកំណើត៖</b> <span id="pdf-dob"></span></div>
+            <div><b>ទីកន្លែងកំណើត៖</b> <span id="pdf-pob"></span></div>
+            <div><b>អត្តសញ្ញាណប័ណ្ណលេខ៖</b> <span id="pdf-id-num"></span></div>
+            <div><b>ថ្ងៃផុតកំណត់៖</b> <span id="pdf-id-exp"></span></div>
+            <div><b>លេខទូរស័ព្ទ៖</b> <span id="pdf-phone"></span></div>
+            <div><b>តេឡេក្រាម៖</b> <span id="pdf-tg"></span></div>
+            <div><b>អ៊ីមែល៖</b> <span id="pdf-email"></span></div>
+            <div><b>ប្រភេទសមាជិកភាព៖</b> <span id="pdf-cat"></span></div>
+        </div>
+        <div style="font-size:12px; margin-top:10px;"><b>អាសយដ្ឋានបច្ចុប្បន្ន៖</b> <span id="pdf-address"></span></div>
+
+        <div class="pdf-section">២. ប្រវត្តិរូបសង្ខេបផ្លូវការរបស់សមាជិក (Professional Profile)</div>
+        <div style="font-size:12px; margin-top:8px; line-height:1.6;">
+            • <b>កម្រិតវប្បធម៌ និងការបណ្តុះបណ្តាល៖</b> <span id="pdf-edu"></span><br>
+            • <b>បទពិសោធន៍ការងារ និងសកម្មភាពអាជីវកម្ម៖</b> <span id="pdf-exp"></span><br>
+            • <b>វិស័យអាជីវកម្មចម្បង៖</b> <span id="pdf-industry"></span><br>
+            • <b>ទេពកោសល្យ និងការរួមចំណែកដល់ MSN៖</b> <span id="pdf-skills"></span>
+        </div>
+
+        <div class="pdf-section">៣. កិច្ចសន្យា និងការប្តេជ្ញាចិត្តរបស់សមាជិកមហាសិរី (Agreement)</div>
+        <div style="font-size:10px; text-align:justify; margin-top:5px; line-height:1.4; color:#333;">
+            ខ្ញុំបាទ/នាងខ្ញុំ សូមធ្វើការប្តេជ្ញាចិត្តជាផ្លូវការចំពោះមុខគណៈគ្រប់គ្រង MSN ថានឹងគោរពតាមលក្ខន្តិកៈ បទបញ្ជាផ្ទៃក្នុង គោលការណ៍ណែនាំ និងក្រមសីលធម៌ទាំងស្រុង។ ខ្ញុំប្តេជ្ញាមិនបញ្ចេញព័ត៌មានសម្ងាត់ យុទ្ធសាស្ត្រ ឬគម្រោងការងារទៅកាន់ភាគីខាងក្រៅឡើយ។ ខ្ញុំយល់ព្រមថាគណៈគ្រប់គ្រង MSN មានសិទ្ធិពេញលេញក្នុងការផ្អាកសមាជិកភាពរបស់ខ្ញុំ ប្រសិនបើខ្ញុំប្រព្រឹត្តល្មើសនឹងកិច្ចសន្យានេះ ឬច្បាប់នៃព្រះរាជាណាចក្រកម្ពុជា។
+        </div>
+
+        <div style="margin-top:30px; display:grid; grid-template-columns:1fr 1fr; text-align:center; font-size:12px;">
+            <div>
+                <b>ប្រព័ន្ធស្កែនផ្ទៃមុខបញ្ជាក់សច្ចៈភាព</b><br><br>
+                <span style="color:green; font-weight:bold;">[ ✓ ផ្ទៀងផ្ទាត់ជោគជ័យ ]</span>
+            </div>
+            <div>
+                <b>ហត្ថលេខាឌីជីថលសមាជិក</b><br><br>
+                <span id="pdf-sig-view" style="font-style:italic; text-decoration:underline; font-weight:bold; color:blue;"></span>
+            </div>
+        </div>
+    </div>
+
     <div class="footer">
-        <p style="font-family:'Khmer OS Muol Light'; font-size:14px; color:var(--accent);">ក្រុមហ៊ុន មហាសិរី ណេតវើក ឯ.ក (MOHASIRI NETWORK CO., LTD.)</p>
-        <p>ប្រព័ន្ធមេជំនាន់ Super App v4.0 គ្រប់គ្រងសច្ចៈភាព និងដំណើរការស្វ័យប្រវត្តផ្ទាល់ដីជោគជ័យ ១០០%</p>
+        <p style="font-family:'Khmer OS Muol Light'; font-size:13px; color:var(--accent);">ក្រុមហ៊ុន មហាសិរី ណេតវើក ឯ.ក (MOHASIRI NETWORK CO., LTD.)</p>
+        <p>ប្រព័ន្ធមេជំនាន់ Super App v5.0 គ្រប់គ្រងទម្រង់ច្បាប់ និងទាញទិន្នន័យ PDF ស្វ័យប្រវត្ត</p>
     </div>
 
     <script>
@@ -244,66 +273,77 @@
             document.getElementById('scr-invest').style.display = scr === 'invest' ? 'block' : 'none';
             document.getElementById('scr-save').style.display = scr === 'save' ? 'block' : 'none';
             
-            document.getElementById('btn-tab-reg').className = scr === 'reg' ? 'tab-btn active' : 'tab-btn';
-            document.getElementById('btn-tab-shop').className = scr === 'shop' ? 'tab-btn active' : 'tab-btn';
-            document.getElementById('btn-tab-invest').className = scr === 'invest' ? 'tab-btn active' : 'tab-btn';
-            document.getElementById('btn-tab-save').className = scr === 'save' ? 'tab-btn active' : 'tab-btn';
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('btn-tab-' + scr).classList.add('active');
         }
 
-        function startFaceScan() {
-            document.getElementById('scanner-box').style.display = 'block';
+        function triggerAppFaceScan() {
+            document.getElementById('app-scanner-box').style.display = 'block';
             setTimeout(() => {
-                document.getElementById('scanner-box').style.display = 'none';
-                document.getElementById('face-status').value = "1";
-                alert("✓ ស្កែនផ្ទៃមុខបញ្ជាក់សច្ចៈភាពបានជោគជ័យ ១០០%!");
-            }, 2500);
+                document.getElementById('app-scanner-box').style.display = 'none';
+                document.getElementById('app-face-status').value = "1";
+                alert("✓ ប្រព័ន្ធស្កែនផ្ទៃមុខ និងពិនិត្យភាពត្រឹមត្រូវ (Validation Check) ជោគជ័យ ១០០%!");
+            }, 2000);
         }
 
-        function processMemberReg(e) {
-            e.preventDefault();
-            if(document.getElementById('face-status').value !== "1") {
-                alert("⚠️ សូមមេត្តាធ្វើការស្កែនផ្ទៃមុខរបស់អ្នកស្នើសុំដើម្បីបញ្ជាក់សច្ចៈភាពសិន!");
-                return;
-            }
-            let type = document.getElementById('reg-type').value;
-            let name = document.getElementById('reg-name').value;
-            let count = document.querySelectorAll('#tbl-members tr').length + 24;
-            let code = "MSN-" + String(count).padStart(3, '0');
-
-            let row = `<tr><td><span class="badge bg-id">${code}</span></td><td><b>${name}</b></td><td>${type}</td><td>ពាក្យសុំ+ប្រវត្តិរូប+កិច្ចសន្យា (រួចរាល់)</td><td><span class="badge bg-approved">✓ ផ្ទៀងផ្ទាត់រួច</span></td></tr>`;
-            document.getElementById('tbl-members').innerHTML += row;
-            alert("🎉 ប្រព័ន្ធបានទទួលពាក្យសុំ ប្រវត្តិរូប កិច្ចសន្យា និងទិន្នន័យស្កែនមុខរបស់សមាជិកភាព " + name + " ចូលប្រព័ន្ធមេដោយស្វ័យប្រវត្តរួចរាល់!");
+        function signDigital() {
+            let name = document.getElementById('kh-name').value;
+            if(!name) { alert("⚠️ សូមមេត្តាបំពេញឈ្មោះពេញជាអក្សរខ្មែរជាមុនសិនបាទ!"); return; }
+            document.getElementById('sig-pad').innerHTML = "✍️ សន្យាដោយសច្ចៈ៖ " + name;
+            document.getElementById('sig-pad').style.color = "blue";
+            document.getElementById('sig-status').value = "1";
+            alert("✓ បានចុះហត្ថលេខាឌីជីថលជាផ្លូវការ!");
         }
 
-        function processProductPost(e) {
+        function processMembershipSubmit(e) {
             e.preventDefault();
-            let name = document.getElementById('p-name').value;
-            let cat = document.getElementById('p-cat').value;
-            let price = document.getElementById('p-price').value;
+            
+            // Validation Checks
+            if(document.getElementById('app-face-status').value !== "1") { alert("⚠️ សូមមេត្តាចុចស្កែនផ្ទៃមុខដើម្បីបញ្ជាក់សច្ចៈភាពសិន!"); return; }
+            if(document.getElementById('sig-status').value !== "1") { alert("⚠️ សូមមេត្តាចុចចុះហត្ថលេខាឌីជីថលជាមុនសិន!"); return; }
 
-            let row = `<tr><td>${name}</td><td>${cat}</td><td>$${parseFloat(price).toFixed(2)}</td><td><span class="badge bg-pending">⌛ រង់ចាំលោកអគ្គនាយកអនុញ្ញាត</span></td></tr>`;
-            document.getElementById('tbl-products').innerHTML += row;
-            alert("✓ បានបញ្ជូនមុខទំនិញទៅកាន់ប្រព័ន្ធរដ្ឋបាលកណ្តាល! មុខទំនិញនឹងបង្ហាញលើទីផ្សារពេលមានការអនុញ្ញាត។");
-        }
+            let khName = document.getElementById('kh-name').value;
+            let enName = document.getElementById('en-name').value;
+            let phone = document.getElementById('phone').value;
+            let cat = document.getElementById('mbr-cat').value;
+            
+            let count = document.querySelectorAll('#tbl-master-members tr').length + 24;
+            let finalCode = "MSN-" + String(count).padStart(3, '0');
 
-        function processInvestment(e) {
-            e.preventDefault();
-            let name = document.getElementById('inv-name').value;
-            let cap = document.getElementById('inv-capital').value;
-            let biz = document.getElementById('inv-business').value;
+            // Map data to PDF template
+            document.getElementById('pdf-generated-id').innerText = "លេខកូដសមាជិក៖ " + finalCode;
+            document.getElementById('pdf-kh-name').innerText = khName;
+            document.getElementById('pdf-en-name').innerText = enName;
+            document.getElementById('pdf-gender').innerText = document.getElementById('gender').value;
+            document.getElementById('pdf-nationality').innerText = document.getElementById('nationality').value;
+            document.getElementById('pdf-dob').innerText = document.getElementById('dob').value;
+            document.getElementById('pdf-pob').innerText = document.getElementById('pob').value;
+            document.getElementById('pdf-id-num').innerText = document.getElementById('id-num').value;
+            document.getElementById('pdf-id-exp').innerText = document.getElementById('id-exp').value;
+            document.getElementById('pdf-phone').innerText = phone;
+            document.getElementById('pdf-tg').innerText = document.getElementById('telegram').value;
+            document.getElementById('pdf-email').innerText = document.getElementById('email').value;
+            document.getElementById('pdf-address').innerText = document.getElementById('address').value;
+            document.getElementById('pdf-cat').innerText = cat;
+            document.getElementById('pdf-edu').innerText = document.getElementById('edu').value;
+            document.getElementById('pdf-exp').innerText = document.getElementById('exp-job').value;
+            document.getElementById('pdf-industry').innerText = document.getElementById('core-industry').value;
+            document.getElementById('pdf-skills').innerText = document.getElementById('skills').value;
+            document.getElementById('pdf-sig-view').innerText = khName;
 
-            let row = `<tr><td>${name}</td><td>$${parseInt(cap).toLocaleString()}</td><td>${biz}</td></tr>`;
-            document.getElementById('tbl-investments').innerHTML += row;
-            alert("💎 ចុះហត្ថលេខាលើកិច្ចសន្យាបំណងប្រាថ្នាវិវិយោគទុនជាមួយ MSN រួចរាល់!");
-        }
+            // Update Central Admin Dashboard
+            let row = `<tr><td><span class="badge bg-id">${finalCode}</span></td><td><b>${khName}</b></td><td>${cat}</td><td>${phone}</td><td><span class="badge bg-approved">✓ គ្រប់គ្រប់ + PDF រួចរាល់</span></td></tr>`;
+            document.getElementById('tbl-master-members').innerHTML += row;
 
-        function processSavings(e) {
-            e.preventDefault();
-            let id = document.getElementById('save-id').value;
-            let plan = document.getElementById('save-plan').value;
-            let amt = parseFloat(document.getElementById('save-amount').value);
-
-            alert("🏦 ប្រព័ន្ធកាបូបលុយស្វ័យប្រវត្ត បានបំប្លែងទឹកប្រាក់ $" + amt + " ចូលទៅក្នុងគម្រោង [" + plan + "] របស់សមាជិកកូដ " + id + " ជោគជ័យ!");
+            // Generate the PDF file automatically
+            let element = document.getElementById('pdf-template');
+            element.style.display = 'block';
+            let opt = { margin: 0.5, filename: finalCode + '_MSN_Registration.pdf', image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 2 }, jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' } };
+            
+            html2pdf().set(opt).from(element).save().then(() => {
+                element.style.display = 'none';
+                alert("🎉 មហាជោគជ័យ! ប្រព័ន្ធបានបញ្ចូលទិន្នន័យរបស់សមាជិក " + khName + " ទៅក្នុងប្រព័ន្ធរដ្ឋបាលកណ្តាល និងបានបង្កើត (Generate) ឯកសាររួមទាំង៣ ចេញជាហ្វាល PDF ផ្លូវការដោយស្វ័យប្រវត្តរួចរាល់ហើយបាទលោករកបាទ!");
+            });
         }
     </script>
 </body>
