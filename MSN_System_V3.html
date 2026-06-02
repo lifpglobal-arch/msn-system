@@ -1,48 +1,21 @@
-<script><
-    div style="text-align: center; margin: 20px;">
-    <a href="https://t.me/MohaSiri_MSN_bot" target="_blank" style="
-        display: inline-block;
-        padding: 15px 30px;
-        background-color: #0088cc;
-        color: #ffffff;
-        text-decoration: none;
-        border-radius: 10px;
-        font-weight: bold;
-        font-size: 18px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
+<div style="text-align: center; margin: 20px;">
+    <a href="https://t.me/MohaSiri_MSN_bot" target="_blank" style="display: inline-block; padding: 15px 30px; background-color: #0088cc; color: #ffffff; text-decoration: none; border-radius: 10px; font-weight: bold; font-size: 18px; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
         ✈️ ភ្ជាប់ Telegram ឥឡូវនេះ
     </a>
 </div>
+
+<script>
     const TELEGRAM_BOT_TOKEN = "8771623252:AAEJ9n9I0-oIeKDrtoSzlRPfhzG4U7gA-oY";
 
-    // មុខងារផ្ញើសារទៅកាន់ Telegram របស់សមាជិកតាមរយៈ Bot
     function sendTelegramNotification(message) {
         let user = msnUserDatabase[currentLoggedInUser];
-        // ក្នុងករណីនេះ យើងប្រើប្រាស់ ChatID ដែលជាអត្តសញ្ញាណ Telegram របស់សមាជិក (ឧទាហរណ៍៖ ទាញចេញពី Database)
-        // សមាជិកត្រូវចុច Start ជាមួយ Bot ដើម្បីឱ្យ Bot ស្គាល់ ChatID របស់គាត់
-        let chatId = user.tg; 
-        
+        let chatId = user.tg;
         let url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent("🏛️ [MSN Notification]: " + message)}`;
-        
-        fetch(url).then(response => {
-            console.log("Telegram API Response:", response);
-        }).catch(err => console.error("Error sending Telegram:", err));
+        fetch(url).catch(err => console.error(err));
     }
 
-    // កែសម្រួល Function triggerMultiChannelNoti ឱ្យផ្ញើចូល Telegram ពិតប្រាកដ
     function triggerMultiChannelNoti(message) {
-        // បង្ហាញលើអេក្រង់ App
         document.getElementById("noti-box").innerHTML = `<div><span class="noti-channel">✈️ Telegram Notification:</span> ${message}</div>`;
-        // បាញ់សារទៅ Telegram
         sendTelegramNotification(message);
     }
-// កូដសម្រាប់ជូនដំណឹងទៅលោកអគ្គនាយកពេលមានសមាជិកថ្មីចុច Start
-function notifyAdminOnStart(username, chatId) {
-    let adminChatId = " 8022100683"; // <--- សូមជំនួសលេខ ID របស់លោកត្រង់នេះ
-    let msg = `មានសមាជិកថ្មីចុច Start!%0Aឈ្មោះ: ${username}%0AChatID: ${chatId}`;
-    let url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${adminChatId}&text=${msg}`;
-    
-    fetch(url)
-    .then(res => console.log("Admin notified about new user"))
-    .catch(err => console.error("Error notifying admin:", err));
-}</script>
+</script>
