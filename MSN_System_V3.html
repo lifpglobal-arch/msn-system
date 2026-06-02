@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MSN Empire Super App v5.0 - Ultimate Membership Edition</title>
+    <title>MSN Private Security & Banking Super App v6.0</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         :root {
@@ -15,51 +15,50 @@
             --text-light: #F8FAFC;
             --success: #10B981;
             --warning: #F59E0B;
+            --info: #3B82F6;
         }
         
         body { font-family: 'Khmer OS System', Arial, sans-serif; background-color: #F1F5F9; margin: 0; padding: 0; color: var(--text-dark); scroll-behavior: smooth; }
         
-        .header { background: linear-gradient(135deg, var(--primary) 0%, var(--mid-blue) 50%, var(--light-blue) 100%); color: white; padding: 40px 5%; text-align: center; border-bottom: 5px solid var(--accent); }
-        .main-logo { width: 160px; height: auto; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.4); border: 2px solid var(--accent); margin-bottom: 15px; }
-        .header h1 { font-family: 'Khmer OS Muol Light', sans-serif; font-size: 24px; color: var(--accent); margin: 10px 0 5px 0; }
-        .badge-global { background: linear-gradient(90deg, #9A7432, var(--accent)); color: white; padding: 6px 20px; font-weight: bold; border-radius: 30px; font-size: 11px; display: inline-block; }
+        .header { background: linear-gradient(135deg, var(--primary) 0%, var(--mid-blue) 50%, var(--light-blue) 100%); color: white; padding: 35px 5%; text-align: center; border-bottom: 5px solid var(--accent); }
+        .main-logo { width: 140px; height: auto; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.4); border: 2px solid var(--accent); margin-bottom: 10px; }
+        .header h1 { font-family: 'Khmer OS Muol Light', sans-serif; font-size: 22px; color: var(--accent); margin: 5px 0; }
+        .badge-global { background: linear-gradient(90deg, #9A7432, var(--accent)); color: white; padding: 5px 15px; font-weight: bold; border-radius: 30px; font-size: 10px; display: inline-block; }
 
-        .nav-bar { background: var(--primary); padding: 12px 5%; display: flex; justify-content: center; gap: 20px; position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--accent); }
-        .nav-bar a { color: white; text-decoration: none; font-weight: bold; font-size: 12px; padding: 6px 12px; border-radius: 4px; }
-
-        .container { max-width: 1400px; margin: 30px auto; padding: 0 20px; }
-        .app-grid { display: grid; grid-template-columns: 420px 1fr; gap: 30px; }
+        .container { max-width: 1400px; margin: 25px auto; padding: 0 20px; }
+        .app-grid { display: grid; grid-template-columns: 440px 1fr; gap: 25px; }
         
         /* PHONE FRAME */
-        .phone-frame { background: #000; border: 12px solid #334155; border-radius: 40px; height: 880px; overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.2); display: flex; flex-direction: column; }
+        .phone-frame { background: #000; border: 12px solid #334155; border-radius: 40px; height: 920px; overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.2); display: flex; flex-direction: column; }
         .phone-screen { background: #F8FAFC; flex: 1; display: flex; flex-direction: column; overflow-y: auto; }
         .phone-topbar { background: var(--primary); color: white; padding: 12px; text-align: center; border-bottom: 3px solid var(--accent); display: flex; flex-direction: column; align-items: center; gap: 5px; }
-        .app-logo { width: 45px; height: auto; border-radius: 4px; border: 1px solid var(--accent); }
-        .phone-topbar span { font-family: 'Khmer OS Muol Light'; font-size: 11px; color: var(--accent); }
-        
-        .app-menu-tabs { display: grid; grid-template-columns: repeat(4, 1fr); background: #E2E8F0; }
-        .tab-btn { background: none; border: none; padding: 10px 2px; font-size: 10px; font-weight: bold; cursor: pointer; font-family: 'Khmer OS System'; text-align: center; border-bottom: 2px solid transparent; }
-        .tab-btn.active { background: var(--accent); color: var(--primary); font-weight: bold; }
+        .app-logo { width: 40px; height: auto; border-radius: 4px; border: 1px solid var(--accent); }
         
         .phone-body { padding: 15px; flex: 1; }
-        .form-section-title { font-family: 'Khmer OS Muol Light'; font-size: 11px; color: var(--mid-blue); margin: 15px 0 8px 0; border-bottom: 1px solid var(--accent); padding-bottom: 3px; }
+        .form-section-title { font-family: 'Khmer OS Muol Light'; font-size: 11px; color: var(--mid-blue); margin: 12px 0 6px 0; border-bottom: 1px solid var(--accent); padding-bottom: 2px; }
         .form-group { margin-bottom: 10px; }
         .form-group label { display: block; font-weight: bold; font-size: 10px; margin-bottom: 3px; color: var(--primary); }
-        .form-ctrl { width: 100%; padding: 6px; border: 1px solid #CBD5E1; border-radius: 5px; font-family: 'Khmer OS System'; font-size: 11px; box-sizing: border-box; }
-        .scroll-box { font-size: 10px; background: #FFF; border: 1px solid #CBD5E1; padding: 8px; border-radius: 5px; height: 100px; overflow-y: scroll; margin-bottom: 8px; line-height: 1.5; text-align: justify; }
+        .form-ctrl { width: 100%; padding: 7px; border: 1px solid #CBD5E1; border-radius: 5px; font-family: 'Khmer OS System'; font-size: 11px; box-sizing: border-box; }
         
-        /* SCANNER & SIGNATURE */
-        .face-scanner { border: 2px dashed var(--accent); padding: 10px; text-align: center; border-radius: 8px; background: #FFF; margin: 8px 0; position: relative; display: none; }
-        .scan-line { width: 100%; height: 3px; background: var(--success); position: absolute; top: 0; left: 0; animation: scan 2s linear infinite; }
-        @keyframes scan { 0% { top: 0%; } 50% { top: 100%; } 100% { top: 0%; } }
-        
-        .signature-pad { border: 1px dashed var(--primary); background: #FFF; height: 60px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 11px; color: #64748B; cursor: pointer; font-style: italic; }
-
-        .btn-block { background: var(--primary); color: white; border: none; padding: 10px; width: 100%; border-radius: 6px; font-weight: bold; cursor: pointer; font-family: 'Khmer OS System'; font-size: 12px; margin-top: 5px; }
+        .btn-block { background: var(--primary); color: white; border: none; padding: 10px; width: 100%; border-radius: 6px; font-weight: bold; cursor: pointer; font-family: 'Khmer OS System'; font-size: 11px; margin-top: 5px; }
         .btn-block:hover { background: #000; color: var(--accent); }
 
-        /* DASHBOARD PRINT AREA */
-        .main-dashboard { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.02); height: 830px; overflow-y: auto; }
+        /* SECURITY LOGIN/SIGNUP BOX */
+        .auth-box { background: white; padding: 20px; border-radius: 12px; border: 1px solid #CBD5E1; text-align: center; margin-top: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .auth-toggle { display: flex; gap: 10px; margin-bottom: 15px; background: #E2E8F0; padding: 3px; border-radius: 6px; }
+        .auth-toggle button { flex: 1; border: none; padding: 8px; font-family: 'Khmer OS System'; font-size: 11px; font-weight: bold; cursor: pointer; background: none; border-radius: 5px; }
+        .auth-toggle button.active { background: white; color: var(--primary); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+
+        /* NOTIFICATION BOX SIMULATOR */
+        .notification-alert { background: #EFF6FF; border-left: 4px solid var(--info); padding: 10px; border-radius: 6px; font-size: 10px; margin-top: 12px; line-height: 1.4; display: none; }
+        .noti-channel { font-weight: bold; color: #1E40AF; display: inline-block; margin-right: 5px; }
+
+        /* PORTAL STYLING */
+        .portal-header-badge { background: #F3E5AB; color: #9A7432; padding: 8px; border-radius: 6px; font-size: 11px; font-weight: bold; text-align: center; margin-bottom: 12px; border: 1px solid var(--accent); }
+        .banking-card { background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%); color: white; padding: 15px; border-radius: 12px; box-shadow: 0 5px 15px rgba(30,58,138,0.2); margin-bottom: 15px; }
+
+        /* ADMINISTRATIVE DASHBOARD */
+        .main-dashboard { background: white; padding: 20px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.02); height: 860px; overflow-y: auto; }
         .data-table { width: 100%; border-collapse: collapse; font-size: 11px; margin-bottom: 20px; }
         .data-table th { background: #F1F5F9; color: var(--primary); padding: 8px; font-weight: bold; border-bottom: 2px solid #CBD5E1; text-align: left; }
         .data-table td { padding: 8px; border-bottom: 1px solid #E2E8F0; }
@@ -67,29 +66,17 @@
         .bg-approved { background: var(--success); }
         .bg-id { background: var(--primary); }
 
-        /* PDF DOCUMENT STYLING (HIDDEN ON SCREEN) */
-        #pdf-template { display: none; background: white; padding: 40px; box-sizing: border-box; color: #000; }
-        .pdf-header { text-align: center; font-family: 'Khmer OS Muol Light'; font-size: 14px; margin-bottom: 20px; line-height: 1.8; }
-        .pdf-title { text-align: center; font-family: 'Khmer OS Muol Light'; font-size: 16px; color: #000; margin: 20px 0; }
-        .pdf-section { font-family: 'Khmer OS Muol Light'; font-size: 12px; margin-top: 15px; border-bottom: 1px solid #000; padding-bottom: 3px; }
-        .pdf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 12px; margin-top: 8px; line-height: 1.6; }
-        
-        .footer { background: var(--primary); color: white; text-align: center; padding: 30px 20px; font-size: 12px; border-top: 5px solid var(--accent); margin-top: 30px; }
+        .footer { background: var(--primary); color: white; text-align: center; padding: 30px 20px; font-size: 11px; border-top: 5px solid var(--accent); margin-top: 25px; }
     </style>
 </head>
 <body>
 
     <div class="header">
-        <div class="badge-global">🏛️ MSN AUTOMATED GLOBAL SUPER APP SYSTEM v5.0</div>
+        <div class="badge-global">🏛️ MSN AUTOMATED ACCOUNT & DIGITAL BANKING SYSTEM v6.0</div>
         <br>
         <img src="5114.png" alt="MOHASIRI MSN LOGO" class="main-logo">
         <h1>មហាប្រព័ន្ធឌីជីថលស្វ័យប្រវត្ត អាណាចក្រមហាសិរី MSN</h1>
-        <p style="font-size: 13px; color: #CBD5E1; font-style: italic; font-weight: bold;">« មហាសិរី (MSN)៖ ដៃគូឈានមុខ ឆ្ពោះទៅរកភាពមានបាន និងជោគជ័យ »</p>
-    </div>
-
-    <div class="nav-bar">
-        <a href="#super-app">📱 ផ្ទាំងបញ្ជាទូរស័ព្ទ App & គ្រប់គ្រងទិន្នន័យសមាជិក</a>
-        <a href="https://github.com/lifpglobal-arch/msn-system" target="_blank">🛠️ ចូលទៅកាន់ GitHub មេ</a>
+        <p style="font-size: 12px; color: #CBD5E1; font-style: italic; font-weight: bold;">« មហាសិរី (MSN)៖ ដៃគូឈានមុខ ឆ្ពោះទៅរកភាពមានបាន និងជោគជ័យ »</p>
     </div>
 
     <div class="container" id="super-app">
@@ -98,252 +85,243 @@
             <div class="phone-frame">
                 <div class="phone-topbar">
                     <img src="5114.png" alt="MSN MINI LOGO" class="app-logo">
-                    <span>MSN EMPIRE SUPER APP</span>
-                </div>
-                <div class="app-menu-tabs">
-                    <button id="btn-tab-reg" class="tab-btn active" onclick="showAppScreen('reg')">📝 ស្នើសុំសមាជិក</button>
-                    <button id="btn-tab-shop" class="tab-btn" onclick="showAppScreen('shop')">🛒 មហាផ្សារ</button>
-                    <button id="btn-tab-invest" class="tab-btn" onclick="showAppScreen('invest')">💼 វិនិយោគ</button>
-                    <button id="btn-tab-save" class="tab-btn" onclick="showAppScreen('save')">🏦 មហាសន្សំ</button>
+                    <span style="font-family:'Khmer OS Muol Light'; font-size:10px; color:var(--accent);">MSN EMPIRE DIGITAL BANK</span>
                 </div>
                 
                 <div class="phone-screen">
                     <div class="phone-body">
                         
-                        <div id="scr-reg">
-                            <form id="msn-master-form" onsubmit="processMembershipSubmit(event)">
-                                
-                                <div class="form-section-title">១. ពាក្យសុំចុះឈ្មោះចូលជាសមាជិក (ក. ព័ត៌មានផ្ទាល់ខ្លួន)</div>
-                                <div class="form-group"><label>ឈ្មោះពេញ (អក្សរខ្មែរ) *</label><input type="text" id="kh-name" class="form-ctrl" required placeholder="ឧ. មេណ្ឌ មុនី"></div>
-                                <div class="form-group"><label>ឈ្មោះពេញ (អក្សរឡាតាំង) *</label><input type="text" id="en-name" class="form-ctrl" required placeholder="ឧ. MEN MONY"></div>
-                                <div class="form-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-                                    <div class="form-group">
-                                        <label>ភេទ *</label>
-                                        <select id="gender" class="form-ctrl"><option value="ប្រុស">ប្រុស</option><option value="ស្រី">ស្រី</option></select>
-                                    </div>
-                                    <div class="form-group"><label>សញ្ជាតិ *</label><input type="text" id="nationality" class="form-ctrl" required value="ខ្មែរ"></div>
-                                </div>
-                                <div class="form-group"><label>ថ្ងៃ ខែ ឆ្នាំកំណើត *</label><input type="date" id="dob" class="form-ctrl" required></div>
-                                <div class="form-group"><label>ទីកន្លែងកំណើត *</label><input type="text" id="pob" class="form-ctrl" required placeholder="ខេត្ត/ក្រុងកំណើត"></div>
-                                <div class="form-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-                                    <div class="form-group"><label>អត្តសញ្ញាណប័ណ្ណ/លិខិតឆ្លងដែនលេខ *</label><input type="text" id="id-num" class="form-ctrl" required placeholder="09XXXXXXXX"></div>
-                                    <div class="form-group"><label>ថ្ងៃផុតកំណត់ *</label><input type="date" id="id-exp" class="form-ctrl" required></div>
+                        <div id="app-auth-screen">
+                            <div class="auth-box">
+                                <div class="auth-toggle">
+                                    <button id="tab-login" class="active" onclick="toggleAuthMode('login')">🔓 ចូលគណនី</button>
+                                    <button id="tab-signup" onclick="toggleAuthMode('signup')">📝 ចុះឈ្មោះថ្មី</button>
                                 </div>
 
-                                <div class="form-section-title">ខ. ព័ត៌មានទំនាក់ទំនង និងបណ្តាញសង្គម</div>
-                                <div class="form-group"><label>លេខទូរស័ព្ទចម្បង *</label><input type="tel" id="phone" class="form-ctrl" required placeholder="ឧ. 096123456"></div>
-                                <div class="form-group"><label>លេខតេឡេក្រាម (Telegram) *</label><input type="text" id="telegram" class="form-ctrl" required placeholder="ឧ. @username"></div>
-                                <div class="form-group"><label>អ៊ីមែល (Email) *</label><input type="email" id="email" class="form-ctrl" required placeholder="name@domain.com"></div>
-                                <div class="form-group"><label>អាសយដ្ឋានបច្ចុប្បន្ន *</label><input type="text" id="address" class="form-ctrl" required placeholder="ផ្ទះលេខ ផ្លូវ ភូមិ ឃុំ ស្រុក ខេត្ត"></div>
-
-                                <div class="form-section-title">គ. ប្រភេទសមាជិកភាពដែលស្នើសុំ</div>
-                                <div class="form-group">
-                                    <select id="mbr-cat" class="form-ctrl">
-                                        <option value="សមាជិកកម្រិតទូទៅ (General Member)">សមាជិកកម្រិតទូទៅ (General Member)</option>
-                                        <option value="សមាជិកកម្រិតអាជីវកម្ម/ដៃគូពាណិជ្ជកម្ម (Corporate/Business Partner)">សមាជិកកម្រិតអាជីវកម្ម/ដៃគូពាណិជ្ជកម្ម</option>
-                                        <option value="សមាជិកកម្រិតវីអាយភី (VIP Member)">សមាជិកកម្រិតវីអាយភី (VIP Member)</option>
-                                    </select>
+                                <div id="form-login">
+                                    <h4 style="margin:0 0 10px 0; font-family:'Khmer OS Muol Light'; font-size:11px; color:var(--primary);">🔒 ចូលប្រព័ន្ធឯកជនភាពសមាជិក</h4>
+                                    <div class="form-group"><label>លេខកូដសមាជិកសម្ងាត់ *</label><input type="text" id="login-id" class="form-ctrl" placeholder="ឧ. MSN-024" style="text-align:center; font-weight:bold;"></div>
+                                    <button type="button" class="btn-block" style="background:var(--success);" onclick="handleSecureLogin()">ចូលប្រើប្រាស់គណនី</button>
                                 </div>
 
-                                <div class="form-section-title">២. ប្រវត្តិរូបសង្ខេបផ្លូវការរបស់សមាជិក</div>
-                                <div class="form-group"><label>កម្រិតវប្បធម៌ / សញ្ញាបត្រខ្ពស់បំផុត *</label><input type="text" id="edu" class="form-ctrl" required placeholder="សញ្ញាបត្រ ជំនាញ គ្រឹះស្ថានសិក្សា"></div>
-                                <div class="form-group"><label>បទពិសោធន៍ការងារ / មុខតំណែងបច្ចុប្បន្ន *</label><input type="text" id="exp-job" class="form-ctrl" required placeholder="មុខតំណែង និងឈ្មោះក្រុមហ៊ុន"></div>
-                                <div class="form-group">
-                                    <label>វិស័យអាជីវកម្មចម្បង *</label>
-                                    <select id="core-industry" class="form-ctrl">
-                                        <option value="បច្ចេកវិទ្យា">បច្ចេកវិទ្យា</option><option value="ពាណិជ្ជកម្ម">ពាណិជ្ជកម្ម</option><option value="សេវាកម្ម">សេវាកម្ម</option><option value="ផ្សេងៗ">ផ្សេងៗ</option>
-                                    </select>
+                                <div id="form-signup" style="display:none;">
+                                    <h4 style="margin:0 0 10px 0; font-family:'Khmer OS Muol Light'; font-size:11px; color:var(--primary);">📝 បង្កើតគណនីមហាសិរី (MSN)</h4>
+                                    <div class="form-group"><label>នាមត្រកូល និងនាមខ្លួន *</label><input type="text" id="sign-name" class="form-ctrl" placeholder="ឧ. អុល ស្រីនី"></div>
+                                    <div class="form-group"><label>លេខទូរស័ព្ទដៃ *</label><input type="tel" id="sign-phone" class="form-ctrl" placeholder="096XXXXXXX"></div>
+                                    <div class="form-group"><label>គណនីតេឡេក្រាម (Telegram) *</label><input type="text" id="sign-tg" class="form-ctrl" placeholder="@username"></div>
+                                    <div class="form-group"><label>គណនីហ្វេសប៊ុក (Facebook ID) *</label><input type="text" id="sign-fb" class="form-ctrl" placeholder="ឈ្មោះហ្វេសប៊ុក"></div>
+                                    <button type="button" class="btn-block" style="background:var(--accent); color:var(--primary);" onclick="handleSecureSignUp()">🚀 បង្កើតគណនី និងទទួលបានកូដ</button>
                                 </div>
-                                <div class="form-group"><label>ទេពកោសល្យ និងអ្វីដែលអាចរួមចំណែកដល់ MSN *</label><input type="text" id="skills" class="form-ctrl" required placeholder="ជំនាញឯកទេសរបស់អ្នក"></div>
-
-                                <div class="form-section-title">៣. កិច្ចសន្យា និងលក្ខខណ្ឌសមាជិកភាពឌីជីថល</div>
-                                <div class="scroll-box">
-                                    <b>កិច្ចសន្យា និងការប្តេជ្ញាចិត្តរបស់សមាជិក មហាសិរី (MSN)</b><br>
-                                    ខ្ញុំបាទ/នាងខ្ញុំ ជាម្ចាស់គណនី និងជាបេក្ខជនស្នើសុំចូលជាសមាជិកមហាសិរី (MSN) សូមធ្វើការប្តេជ្ញាចិត្ត និងចុះកិច្ចសន្យាជាផ្លូវការចំពោះមុខគណៈគ្រប់គ្រង MSN ដូចតទៅ៖<br>
-                                    ១. ការអនុលោមតាមច្បាប់ និងបទបញ្ជា៖ ខ្ញុំយល់ព្រមគោរពតាមលក្ខន្តិកៈ បទបញ្ជាផ្ទៃក្នុង គោលការណ៍ណែនាំ និងក្រមសីលធម៌ដែលកំណត់ដោយ មហាសិរី (MSN) ទាំងស្រុង។<br>
-                                    ២. ការរក្សាការសម្ងាត់ និងសុវត្ថិភាពទិន្នន័យ៖ ខ្ញុំប្តេជ្ញាមិនថតចម្លង បញ្ចេញ ឬចែកចាយព័ត៌មានសម្ងាត់ យុទ្ធសាស្ត្រ គម្រោងការងារ ទៅកាន់ភាគីខាងក្រៅឡើយ។<br>
-                                    ៣. ការprotectionតម្លៃ និងកេរ្តិ៍ឈ្មោះស្ថាប័ន៖ ខ្ញុំមិនធ្វើសកម្មភាពណាដែលបង្កការខូចខាត ប៉ះពាល់ដល់កិត្តិយស កេរ្តិ៍ឈ្មោះ ឬបង្កការបែកបាក់សាមគ្គីភាពក្នុងរង្វង់សមាជិក MSN ឡើយ។
-                                </div>
-                                <div class="form-group">
-                                    <input type="checkbox" id="agree-check" required> <span style="font-size:10px; font-weight:bold; color:var(--primary);">ខ្ញុំបានអាន យល់ច្បាស់ និងព្រមព្រៀងទទួលយកលក្ខខណ្ឌទាំងអស់។</span>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>📸 ប្រព័ន្ធស្កែនផ្ទៃមុខបញ្ជាក់សច្ចៈភាព *</label>
-                                    <button type="button" class="btn-block" style="background:#64748B;" onclick="triggerAppFaceScan()">👁️ ចាប់ផ្តើមស្កែនផ្ទៃមុខ</button>
-                                    <div id="app-scanner-box" class="face-scanner"><div class="scan-line"></div>🤖 កំពុងស្កែនផ្ទៃមុខសច្ចៈភាព...</div>
-                                    <input type="hidden" id="app-face-status" value="0">
-                                </div>
-                                <div class="form-group">
-                                    <label>✍️ ហត្ថលេខាឌីជីថល (Digital Signature) *</label>
-                                    <div id="sig-pad" class="signature-pad" onclick="signDigital()">👉 ចុចទីនេះដើម្បីចុះហត្ថលេខាឌីជីថល</div>
-                                    <input type="hidden" id="sig-status" value="0">
-                                </div>
-
-                                <button type="submit" class="btn-block" style="background:var(--accent); color:var(--primary);">🚀 ដាក់ពាក្យ និងបង្កើតឯកសារ PDF ភ្លាមៗ</button>
-                            </form>
+                            </div>
                         </div>
 
-                        <div id="scr-shop" style="display:none;"><p style="font-size:12px;">🛒 មហាផ្សារទំនិញរាប់លានមុខ (ដំណើរការធម្មតា)</p></div>
-                        <div id="scr-invest" style="display:none;"><p style="font-size:12px;">💼 វិបក្សវិនិយោគទុនរួម (ដំណើរការធម្មតា)</p></div>
-                        <div id="scr-save" style="display:none;"><p style="font-size:12px;">🏦 ផែនការមហាសន្សំស្វ័យប្រវត្ត (ដំណើរការធម្មតា)</p></div>
+                        <div id="app-member-portal" style="display:none;">
+                            <div class="portal-header-badge">
+                                👤 គណនី៖ <span id="user-portal-name">អ្នកស្រី អុល ស្រីនី</span> | <span id="user-portal-id">MSN-024</span>
+                            </div>
+
+                            <div class="banking-card">
+                                <div style="font-size:10px; opacity:0.8; font-weight:bold;">💰 របាយការណ៍ប្រាក់ចំណេញសរុប (Profit Report)</div>
+                                <div style="font-size:24px; font-weight:bold; margin:5px 0;" id="user-portal-balance">$500.00</div>
+                                <div style="font-size:9px; opacity:0.9;" id="user-linked-bank">🏦 ធនាគារភ្ជាប់៖ ABA Bank (000XXXXXX)</div>
+                            </div>
+
+                            <div class="form-section-title">🏦 ១. ស្នើដកប្រាក់ចំណេញទៅធនាគារខ្លួនឯង</div>
+                            <form onsubmit="handleBankWithdrawal(event)">
+                                <div class="form-group"><label>ចំនួនទឹកប្រាក់ចង់ដក ($) *</label><input type="number" id="wd-amt" class="form-ctrl" required placeholder="កុំឱ្យលើសពីប្រាក់ចំណេញ"></div>
+                                <button type="submit" class="btn-block" style="background:var(--success);">💸 បញ្ជាដកប្រាក់ចូលគណនីធនាគារ</button>
+                            </form>
+
+                            <div class="form-section-title">🔄 ២. ផ្ទេរប្រាក់/ទូទាត់ចំណាយទៅសមាជិក MSN</div>
+                            <form onsubmit="handleInternalTransfer(event)">
+                                <div class="form-group"><label>លេខកូដសមាជិកអ្នកទទួល (Receiver ID) *</label><input type="text" id="transfer-to-id" class="form-ctrl" required placeholder="ឧ. MSN-025"></div>
+                                <div class="form-group"><label>ចំនួនទឹកប្រាក់ផ្ទេរ ($) *</label><input type="number" id="transfer-amt" class="form-ctrl" required placeholder="50"></div>
+                                <button type="submit" class="btn-block" style="background:var(--info);">✈️ ផ្ទេរប្រាក់ភ្លាមៗ (ឥតគិតថ្លៃសេវា)</button>
+                            </form>
+
+                            <div class="form-section-title">🛒 ៣. ស្នើដាក់លក់ទំនិញ ឬ សេវាកម្មរួម</div>
+                            <form onsubmit="handlePortalProduct(event)">
+                                <div class="form-group"><label>ឈ្មោះទំនិញ/សេវាកម្ម *</label><input type="text" id="portal-p-name" class="form-ctrl" required placeholder="ឧ. កាហ្វេមហាសិរី"></div>
+                                <div class="form-group"><label>តម្លៃលក់ ($) *</label><input type="number" id="portal-p-price" class="form-ctrl" required placeholder="15"></div>
+                                <button type="submit" class="btn-block" style="background:var(--accent); color:var(--primary);">📢 ផុសទំនិញសុំការអនុញ្ញាត</button>
+                            </form>
+
+                            <div id="noti-box" class="notification-alert"></div>
+
+                            <button type="button" class="btn-block" style="background:#64748B; margin-top:15px;" onclick="handleSecureLogout()">🔒 ចាកចេញពីគណនី (Logout)</button>
+                        </div>
 
                     </div>
                 </div>
             </div>
 
             <div class="main-dashboard">
-                <h3 style="margin-top:0; font-family:'Khmer OS Muol Light'; color:var(--primary); font-size:13px;">📊 ប្រព័ន្ធរដ្ឋបាលកណ្តាលឌីជីថល និងបញ្ជីឈ្មោះសមាជិកភាពផ្លូវការ (Live Ledger)</h3>
+                <h3 style="margin-top:0; font-family:'Khmer OS Muol Light'; color:var(--primary); font-size:12px;">📊 ផ្ទាំងគ្រប់គ្រងទិន្នន័យគណនី និងមហាធនាគាររួម (Live Ledger Console)</h3>
                 <hr>
+                
+                <h4>👥 បញ្ជីគណនីសមាជិក និងសមតុល្យទឹកប្រាក់ចំណេញផ្ទាល់ខ្លួន</h4>
                 <table class="data-table">
                     <thead>
-                        <tr><th>លេខកូដ</th><th>ឈ្មោះសមាជិក</th><th>ប្រភេទសមាជិកភាព</th><th>ទំនាក់ទំនង</th><th>ស្ថានភាពឯកសារទាំង៣</th></tr>
+                        <tr><th>លេខកូដ</th><th>ឈ្មោះសមាជិក</th><th>លេខទូរស័ព្ទ</th><th>តេឡេក្រាម</th><th>ប្រាក់ចំណេញបច្ចុប្បន្ន</th><th>ស្ថានភាពគណនី</th></tr>
                     </thead>
-                    <tbody id="tbl-master-members">
-                        <tr><td><span class="badge bg-id">MSN-024</span></td><td><b>អ្នកស្រី អុល ស្រីនី</b></td><td>គណៈកម្មាធិការប្រតិបត្តិ</td><td>096XXXXXX</td><td><span class="badge bg-approved">✓ គ្រប់គ្រប់ + PDF រួចរាល់</span></td></tr>
-                        <tr><td><span class="badge bg-id">MSN-025</span></td><td><b>កញ្ញា ស្រ៊ាង វិស៊ាន</b></td><td>គណៈកម្មាធិការប្រតិបត្តិ</td><td>097XXXXXX</td><td><span class="badge bg-approved">✓ គ្រប់គ្រប់ + PDF រួចរាល់</span></td></tr>
+                    <tbody id="portal-members-tbody">
+                        <tr id="row-MSN-024"><td><span class="badge bg-id">MSN-024</span></td><td><b>អ្នកស្រី អុល ស្រីនី</b></td><td>096XXXXXXX</td><td>@sreyny_ol</td><td class="money-cell">$500.00</td><td><span class="badge bg-approved">✓ សកម្ម (ឯកជន)</span></td></tr>
+                        <tr id="row-MSN-025"><td><span class="badge bg-id">MSN-025</span></td><td><b>កញ្ញា ស្រ៊ាង វិស៊ាន</b></td><td>097XXXXXXX</td><td>@visan_sreang</td><td class="money-cell">$680.00</td><td><span class="badge bg-approved">✓ សកម្ម (ឯកជន)</span></td></tr>
                     </tbody>
                 </table>
-                <p style="font-size:11px; color:var(--warning);">💡 <b>ព័ត៌មានបច្ចេកទេស៖</b> រាល់ពេលមានសមាជិកថ្មីចុះឈ្មោះតាមទូរស័ព្ទដៃ App ទិន្នន័យត្រួតពិនិត្យ (Validation) នឹងរត់មកបង្ហាញក្នុងតារាងមេនេះអូតូ ព្រមទាំងទាញចេញជា PDF ជូនសមាជិកភ្លាមៗ។</p>
+
+                <h4 style="margin-top:20px;">🛒 មុខទំនិញ/សេវាកម្មដែលបានផុសឡើង (រង់ចាំលោកអគ្គនាយកអនុញ្ញាត)</h4>
+                <table class="data-table">
+                    <thead>
+                        <tr><th>លេខកូដអ្នកលក់</th><th>ឈ្មោះទំនិញ/សេវាកម្ម</th><th>តម្លៃលក់</th><th>ស្ថានភាពការអនុញ្ញាត</th></tr>
+                    </thead>
+                    <tbody id="portal-products-tbody">
+                        <tr><td>MSN-024</td><td>សាប៊ូកក់សក់ធម្មជាតិ MSN</td><td>$5.00</td><td><span class="badge bg-approved">✓ បានអនុញ្ញាត</span></td></tr>
+                    </tbody>
+                </table>
             </div>
 
-        </div>
-    </div>
-
-    <div id="pdf-template">
-        <div class="pdf-header">
-            ព្រះរាជាណាចក្រកម្ពុជា<br>ជាតិ សាសនា ព្រះមហាក្សត្រ<br>━━━━━━━
-        </div>
-        <div style="text-align:center;"><img src="5114.png" style="width:100px; height:auto; border-radius:5px;"></div>
-        <div class="pdf-title">ពាក្យសុំចុះឈ្មោះចូលជាសមាជិក មហាសិរី (MSN)</div>
-        <div style="text-align:right; font-size:11px; font-weight:bold;" id="pdf-generated-id">លេខកូដសមាជិក៖ MSN-XXXXXX</div>
-        <div style="text-align:right; font-size:11px;" id="pdf-generated-date">កាលបរិច្ឆេទសាកសួរ៖ ថ្ងៃទី ២ ខែ មិថុនា ឆ្នាំ ២០២៦</div>
-
-        <div class="pdf-section">១. ព័ត៌មានផ្ទាល់ខ្លួន និងទំនាក់ទំនង (Personal Information)</div>
-        <div class="pdf-grid">
-            <div><b>ឈ្មោះពេញ (ខ្មែរ)៖</b> <span id="pdf-kh-name"></span></div>
-            <div><b>ឈ្មោះពេញ (ឡាតាំង)៖</b> <span id="pdf-en-name"></span></div>
-            <div><b>ភេទ៖</b> <span id="pdf-gender"></span></div>
-            <div><b>សញ្ជាតិ៖</b> <span id="pdf-nationality"></span></div>
-            <div><b>ថ្ងៃ ខែ ឆ្នាំកំណើត៖</b> <span id="pdf-dob"></span></div>
-            <div><b>ទីកន្លែងកំណើត៖</b> <span id="pdf-pob"></span></div>
-            <div><b>អត្តសញ្ញាណប័ណ្ណលេខ៖</b> <span id="pdf-id-num"></span></div>
-            <div><b>ថ្ងៃផុតកំណត់៖</b> <span id="pdf-id-exp"></span></div>
-            <div><b>លេខទូរស័ព្ទ៖</b> <span id="pdf-phone"></span></div>
-            <div><b>តេឡេក្រាម៖</b> <span id="pdf-tg"></span></div>
-            <div><b>អ៊ីមែល៖</b> <span id="pdf-email"></span></div>
-            <div><b>ប្រភេទសមាជិកភាព៖</b> <span id="pdf-cat"></span></div>
-        </div>
-        <div style="font-size:12px; margin-top:10px;"><b>អាសយដ្ឋានបច្ចុប្បន្ន៖</b> <span id="pdf-address"></span></div>
-
-        <div class="pdf-section">២. ប្រវត្តិរូបសង្ខេបផ្លូវការរបស់សមាជិក (Professional Profile)</div>
-        <div style="font-size:12px; margin-top:8px; line-height:1.6;">
-            • <b>កម្រិតវប្បធម៌ និងការបណ្តុះបណ្តាល៖</b> <span id="pdf-edu"></span><br>
-            • <b>បទពិសោធន៍ការងារ និងសកម្មភាពអាជីវកម្ម៖</b> <span id="pdf-exp"></span><br>
-            • <b>វិស័យអាជីវកម្មចម្បង៖</b> <span id="pdf-industry"></span><br>
-            • <b>ទេពកោសល្យ និងការរួមចំណែកដល់ MSN៖</b> <span id="pdf-skills"></span>
-        </div>
-
-        <div class="pdf-section">៣. កិច្ចសន្យា និងការប្តេជ្ញាចិត្តរបស់សមាជិកមហាសិរី (Agreement)</div>
-        <div style="font-size:10px; text-align:justify; margin-top:5px; line-height:1.4; color:#333;">
-            ខ្ញុំបាទ/នាងខ្ញុំ សូមធ្វើការប្តេជ្ញាចិត្តជាផ្លូវការចំពោះមុខគណៈគ្រប់គ្រង MSN ថានឹងគោរពតាមលក្ខន្តិកៈ បទបញ្ជាផ្ទៃក្នុង គោលការណ៍ណែនាំ និងក្រមសីលធម៌ទាំងស្រុង។ ខ្ញុំប្តេជ្ញាមិនបញ្ចេញព័ត៌មានសម្ងាត់ យុទ្ធសាស្ត្រ ឬគម្រោងការងារទៅកាន់ភាគីខាងក្រៅឡើយ។ ខ្ញុំយល់ព្រមថាគណៈគ្រប់គ្រង MSN មានសិទ្ធិពេញលេញក្នុងការផ្អាកសមាជិកភាពរបស់ខ្ញុំ ប្រសិនបើខ្ញុំប្រព្រឹត្តល្មើសនឹងកិច្ចសន្យានេះ ឬច្បាប់នៃព្រះរាជាណាចក្រកម្ពុជា។
-        </div>
-
-        <div style="margin-top:30px; display:grid; grid-template-columns:1fr 1fr; text-align:center; font-size:12px;">
-            <div>
-                <b>ប្រព័ន្ធស្កែនផ្ទៃមុខបញ្ជាក់សច្ចៈភាព</b><br><br>
-                <span style="color:green; font-weight:bold;">[ ✓ ផ្ទៀងផ្ទាត់ជោគជ័យ ]</span>
-            </div>
-            <div>
-                <b>ហត្ថលេខាឌីជីថលសមាជិក</b><br><br>
-                <span id="pdf-sig-view" style="font-style:italic; text-decoration:underline; font-weight:bold; color:blue;"></span>
-            </div>
         </div>
     </div>
 
     <div class="footer">
         <p style="font-family:'Khmer OS Muol Light'; font-size:13px; color:var(--accent);">ក្រុមហ៊ុន មហាសិរី ណេតវើក ឯ.ក (MOHASIRI NETWORK CO., LTD.)</p>
-        <p>ប្រព័ន្ធមេជំនាន់ Super App v5.0 គ្រប់គ្រងទម្រង់ច្បាប់ និងទាញទិន្នន័យ PDF ស្វ័យប្រវត្ត</p>
+        <p>មហាប្រព័ន្ធគណនីស្វ័យប្រវត្ត និងប្រព័ន្ធធនាគារឌីជីថលសហគមន៍ជោគជ័យ ១០០%</p>
     </div>
 
     <script>
-        function showAppScreen(scr) {
-            document.getElementById('scr-reg').style.display = scr === 'reg' ? 'block' : 'none';
-            document.getElementById('scr-shop').style.display = scr === 'shop' ? 'block' : 'none';
-            document.getElementById('scr-invest').style.display = scr === 'invest' ? 'block' : 'none';
-            document.getElementById('scr-save').style.display = scr === 'save' ? 'block' : 'none';
-            
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById('btn-tab-' + scr).classList.add('active');
+        let currentLoggedInUser = null;
+
+        // Database សុវត្ថិភាពរួមរបស់ MSN
+        let msnUserDatabase = {
+            "MSN-024": { name: "អ្នកស្រី អុល ស្រីនី", phone: "096XXXXXXX", tg: "@sreyny_ol", fb: "Sreyny Ol", balance: 500, bank: "ABA Bank (000111222)" },
+            "MSN-025": { name: "កញ្ញា ស្រ៊ាង វិស៊ាន", phone: "097XXXXXXX", tg: "@visan_sreang", fb: "Visan Sreang", balance: 680, bank: "ACLEDA Bank (333444555)" }
+        };
+
+        function toggleAuthMode(mode) {
+            document.getElementById('form-login').style.display = mode === 'login' ? 'block' : 'none';
+            document.getElementById('form-signup').style.display = mode === 'signup' ? 'block' : 'none';
+            document.getElementById('tab-login').className = mode === 'login' ? 'active' : '';
+            document.getElementById('tab-signup').className = mode === 'signup' ? 'active' : '';
         }
 
-        function triggerAppFaceScan() {
-            document.getElementById('app-scanner-box').style.display = 'block';
-            setTimeout(() => {
-                document.getElementById('app-scanner-box').style.display = 'none';
-                document.getElementById('app-face-status').value = "1";
-                alert("✓ ប្រព័ន្ធស្កែនផ្ទៃមុខ និងពិនិត្យភាពត្រឹមត្រូវ (Validation Check) ជោគជ័យ ១០០%!");
-            }, 2000);
+        function handleSecureSignUp() {
+            let name = document.getElementById('sign-name').value.trim();
+            let phone = document.getElementById('sign-phone').value.trim();
+            let tg = document.getElementById('sign-tg').value.trim();
+            let fb = document.getElementById('sign-fb').value.trim();
+
+            if(!name || !phone || !tg || !fb) { alert("⚠️ សូមបំពេញព័ត៌មានឱ្យបានគ្រប់ជ្រុងជ្រោយដាច់ខាតបាទ!"); return; }
+
+            let count = Object.keys(msnUserDatabase).length + 24;
+            let newID = "MSN-" + String(count).padStart(3, '0');
+
+            // បញ្ចូលទៅក្នុងប្រព័ន្ធទិន្នន័យមេ
+            msnUserDatabase[newID] = { name: name, phone: phone, tg: tg, fb: fb, balance: 150, bank: "វេរតាមប្រព័ន្ធអូតូ (Connected)" };
+
+            // បង្ហាញក្នុងតារាង Admin Live Ledger
+            let row = `<tr id="row-${newID}"><td><span class="badge bg-id">${newID}</span></td><td><b>${name}</b></td><td>${phone}</td><td>${tg}</td><td class="money-cell">$150.00</td><td><span class="badge bg-approved">✓ សកម្ម (ឯកជន)</span></td></tr>`;
+            document.getElementById('portal-members-tbody').innerHTML += row;
+
+            alert(`🎉 ចុះឈ្មោះគណនីជោគជ័យ! លេខកូដសម្ងាត់សម្រាប់ឡុកអ៊ីនចូលប្រព័ន្ធរបស់លោកអ្នកគឺ៖ [ ${newID} ] (ប្រាក់រង្វាន់ចាប់ផ្តើម $150.00)`);
+            toggleAuthMode('login');
+            document.getElementById('login-id').value = newID;
         }
 
-        function signDigital() {
-            let name = document.getElementById('kh-name').value;
-            if(!name) { alert("⚠️ សូមមេត្តាបំពេញឈ្មោះពេញជាអក្សរខ្មែរជាមុនសិនបាទ!"); return; }
-            document.getElementById('sig-pad').innerHTML = "✍️ សន្យាដោយសច្ចៈ៖ " + name;
-            document.getElementById('sig-pad').style.color = "blue";
-            document.getElementById('sig-status').value = "1";
-            alert("✓ បានចុះហត្ថលេខាឌីជីថលជាផ្លូវការ!");
+        function handleSecureLogin() {
+            let idInput = document.getElementById("login-id").value.trim().toUpperCase();
+            if (msnUserDatabase[idInput]) {
+                currentLoggedInUser = idInput;
+                let user = msnUserDatabase[idInput];
+                
+                document.getElementById("app-auth-screen").style.display = "none";
+                document.getElementById("app-member-portal").style.display = "block";
+                
+                document.getElementById("user-portal-name").innerText = user.name;
+                document.getElementById("user-portal-id").innerText = idInput;
+                document.getElementById("user-portal-balance").innerText = "$" + user.balance.toFixed(2);
+                document.getElementById("user-linked-bank").innerText = "🏦 ធនាគារភ្ជាប់៖ " + user.bank;
+                document.getElementById("noti-box").style.display = "none";
+                
+                alert("🔓 គណនីសម្ងាត់របស់ " + user.name + " ត្រូវបានបើកដំណើរការប្រកបដោយសន្តិសុខខ្ពស់បំផុត!");
+            } else {
+                alert("❌ រកមិនឃើញលេខកូដសមាជិកនេះក្នុងប្រព័ន្ធឡើយ!");
+            }
         }
 
-        function processMembershipSubmit(e) {
+        function triggerMultiChannelNoti(message) {
+            let user = msnUserDatabase[currentLoggedInUser];
+            let notiBox = document.getElementById("noti-box");
+            notiBox.style.display = "block";
+            notiBox.innerHTML = `
+                <div><span class="noti-channel">📱 SMS (ទៅកាន់ ${user.phone})៖</span> ${message}</div>
+                <div style="margin-top:5px;"><span class="noti-channel">✈️ Telegram (ទៅកាន់ ${user.tg})៖</span> ${message}</div>
+                <div style="margin-top:5px;"><span class="noti-channel">🔵 Facebook (ទៅកាន់ ${user.fb})៖</span> ប្រតិបត្តិការជោគជ័យ! សន្តិសុខ ១០០%</div>
+            `;
+        }
+
+        function handleBankWithdrawal(e) {
             e.preventDefault();
+            let amt = parseFloat(document.getElementById("wd-amt").value);
+            let user = msnUserDatabase[currentLoggedInUser];
+
+            if(amt > user.balance || amt <= 0) { alert("❌ សមតុល្យទឹកប្រាក់មិនគ្រប់គ្រាន់សម្រាប់ការដកឡើយ!"); return; }
+
+            user.balance -= amt;
+            document.getElementById("user-portal-balance").innerText = "$" + user.balance.toFixed(2);
+            document.getElementById("row-" + currentLoggedInUser).querySelector(".money-cell").innerText = "$" + user.balance.toFixed(2);
+
+            let msg = `លោកអ្នកបានស្នើដកប្រាក់ចំនួន $${amt.toFixed(2)} ទៅកាន់គណនីធនាគាររួចរាល់ហើយ។`;
+            triggerMultiChannelNoti(msg);
+            alert("✓ ការស្នើដកប្រាក់ទៅកាន់ធនាគារបានជោគជ័យ!");
+            document.getElementById("wd-amt").value = "";
+        }
+
+        function handleInternalTransfer(e) {
+            e.preventDefault();
+            let toID = document.getElementById("transfer-to-id").value.trim().toUpperCase();
+            let amt = parseFloat(document.getElementById("transfer-amt").value);
+            let user = msnUserDatabase[currentLoggedInUser];
+
+            if(!msnUserDatabase[toID]) { alert("❌ រកមិនឃើញលេខកូដសមាជិកអ្នកទទួលឡើយ!"); return; }
+            if(amt > user.balance || amt <= 0) { alert("❌ ទឹកប្រាក់របស់អ្នកមិនគ្រប់គ្រាន់សម្រាប់ការផ្ទេរឡើយ!"); return; }
+
+            // កាត់លុយអ្នកផ្ដើម និងបន្ថែមលុយអ្នកទទួល
+            user.balance -= amt;
+            msnUserDatabase[toID].balance += amt;
+
+            // អាប់ដេតផ្ទាំងបង្ហាញ
+            document.getElementById("user-portal-balance").innerText = "$" + user.balance.toFixed(2);
+            document.getElementById("row-" + currentLoggedInUser).querySelector(".money-cell").innerText = "$" + user.balance.toFixed(2);
+            document.getElementById("row-" + toID).querySelector(".money-cell").innerText = "$" + msnUserDatabase[toID].balance.toFixed(2);
+
+            let msg = `បានផ្ទេរប្រាក់ $${amt.toFixed(2)} ទៅសមាជិកកូដ ${toID} (${msnUserDatabase[toID].name}) ជោគជ័យ និងគ្មានកម្រៃសេវា។`;
+            triggerMultiChannelNoti(msg);
+            alert(msg);
+            document.getElementById("transfer-to-id").value = "";
+            document.getElementById("transfer-amt").value = "";
+        }
+
+        function handlePortalProduct(e) {
+            e.preventDefault();
+            let pName = document.getElementById("portal-p-name").value;
+            let pPrice = parseFloat(document.getElementById("portal-p-price").value);
+
+            let row = `<tr><td>${currentLoggedInUser}</td><td>${pName}</td><td>$${pPrice.toFixed(2)}</td><td><span class="badge bg-pending" style="background:var(--warning);">⌛ រង់ចាំលោកអគ្គនាយកអនុញ្ញាត</span></td></tr>`;
+            document.getElementById("portal-products-tbody").innerHTML += row;
             
-            // Validation Checks
-            if(document.getElementById('app-face-status').value !== "1") { alert("⚠️ សូមមេត្តាចុចស្កែនផ្ទៃមុខដើម្បីបញ្ជាក់សច្ចៈភាពសិន!"); return; }
-            if(document.getElementById('sig-status').value !== "1") { alert("⚠️ សូមមេត្តាចុចចុះហត្ថលេខាឌីជីថលជាមុនសិន!"); return; }
+            alert("✓ មុខទំនិញត្រូវបានផុសចេញពីគណនីរបស់អ្នករួចរាល់! រង់ចាំការអនុញ្ញាតពីប្រព័ន្ធមេដី។");
+            document.getElementById("portal-p-name").value = "";
+            document.getElementById("portal-p-price").value = "";
+        }
 
-            let khName = document.getElementById('kh-name').value;
-            let enName = document.getElementById('en-name').value;
-            let phone = document.getElementById('phone').value;
-            let cat = document.getElementById('mbr-cat').value;
-            
-            let count = document.querySelectorAll('#tbl-master-members tr').length + 24;
-            let finalCode = "MSN-" + String(count).padStart(3, '0');
-
-            // Map data to PDF template
-            document.getElementById('pdf-generated-id').innerText = "លេខកូដសមាជិក៖ " + finalCode;
-            document.getElementById('pdf-kh-name').innerText = khName;
-            document.getElementById('pdf-en-name').innerText = enName;
-            document.getElementById('pdf-gender').innerText = document.getElementById('gender').value;
-            document.getElementById('pdf-nationality').innerText = document.getElementById('nationality').value;
-            document.getElementById('pdf-dob').innerText = document.getElementById('dob').value;
-            document.getElementById('pdf-pob').innerText = document.getElementById('pob').value;
-            document.getElementById('pdf-id-num').innerText = document.getElementById('id-num').value;
-            document.getElementById('pdf-id-exp').innerText = document.getElementById('id-exp').value;
-            document.getElementById('pdf-phone').innerText = phone;
-            document.getElementById('pdf-tg').innerText = document.getElementById('telegram').value;
-            document.getElementById('pdf-email').innerText = document.getElementById('email').value;
-            document.getElementById('pdf-address').innerText = document.getElementById('address').value;
-            document.getElementById('pdf-cat').innerText = cat;
-            document.getElementById('pdf-edu').innerText = document.getElementById('edu').value;
-            document.getElementById('pdf-exp').innerText = document.getElementById('exp-job').value;
-            document.getElementById('pdf-industry').innerText = document.getElementById('core-industry').value;
-            document.getElementById('pdf-skills').innerText = document.getElementById('skills').value;
-            document.getElementById('pdf-sig-view').innerText = khName;
-
-            // Update Central Admin Dashboard
-            let row = `<tr><td><span class="badge bg-id">${finalCode}</span></td><td><b>${khName}</b></td><td>${cat}</td><td>${phone}</td><td><span class="badge bg-approved">✓ គ្រប់គ្រប់ + PDF រួចរាល់</span></td></tr>`;
-            document.getElementById('tbl-master-members').innerHTML += row;
-
-            // Generate the PDF file automatically
-            let element = document.getElementById('pdf-template');
-            element.style.display = 'block';
-            let opt = { margin: 0.5, filename: finalCode + '_MSN_Registration.pdf', image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 2 }, jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' } };
-            
-            html2pdf().set(opt).from(element).save().then(() => {
-                element.style.display = 'none';
-                alert("🎉 មហាជោគជ័យ! ប្រព័ន្ធបានបញ្ចូលទិន្នន័យរបស់សមាជិក " + khName + " ទៅក្នុងប្រព័ន្ធរដ្ឋបាលកណ្តាល និងបានបង្កើត (Generate) ឯកសាររួមទាំង៣ ចេញជាហ្វាល PDF ផ្លូវការដោយស្វ័យប្រវត្តរួចរាល់ហើយបាទលោករកបាទ!");
-            });
+        function handleSecureLogout() {
+            currentLoggedInUser = null;
+            document.getElementById("app-auth-screen").style.display = "block";
+            document.getElementById("app-member-portal").style.display = "none";
+            document.getElementById("login-id").value = "";
+            toggleAuthMode('login');
+            alert("🔒 គណនីត្រូវបានចាកចេញ និងបិទប្រព័ន្ធរក្សាការសម្ងាត់ឡើងវិញជាស្ថាពរ។");
         }
     </script>
 </body>
