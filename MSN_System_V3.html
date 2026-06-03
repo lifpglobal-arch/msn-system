@@ -1,35 +1,17 @@
-<div style="text-align: center; margin: 20px;">
-    <a href="#" onclick="handleTelegramConnect()" 
-       style="display: inline-block; padding: 15px 30px; background-color: #0088cc; color: #ffffff; text-decoration: none; border-radius: 10px; font-weight: bold; font-size: 18px; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
-       ✈️ ភ្ជាប់ Telegram ឥឡូវនេះ
-    </a>
+<button onclick="document.getElementById('regModal').style.display='block'">ចុះឈ្មោះសមាជិកថ្មី</button>
+
+<div id="regModal" style="display:none; position:fixed; top:20%; left:10%; width:80%; background:white; padding:20px; border-radius:10px; box-shadow:0 0 10px #ccc;">
+    <h3>ចុះឈ្មោះសមាជិក មហាសិរី (MSN)</h3>
+    <input type="text" id="regName" placeholder="ឈ្មោះពេញ"><br>
+    <input type="password" id="regPass" placeholder="លេខសម្ងាត់"><br>
+    <input type="text" id="regTg" placeholder="Telegram ID"><br>
+    <button onclick="saveMember()">ចុះឈ្មោះឥឡូវនេះ</button>
+</div
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px;">
+    <div style="border:1px solid #ddd; padding:10px;">
+        <img src="product_image.jpg" width="100%">
+        <h4>ផលិតផលកម្ពុជា ១</h4>
+        <p>តម្លៃ: $10.00 | ស្តុក: 50</p>
+        <button onclick="orderProduct('ផលិតផល ១')">បញ្ជាទិញឥឡូវនេះ</button>
+    </div>
 </div>
-
-<script>
-    const TELEGRAM_BOT_TOKEN = "8771623252:AAEJ9n9I0-oIeKDrtoSzlRPfhzG4U7gA-oY";
-    https://script.google.com/macros/s/AKfycbym4qdUczM6ngYEicOPkpvLGv74ewLd_2xcZ0818Ba1aHBDBhp5XUxHRm53dkqzohJIEg/exec
-    function sendTelegramNotification(message) {
-        let user = msnUserDatabase[currentLoggedInUser];
-        let chatId = user.tg;
-        let fullMessage = `🏛️ *MSN Notification:* ${message} \n\n 👉 <a href="https://lifpglobal-arch.github.io/msn-system/MSN_System_V3.html">ចូលទៅកាន់ App មហាសិរី MSN</a>`;
-        let url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(fullMessage)}&parse_mode=HTML`;
-        fetch(url).catch(err => console.error(err));
-    }
-
-    async function registerToSheet(userName, chatId) {
-        const data = { name: userName, chatId: chatId };
-        await fetch(GOOGLE_SHEET_URL, {
-            method: "POST",
-            mode: "no-cors",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data)
-        });
-    }
-
-    function handleTelegramConnect() {
-        let user = msnUserDatabase[currentLoggedInUser];
-        registerToSheet(user.name, user.tg);
-        window.open("https://t.me/MohaSiri_MSN_bot", "_blank");
-    }
-</script>
-   
