@@ -1,20 +1,18 @@
 <script>
-  // កំណត់ URL សម្រាប់ Google Sheet
   const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbym4qdUczM6ngYEicOPkpvLGv74ewLd_2xcZ0818Ba1aHBDBhp5XUxHRm53dkqzohJIEg/exec";
-  const TELEGRAM_BOT_TOKEN = "8771623252:AAEJ9n9I0-oIeKDrtoSzlRPfhzG4U7gA-oY";
 
   async function registerToSheet(userName, chatId) {
     const data = { name: userName, chatId: chatId };
     try {
-      await fetch(GOOGLE_SHEET_URL, {
+      let response = await fetch(GOOGLE_SHEET_URL, {
         method: "POST",
         mode: "no-cors",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
       });
-      alert("ជោគជ័យ៖ ទិន្នន័យត្រូវបានបញ្ជូនទៅប្រព័ន្ធ!");
+      alert("ជោគជ័យ៖ ទិន្នន័យបានចូលទៅក្នុង Google Sheet ហើយ!");
     } catch (e) {
-      alert("កំហុស៖ មិនអាចតភ្ជាប់ទៅ Server បានទេ");
+      alert("មានកំហុស៖ " + e);
     }
   }
 
@@ -24,14 +22,7 @@
     if(name && tg) {
         registerToSheet(name, tg);
     } else {
-        alert("សូមបំពេញឈ្មោះ និង Telegram ID!");
+        alert("សូមបំពេញព័ត៌មានឱ្យគ្រប់!");
     }
   }
 </script>
-
-<div id="regModal" style="padding:20px; border:2px solid #0088cc; border-radius:15px; max-width: 400px; margin: auto;">
-    <h3 style="color:#0088cc;">ចុះឈ្មោះសមាជិក មហាសិរី (MSN)</h3>
-    <input type="text" id="regName" placeholder="ឈ្មោះពេញ" style="width:100%; padding:10px; margin-bottom:10px;"><br>
-    <input type="text" id="regTg" placeholder="Telegram ID" style="width:100%; padding:10px; margin-bottom:10px;"><br>
-    <button onclick="saveMember()" style="width:100%; padding:10px; background:#0088cc; color:white; border:none; border-radius:5px;">ចុះឈ្មោះឥឡូវនេះ</button>
-</div>
