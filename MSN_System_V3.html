@@ -12,26 +12,10 @@ async function submitData() {
         job: document.getElementById('job').value
     };
     
-    // URL ត្រឹមត្រូវសម្រាប់ Google Script
+    // URL សម្រាប់បញ្ជូនទៅ Google Sheet
     const scriptUrl = "https://script.google.com/macros/s/AKfycbym4qdUczM6ngYEicOPkpvLGv74ewLd_2xcZ0818Ba1aHBDBhp5XUxHRm53dkqzohJIEg/exec";
     
-    await fetch(scriptUrl, { 
-        method: "POST", 
-        mode: "no-cors", 
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(data) 
-    });
-    
-    // ជូនដំណឹងទៅ Telegram
-    let msg = `🎉 សមាជិកថ្មី MSN! %0A👤 ឈ្មោះ: ${data.name} %0A📞 ទូរស័ព្ទ: ${data.phone}`;
-    fetch(`https://api.telegram.org/bot8771623252:AAEJ9n9I0-oIeKDrtoSzlRPfhzG4U7gA-oY/sendMessage?chat_id=8022100683&text=${msg}`);
-    
-    alert("ចុះឈ្មោះជោគជ័យ!");
-}
-    
-    // URL ត្រឹមត្រូវ៖
-    const scriptUrl = "https://script.google.com/macros/s/AKfycbym4qdUczM6ngYEicOPkpvLGv74ewLd_2xcZ0818Ba1aHBDBhp5XUxHRm53dkqzohJIEg/exec";
-    
+    // បញ្ជូនទិន្នន័យ
     await fetch(scriptUrl, { 
         method: "POST", 
         mode: "no-cors", 
