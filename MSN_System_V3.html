@@ -1,40 +1,59 @@
-async function submitData() {
-    // 1. បង្កើតលេខ ID សមាជិកភាព
-    const memberID = "MSN-" + Math.floor(100000 + Math.random() * 900000);
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSN Admin Dashboard</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; padding: 20px; background-color: #f4f7f6; }
+        h2 { color: #0088cc; text-align: center; }
+        #status { text-align: center; color: #555; margin-bottom: 20px; }
+        table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        th { background: #0088cc; color: white; padding: 12px; text-align: left; }
+        td { padding: 10px; border-bottom: 1px solid #ddd; }
+        tr:hover { background-color: #f1f1f1; }
+    </style>
+</head>
+<body>
+
+    <h2>📊 MSN Admin Dashboard</h2>
+    <div id="status">កំពុងផ្ទុកទិន្នន័យសមាជិក...</div>
     
-    const data = {
-        timestamp: new Date().toLocaleString(),
-        memberID: memberID,
-        name: document.getElementById('name').value,
-        gender: document.getElementById('gender').value,
-        dob: document.getElementById('dob').value,
-        nationality: document.getElementById('nat').value,
-        address: document.getElementById('addr').value,
-        phone: document.getElementById('phone').value,
-        tg: document.getElementById('tg').value,
-        fb: document.getElementById('fb').value,
-        job: document.getElementById('job').value
-    };
+    <table id="memberTable">
+        <thead>
+            <tr>
+                <th>ID</th><th>ឈ្មោះ</th><th>លេខទូរស័ព្ទ</th><th>អាជីព</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
 
-    const scriptUrl = "https://script.google.com/macros/s/AKfycbym4qdUczM6ngYEicOPkpvLGv74ewLd_2xcZ0818Ba1aHBDBhp5XUxHRm53dkqzohJIEg/exec";
+    <script>
+        async function loadData() {
+            // URL ថ្មីរបស់លោកអគ្គនាយក៖
+            const url = "https://script.google.com/macros/s/AKfycbw8bNnrV7gZ4Oxg2LCXu2mpStNBO7CLSy4TMGHXQSAnWbaU2H-6KyYbRtBmwUsn6dMbqg/exec";
+            
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                const tableBody = document.getElementById('tableBody');
+                document.getElementById('status').innerHTML = "សមាជិកសរុប: " + data.length + " នាក់";
 
-    try {
-        await fetch(scriptUrl, { 
-            method: "POST", 
-            mode: "no-cors", 
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(data) 
-        });
-
-        // 2. សារស្វាគមន៍កក់ក្តៅទៅកាន់សមាជិក
-        let msg = `✨ ស្វាគមន៍សមាជិកថ្មីមកកាន់គ្រួសារ មហាសិរី (MSN)! ✨%0A%0A` +
-                  `👤 ឈ្មោះ: ${data.name}%0A🆔 លេខសម្គាល់ (Lifetime ID): ${memberID}%0A` +
-                  `🙏 អរគុណដែលបានចូលរួមជាមួយយើង។ យើងនឹងរួមដំណើរជាមួយគ្នាអស់មួយជីវិត និងតជំនាន់!`;
-                  
-        fetch(`https://api.telegram.org/bot8771623252:AAEJ9n9I0-oIeKDrtoSzlRPfhzG4U7gA-oY/sendMessage?chat_id=8022100683&text=${msg}`);
-
-        alert("ចុះឈ្មោះជោគជ័យ! លេខសម្គាល់សមាជិករបស់អ្នកគឺ: " + memberID);
-    } catch (e) {
-        alert("មានបញ្ហា៖ " + e.message);
-    }
-}
+                data.forEach(row => {
+                    // row[1]=ID, row[2]=Name, row[6]=Phone, row[9]=Job
+                    let tr = `<tr>
+                        <td>${row[1] || ''}</td>
+                        <td>${row[2] || ''}</td>
+                        <td>${row[6] || ''}</td>
+                        <td>${row[9] || ''}</td>
+                    </tr>`;
+                    tableBody.innerHTML += tr;
+                });
+            } catch (e) {
+                document.getElementById('status').innerHTML = "មានកំហុសក្នុងការតភ្ជាប់ទិន្នន័យ!";
+            }
+        }
+        loadData();
+    </script>
+</body>
+</html>
