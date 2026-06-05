@@ -14,7 +14,37 @@ async function submitData() {
     
     // URL សម្រាប់បញ្ជូនទៅ Google Sheet
     const scriptUrl = "https://script.google.com/macros/s/AKfycbym4qdUczM6ngYEicOPkpvLGv74ewLd_2xcZ0818Ba1aHBDBhp5XUxHRm53dkqzohJIEg/exec";
+    <script>
+async function submitData() {
+    const data = {
+        timestamp: new Date().toLocaleString(),
+        name: document.getElementById('name').value,
+        gender: document.getElementById('gender').value,
+        dob: document.getElementById('dob').value,
+        nationality: document.getElementById('nat').value,
+        address: document.getElementById('addr').value,
+        phone: document.getElementById('phone').value,
+        tg: document.getElementById('tg').value,
+        fb: document.getElementById('fb').value,
+        job: document.getElementById('job').value
+    };
     
+    // URL ត្រឹមត្រូវ (កុំដាក់វាចូលក្នុង Object data)
+    const scriptUrl = "https://script.google.com/macros/s/AKfycbym4qdUczM6ngYEicOPkpvLGv74ewLd_2xcZ0818Ba1aHBDBhp5XUxHRm53dkqzohJIEg/exec";
+    
+    await fetch(scriptUrl, { 
+        method: "POST", 
+        mode: "no-cors", 
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(data) 
+    });
+    
+    let msg = `🎉 សមាជិកថ្មី MSN! %0A👤 ឈ្មោះ: ${data.name} %0A📞 ទូរស័ព្ទ: ${data.phone}`;
+    fetch(`https://api.telegram.org/bot8771623252:AAEJ9n9I0-oIeKDrtoSzlRPfhzG4U7gA-oY/sendMessage?chat_id=8022100683&text=${msg}`);
+    
+    alert("ចុះឈ្មោះជោគជ័យ!");
+}
+</script>
     // បញ្ជូនទិន្នន័យ
     await fetch(scriptUrl, { 
         method: "POST", 
