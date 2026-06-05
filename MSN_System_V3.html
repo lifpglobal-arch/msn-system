@@ -40,7 +40,8 @@ async function submitData() {
             body: JSON.stringify(data) 
         });
         
-        let msg = `// នេះជាកូដដែលលោកត្រូវដាក់ជំនួសកន្លែងចាស់៖
+        let msg
+let msg = `🎉សមាជិកថ្មី MSN!%0A👤 ឈ្មោះ// នេះជាកូដដែលលោកត្រូវដាក់ជំនួសកន្លែងចាស់៖
 let msg = `🎉 សមាជិកថ្មី MSN!%0A👤 ឈ្មោះ: ${data.name}%0A📱 Telegram: ${data.tg}%0A📞 ទូរស័ព្ទ: ${data.phone}%0A🎖 តួនាទី: ${data.job}`;
         fetch(`https://api.telegram.org/bot8771623252:AAEJ9n9I0-oIeKDrtoSzlRPfhzG4U7gA-oY/sendMessage?chat_id=8022100683&text=${msg}`);
         
