@@ -1,22 +1,39 @@
-async function submitRegistration() {
+<div style="max-width: 500px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px;">
+    <h3>ចុះឈ្មោះសមាជិក មហាសិរី (MSN)</h3>
+    <input type="text" id="name" placeholder="ឈ្មោះពេញ" style="width:100%; margin:5px 0;">
+    <select id="gender" style="width:100%; margin:5px 0;"><option>ភេទ</option><option>ប្រុស</option><option>ស្រី</option></select>
+    <input type="date" id="dob" style="width:100%; margin:5px 0;">
+    <input type="text" id="nat" placeholder="សញ្ជាតិ" style="width:100%; margin:5px 0;">
+    <textarea id="addr" placeholder="អាស័យដ្ឋាន (ផ្ទះលេខ, ផ្លូវ, ភូមិ, ឃុំ, ស្រុក, ខេត្ត)" style="width:100%; margin:5px 0;"></textarea>
+    <input type="text" id="phone" placeholder="លេខទូរស័ព្ទ" style="width:100%; margin:5px 0;">
+    <input type="text" id="tg" placeholder="Telegram ID" style="width:100%; margin:5px 0;">
+    <input type="text" id="fb" placeholder="Facebook Link" style="width:100%; margin:5px 0;">
+    <input type="text" id="job" placeholder="មុខរបរ/អាជីព" style="width:100%; margin:5px 0;">
+    <button onclick="submitData()" style="width:100%; padding:10px; background:#0088cc; color:white; border:none;">ចុះឈ្មោះ</button>
+</div>
+
+<script>
+async function submitData() {
     const data = {
-        name: document.getElementById('regName').value,
-        phone: document.getElementById('regPhone').value,
-        tg: document.getElementById('regTg').value,
-        rank: document.getElementById('regRank').value,
-        timestamp: new Date().toLocaleString()
+        timestamp: new Date().toLocaleString(),
+        name: document.getElementById('name').value,
+        gender: document.getElementById('gender').value,
+        dob: document.getElementById('dob').value,
+        nationality: document.getElementById('nat').value,
+        address: document.getElementById('addr').value,
+        phone: document.getElementById('phone').value,
+        tg: document.getElementById('tg').value,
+        fb: document.getElementById('fb').value,
+        job: document.getElementById('job').value
     };
     
     // ផ្ញើទៅ Google Sheet
-    await fetch("URL_ថ្មី_របស់លោក_នៅទីនេះ", {https://script.google.com/macros/s/AKfycbym4qdUczM6ngYEicOPkpvLGv74ewLd_2xcZ0818Ba1aHBDBhp5XUxHRm53dkqzohJIEg/exec
-        method: "POST", mode: "no-cors", 
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(data)
-    });
+    await fetch("URL_ដែលលោក_Deploy_ថ្មី", { method: "POST", mode: "no-cors", body: JSON.stringify(data) });
     
     // ជូនដំណឹងទៅ Telegram
-    let msg = `🎉 សមាជិកថ្មី MSN! %0A👤 ឈ្មោះ: ${data.name} %0A📞 ទូរស័ព្ទ: ${data.phone} %0A📱 Telegram: ${data.tg} %0A🎖 តួនាទី: ${data.rank}`;
-    fetch(`https://api.telegram.org/bot8022100683:AAEJ9n9I0-oIeKDrtoSzlRPfhzG4U7gA-oY/sendMessage?chat_id=លោក_ត្រូវដាក់_ChatID_របស់លោក_នៅទីនេះ&text=${msg}`);
+    let msg = `🎉 សមាជិកថ្មី MSN! %0A👤 ឈ្មោះ: ${data.name} %0A📞 ទូរស័ព្ទ: ${data.phone}`;
+    fetch(`https://api.telegram.org/bot8771623252:AAEJ9n9I0-oIeKDrtoSzlRPfhzG4U7gA-oY/sendMessage?chat_id=8022100683&text=${msg}`);
     
-    alert("ចុះឈ្មោះជោគជ័យ និងជូនដំណឹងដល់ Admin រួចរាល់!");
+    alert("ចុះឈ្មោះជោគជ័យ!");
 }
+</script>
