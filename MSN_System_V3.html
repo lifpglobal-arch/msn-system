@@ -1,23 +1,10 @@
-<div style="max-width: 500px; margin: auto; padding: 20px; border: 2px solid #0088cc; border-radius: 15px; font-family: sans-serif;">
-    <h2 style="color: #0088cc; text-align: center;">ចុះឈ្មោះសមាជិក មហាសិរី (MSN)</h2>
-    
-    <input type="text" id="name" placeholder="ឈ្មោះពេញ" style="width:100%; padding:10px; margin:5px 0;">
-    <select id="gender" style="width:100%; padding:10px; margin:5px 0;"><option value="">ភេទ</option><option value="ប្រុស">ប្រុស</option><option value="ស្រី">ស្រី</option></select>
-    <input type="date" id="dob" style="width:100%; padding:10px; margin:5px 0;">
-    <input type="text" id="nat" placeholder="សញ្ជាតិ" style="width:100%; padding:10px; margin:5px 0;">
-    <textarea id="addr" placeholder="អាស័យដ្ឋាន (ផ្ទះលេខ, ផ្លូវ, ភូមិ, ឃុំ, ស្រុក, ខេត្ត)" style="width:100%; padding:10px; margin:5px 0;"></textarea>
-    <input type="text" id="phone" placeholder="លេខទូរស័ព្ទ" style="width:100%; padding:10px; margin:5px 0;">
-    <input type="text" id="tg" placeholder="Telegram ID (@username)" style="width:100%; padding:10px; margin:5px 0;">
-    <input type="text" id="fb" placeholder="Facebook Link" style="width:100%; padding:10px; margin:5px 0;">
-    <input type="text" id="job" placeholder="មុខរបរ/អាជីព" style="width:100%; padding:10px; margin:5px 0;">
-    
-    <button onclick="submitData()" style="width:100%; padding:12px; background:#0088cc; color:white; border:none; border-radius:5px; font-weight:bold; cursor:pointer;">ចុះឈ្មោះ</button>
-</div>
-
-<script>
 async function submitData() {
+    // 1. បង្កើតលេខ ID សមាជិកភាព
+    const memberID = "MSN-" + Math.floor(100000 + Math.random() * 900000);
+    
     const data = {
         timestamp: new Date().toLocaleString(),
+        memberID: memberID,
         name: document.getElementById('name').value,
         gender: document.getElementById('gender').value,
         dob: document.getElementById('dob').value,
@@ -28,10 +15,9 @@ async function submitData() {
         fb: document.getElementById('fb').value,
         job: document.getElementById('job').value
     };
-    
-    // បញ្ជាក់៖ លោកត្រូវជំនួស URL នេះជាមួយ URL ដែលលោក Deploy ថ្មីពី Apps Script
+
     const scriptUrl = "https://script.google.com/macros/s/AKfycbym4qdUczM6ngYEicOPkpvLGv74ewLd_2xcZ0818Ba1aHBDBhp5XUxHRm53dkqzohJIEg/exec";
-    
+
     try {
         await fetch(scriptUrl, { 
             method: "POST", 
@@ -39,15 +25,16 @@ async function submitData() {
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(data) 
         });
-        
-        let msg
-let msg = `🎉សមាជិកថ្មី MSN!%0A👤 ឈ្មោះ// នេះជាកូដដែលលោកត្រូវដាក់ជំនួសកន្លែងចាស់៖
-let msg = `🎉 សមាជិកថ្មី MSN!%0A👤 ឈ្មោះ: ${data.name}%0A📱 Telegram: ${data.tg}%0A📞 ទូរស័ព្ទ: ${data.phone}%0A🎖 តួនាទី: ${data.job}`;
+
+        // 2. សារស្វាគមន៍កក់ក្តៅទៅកាន់សមាជិក
+        let msg = `✨ ស្វាគមន៍សមាជិកថ្មីមកកាន់គ្រួសារ មហាសិរី (MSN)! ✨%0A%0A` +
+                  `👤 ឈ្មោះ: ${data.name}%0A🆔 លេខសម្គាល់ (Lifetime ID): ${memberID}%0A` +
+                  `🙏 អរគុណដែលបានចូលរួមជាមួយយើង។ យើងនឹងរួមដំណើរជាមួយគ្នាអស់មួយជីវិត និងតជំនាន់!`;
+                  
         fetch(`https://api.telegram.org/bot8771623252:AAEJ9n9I0-oIeKDrtoSzlRPfhzG4U7gA-oY/sendMessage?chat_id=8022100683&text=${msg}`);
-        
-        alert("ចុះឈ្មោះជោគជ័យ! ទិន្នន័យបានបញ្ជូនទៅប្រព័ន្ធហើយ។");
+
+        alert("ចុះឈ្មោះជោគជ័យ! លេខសម្គាល់សមាជិករបស់អ្នកគឺ: " + memberID);
     } catch (e) {
-        alert("មានបញ្ហាក្នុងការភ្ជាប់៖ " + e.message);
+        alert("មានបញ្ហា៖ " + e.message);
     }
 }
-</script>
