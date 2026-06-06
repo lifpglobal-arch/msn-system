@@ -1,59 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MSN Admin Dashboard</title>
-    <style>
-        body { font-family: 'Segoe UI', sans-serif; padding: 20px; background-color: #f4f7f6; }
-        h2 { color: #0088cc; text-align: center; }
-        #status { text-align: center; color: #555; margin-bottom: 20px; }
-        table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        th { background: #0088cc; color: white; padding: 12px; text-align: left; }
-        td { padding: 10px; border-bottom: 1px solid #ddd; }
-        tr:hover { background-color: #f1f1f1; }
-    </style>
-</head>
-<body>
+function doGet() {
+  return HtmlService.createHtmlOutputFromFile('MSN_Admin');
+}
 
-    <h2>📊 MSN Admin Dashboard</h2>
-    <div id="status">កំពុងផ្ទុកទិន្នន័យសមាជិក...</div>
-    
-    <table id="memberTable">
-        <thead>
-            <tr>
-                <th>ID</th><th>ឈ្មោះ</th><th>លេខទូរស័ព្ទ</th><th>អាជីព</th>
-            </tr>
-        </thead>
-        <tbody id="tableBody"></tbody>
-    </table>
-
-    <script>
-        async function loadData() {
-            // URL ថ្មីរបស់លោកអគ្គនាយក៖
-            const url = "https://script.google.com/macros/s/AKfycbw8bNnrV7gZ4Oxg2LCXu2mpStNBO7CLSy4TMGHXQSAnWbaU2H-6KyYbRtBmwUsn6dMbqg/exec";
-            
-            try {
-                const response = await fetch(url);
-                const data = await response.json();
-                const tableBody = document.getElementById('tableBody');
-                document.getElementById('status').innerHTML = "សមាជិកសរុប: " + data.length + " នាក់";
-
-                data.forEach(row => {
-                    // row[1]=ID, row[2]=Name, row[6]=Phone, row[9]=Job
-                    let tr = `<tr>
-                        <td>${row[1] || ''}</td>
-                        <td>${row[2] || ''}</td>
-                        <td>${row[6] || ''}</td>
-                        <td>${row[9] || ''}</td>
-                    </tr>`;
-                    tableBody.innerHTML += tr;
-                });
-            } catch (e) {
-                document.getElementById('status').innerHTML = "មានកំហុសក្នុងការតភ្ជាប់ទិន្នន័យ!";
-            }
-        }
-        loadData();
-    </script>
-</body>
-</html>
+function getSheetData() {
+  return SpreadsheetApp.getActiveSpreadsheet().getActiveSheet().getDataRange().getValues();
+}
